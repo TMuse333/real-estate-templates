@@ -1,0 +1,67 @@
+.navbar-container{
+    position: fixed;
+    width: 100vw;
+    top:0;
+    left:0;
+    height:60px;
+    display: flex;
+    justify-content: space-between;
+ 
+}
+
+.navbar-container p{
+    margin-left: 1rem;
+}
+
+.list-search-box{
+    display: flex;
+    margin-right: 1rem;
+}
+
+.list-search-box img{
+    height:30px;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+.menu-icon {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  margin-top: 1rem;
+  margin-right: 0.5rem;
+  position: relative; /* Make the container relative for absolute positioning of bars */
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: rgb(255, 255, 255);
+  margin: 2px 0;
+  transition: 0.4s;
+  position: absolute; /* Position the bars absolutely within the container */
+}
+
+.bar:nth-child(1) {
+  top: 0;
+}
+
+.bar:nth-child(2) {
+  top: 7px; /* Adjust the top position to overlap with the first bar */
+}
+
+.bar:nth-child(3) {
+  top: 14px; /* Adjust the top position to overlap with the second bar */
+}
+
+.menu-open .bar:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.menu-open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-open .bar:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}

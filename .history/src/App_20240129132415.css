@@ -1,0 +1,19 @@
+.homepage{
+  width:100vw;
+  position: absolute;
+  top:70px;
+  left:0;
+  background-color: grey !important;
+}
+
+.title-text{
+  color:rgb(6)
+}
+
+.description-text{
+  color:rgb(6, 6, 6);
+}
+
+#root{
+  
+}

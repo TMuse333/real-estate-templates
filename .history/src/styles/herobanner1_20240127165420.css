@@ -1,0 +1,35 @@
+.herobanner1-container{
+    width:100vw;
+    color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-box{
+    margin: 0 auto 0 auto;
+    width:85vw;
+    text-align: center;
+}
+
+.text-box h2{
+    font-size: 1.1rem;
+}
+
+.text-box h1{
+    font-size: 2rem;
+}
+
+.text-box p{
+    margin-top: -0.5rem;
+    font-size: 0.8rem;
+}
+
+.image-box{
+    width:100vw;
+ 
+}
+
+.hero1-image{
+    margin
+}

@@ -1,0 +1,22 @@
+.documentation-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.documentation-question{
+    z-index: 12;
+    display: flex;
+    position: relative;
+    /* transform: translateX(5rem); */
+    color:white;
+    background-color: red;
+    width:100vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.documentation-question p {
+    padding:0 1rem 0 1rem;
+}

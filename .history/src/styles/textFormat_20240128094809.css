@@ -1,0 +1,18 @@
+.textFormat-container{
+
+   display: flex;
+   flex-direction: column;
+   /* justify-content: center;
+   align-items: center; */
+   text-align: center;
+
+}
+
+.line{
+    color:grey;
+    height:
+}
+
+.questions-list{
+    color:white;
+}

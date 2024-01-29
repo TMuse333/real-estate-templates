@@ -1,0 +1,9 @@
+.documentation-container{
+    display: flex;
+}
+
+.documentation-question{
+    z-index: 12;
+    position: relative;
+    transform: translateX(5rem);
+}

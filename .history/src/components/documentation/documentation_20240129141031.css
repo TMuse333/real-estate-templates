@@ -1,0 +1,43 @@
+.documentation-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.documentation-question{
+    z-index: 12;
+    display: flex;
+    position: relative;
+    /* transform: translateX(5rem); */
+    color:white;
+    background-color: rgb(143, 0, 0);
+    width:100vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.documentation-question p {
+    padding:0 1rem 0 1rem;
+    
+}
+
+.documentation-question p:nth-of-type(2) {
+  margin-top: 0rem;
+}
+
+.documents-list{
+    text-align: left;
+    margin-left: 2rem;
+}
+
+.document{
+    color:white;
+}
+
+.line{
+    width:80w;
+    height:3px;
+    background-color: #333;
+    margin-left: 2rem;
+}

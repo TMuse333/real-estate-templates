@@ -1,0 +1,13 @@
+.documentation-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.documentation-question{
+    z-index: 12;
+    position: relative;
+    /* transform: translateX(5rem); */
+    color:white;
+    background-color: red;
+    margin: 0 auto 0 auto;
+}

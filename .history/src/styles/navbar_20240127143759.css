@@ -1,0 +1,16 @@
+.navbar-container{
+    position: fixed;
+    width: 100vw;
+    top:0;
+    left:0;
+    height:60px;
+    display: flex;
+}
+
+.list-search-box{
+    
+}
+
+.list-search-box img{
+    height:30px;
+}
