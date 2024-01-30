@@ -1,8 +1,8 @@
 .hydro-element{
-  
+    border-bottom: 2px solid rgb(22, 8, 103);
     color:white;
   
-    border-bottom:2px solid rgb(22, 8, 103);
+
     
 }
 
@@ -27,8 +27,7 @@
 }
 
 .hydro-expanded p{
-    /* padding: 1rem */
-    padding:0 1rem 0 1rem;
+    padding: 1rem
 }
 
 .name-logo-box{
@@ -40,8 +39,6 @@
 .plus-minus {
  
     transition: all 0.9s ease;
-    margin-top: 0.5rem;
-    margin-left: 1rem;
   }
 
   .plus-minus :nth-child(1){
@@ -68,41 +65,18 @@
 
 .hydrolist-container{
     /* margin-top:-2rem; */
-    margin:0 auto 0 auto;
     position: relative;
-    width:80vw
 }
 
 .hydro-element h2{
     font-size: 1.2rem;
-    padding-left:0.5rem
 
-}
-
-@media screen and (min-width:655px){
-    .hydrolist-container{
-        width:88vw;
-        margin-left:1.5rem ;
-    }
-
-    /* worth noting that if hydro element
-    is to be used not as a customText,
-    the positioning must be different
-    */
 }
 
 @media screen and (min-width:865px){
     .hydro-list{
         position: absolute;
-        top:0
-        /* left:50%;
-        transform: translateX(-50%); */
+        /* top:-10rem; */
      
-    }
-
-    .hydrolist-container{
-        /* width:40vw; */
-        width: 100%;
-        margin-left:auto ;
     }
 }

@@ -31,11 +31,7 @@ const HydroList = () => {
         return (
             {
                 backgroundColor: hovered ? 'rgba(48, 115, 160)' : null,
-               
-                transition: 'all 0.3s ease-in',
-                borderBottom: hovered ? null : '2px solid rgb(22, 8, 103);',
-                border: hovered? '2px solid rgb(22, 8, 103)' : null,
-
+                border: hovered? '2px solid rgba(48, 115, 60)' : null
             }
         )
       }

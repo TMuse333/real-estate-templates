@@ -14,11 +14,6 @@
   #company{
   transform: perspective(1000px) rotateX(20deg);
   }
-
-  #image2{
-    /* object-position: 30% 30%; */
- 
-  }
   
   #content1{
   /* background:#BE9F5B; */
@@ -29,7 +24,7 @@
   
   #content2{
     background: radial-gradient(circle at center, rgba(0, 153, 205, 0.7), rgba(48, 115, 160, 0.7));
-    padding-bottom: 3rem;
+    /* padding-bottom: 3rem; */
     height: max-content;
   
   }
