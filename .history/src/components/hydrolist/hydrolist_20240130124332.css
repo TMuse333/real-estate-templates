@@ -1,0 +1,23 @@
+.hydro-element{
+    border-bottom: 2px solid black;
+    color:white;
+    position: relative;
+    
+}
+
+.hydro-element p{
+    background-color: black;
+    height: 100%;
+    display: flex;
+    padding: 3rem 1rem 0 1rem;
+   
+}
+
+.hydrolist-container{
+    margin-top: 6rem;
+}
+
+.hydro-element h2{
+    font-size: 1.2rem;
+
+}

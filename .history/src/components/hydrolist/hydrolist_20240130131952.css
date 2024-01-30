@@ -1,0 +1,41 @@
+.hydro-element{
+    border-bottom: 2px solid rgb(22, 8, 103);
+    color:white;
+  
+
+    
+}
+
+.hydro-element p{
+
+  
+
+
+ 
+   
+}
+
+.hydro-expanded{
+    background: radial-gradient(circle at center, rgba(0, 82, 110, 1), rgba(15, 36, 50, 1));
+
+}
+
+.hydro-list{
+    position: absolute;
+ 
+}
+
+.hydro-expanded p{
+    padding: 1rem
+}
+
+
+
+.hydrolist-container{
+    margin-top: 6rem;
+}
+
+.hydro-element h2{
+    font-size: 1.2rem;
+
+}

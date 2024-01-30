@@ -1,0 +1,14 @@
+.hydro-element{
+    border-bottom: 2px solid black;
+    color:white;
+    width:max-content;
+}
+
+.hydrolist-container{
+    margin-top: 6rem;
+}
+
+.hydro-element h2{
+    font-size: 1.2rem;
+
+}
