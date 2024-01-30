@@ -1,0 +1,236 @@
+.services-container {
+    /* background-image: url(src/images/quantum2.jpeg); */
+    width:100vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow-x: hidden;
+    /* background-size: ; */
+text-align: center;
+    /* background: radial-gradient(circle at center, rgb(183, 211, 222), rgb(143, 199, 221)); */
+    background: radial-gradient(circle at center, rgba(0, 153, 205, 0.7), rgba(48, 115, 160, 0.7));
+}
+
+.services-container .description-text{
+    padding: 0 1rem 0 1rem;
+}
+
+.company-services .title-text{
+    font-size: 1.5rem;
+    padding: 0 1rem 0 1rem;
+}
+
+.scroll-down-animation{
+    font-size: 1.5rem;
+}
+
+.title-text{
+  
+}
+
+.details-boxes{
+    margin-top: 4rem;
+    /* background: radial-gradient(circle at center, rgb(183, 211, 222), rgb(183, 211, 222)); */
+    background: radial-gradient(circle at center, rgba(0, 153, 205, 0.7), rgba(48, 115, 160, 0.7));
+}
+
+.title-text{
+    font-size: 2rem;
+}
+
+
+
+
+.service-point {
+    list-style: none;
+    margin-bottom: 3rem;
+    font-size: 1.2rem;
+}
+
+.service-list li:first-child {
+    margin-top:2rem
+}
+
+.line{
+    width:60px;
+    height:3px;
+    background-color:#00bfff;
+    margin-left: 5.5rem;
+}
+
+.details-box-2{
+    border: 1px solid #00bfff;
+    width:90vw;
+    margin-left: auto;
+    margin-right: auto;
+    color:black;
+}
+
+.details-box-1 h1{
+    color:black;
+}
+
+.details-box-2 .title-text{
+    width:80vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.details-box-2 .description-text{
+    width:80vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.company-services{
+    width:100vw;
+}
+
+
+
+
+
+
+
+.offered-service {
+   
+  
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    text-align: center;
+}
+
+.offered-service .description-text{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.service-overview-list li{
+    
+  
+}
+
+.first {
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+.closing-container{
+    background-image: url(src/media/goku-vs-jiren.jpg);
+    background-repeat: no-repeat;
+background-size: cover;
+    background-position:40% 50% ;
+    /* height:40vw;
+    max-height: 400px; */
+
+}
+
+.service{
+    text-align: center;
+    background: radial-gradient(circle at center, rgb(183, 211, 222), rgb(150, 202, 223));
+    margin-bottom: 2rem;
+    padding:2rem 0 2rem 0;
+    border: 2px solid #006e92;
+}
+
+
+
+
+@media screen and (min-width:655px){
+    .service-offering-container{
+        flex-direction: column;
+
+
+    }
+
+    .services-box{
+        margin: 0 auto 0 auto;
+        width:90vw;
+        padding:0;
+    }
+
+    .offered-service{
+        width:100vw;
+    }
+
+    .service-overview-list li{
+        margin-bottom: 1rem;
+        font-weight: 550;
+        font-size: .2rem;
+    }
+
+    .offered-service p{
+        font-size: 1.5rem;
+        width:80vw;
+    }
+
+    .details-boxes{
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .details-boxes .description-text{
+        padding:0 1rem 0 1rem;
+    }
+
+    .details-box-1{
+        width:50vw;
+    }
+    .details-box-2{
+        width:50vw;
+    
+    }
+
+    .details-box-2 .title-text{
+        width:auto;
+    }
+
+
+    .details-box-2 .description-text{
+        width:auto;
+    }
+
+    .services-box{
+        width:90vw;
+        display: grid;
+        padding: 0 2rem 0 2rem;
+        grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+        gap:1rem;
+        
+    }
+
+    .service{
+    
+    }
+
+    .service h2{
+        font-size: 2rem;
+      
+
+    }
+}
+
+
+
+
+
+
+
+
+@media screen and (min-width:865px) {
+    .services-box{
+        width:90vw;
+        display: grid;
+padding: 0 2rem 0 2rem;
+        grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+        gap:2rem;
+        max-width: 1000px;
+        
+    }
+    
+}
