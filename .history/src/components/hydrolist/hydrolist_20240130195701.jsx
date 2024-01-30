@@ -63,8 +63,7 @@ const HydroList = () => {
         <div className="hydro-wrapper">
 
 <h2 style={{
-    marginLeft:'1rem',
-    color:'white'
+    marginLeft:'2erm'
 }}>Documentation</h2>
 
               <p className="docs-intro">
