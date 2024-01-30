@@ -1,0 +1,13 @@
+.infographic-container{
+    width:100vw;
+    overflow-x: hidden;
+}
+
+
+.info-image{
+    height:40px;
+}
+
+.info{
+    background-color: rgb(13, 14, 111);
+}

@@ -1,0 +1,61 @@
+.infographic-container{
+    width:100vw;
+    overflow-x: hidden;
+    background-color: rgb(42, 44, 45);
+}
+
+.infographic-header{
+    text-align: center;
+  
+    background-image: url(src/media/home1.png);
+    background-size: cover;
+    height:60vh;
+    min-height: 300px;
+    
+}
+
+.infographic-header h1{
+    color:#333;
+    font-weight: 200;
+}
+
+.infographic-header p{
+    padding: 0 1rem 1rem 1rem;
+    color:white;
+}
+
+
+.info-image{
+    margin-top: 1rem;
+    height:40px;
+}
+
+.info{
+    background-color:  rgb(183, 211, 222);
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    border:2px solid black;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.info p{
+    padding: 0 1rem 0 1rem;
+    color:black;
+}
+
+.info h2{
+    color:black;
+    font-weight: 350;
+    padding: 0 0.5rem 0 0.5rem;
+}
+
+
+
+@media screen and (min-width:655px){
+
+
+    .info
+}
