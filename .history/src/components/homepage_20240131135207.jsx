@@ -57,7 +57,7 @@ const Homepage = () => {
         link='docs'
         linkText='learn more'
         customText={<HydroList/>}
-        // bigImage={true}
+        bigImage
 
         />
 

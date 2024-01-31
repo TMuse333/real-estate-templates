@@ -3,7 +3,7 @@ import Herobanner1 from "./herobanner1//herobanner1";
 import Navbar from "./navbar";
 import Navbar2 from "./navbar2";
 import image from '../media/image-holder.jpg'
-import Content from "./content/content";
+import Content from "./content";
 import Boxes from "./boxes";
 import home from '../media/rooftight-2.png'
 
@@ -57,7 +57,6 @@ const Homepage = () => {
         link='docs'
         linkText='learn more'
         customText={<HydroList/>}
-        // bigImage={true}
 
         />
 

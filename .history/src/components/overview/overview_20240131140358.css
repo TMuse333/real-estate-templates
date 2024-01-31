@@ -31,9 +31,8 @@ text-align: center;
 
 .details-boxes{
     margin-top: 4rem;
-    background-color: #3c88a1;
     /* background: radial-gradient(circle at center, rgb(183, 211, 222), rgb(183, 211, 222)); */
-    /* background: radial-gradient(circle at center, rgba(134, 134, 134, 0.7), rgba(48, 115, 160, 0.7)); */
+    background: radial-gradient(circle at center, rgba(134, 134, 134, 0.7), rgba(48, 115, 160, 0.7));
 }
 
 .title-text{

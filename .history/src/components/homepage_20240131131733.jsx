@@ -3,7 +3,7 @@ import Herobanner1 from "./herobanner1//herobanner1";
 import Navbar from "./navbar";
 import Navbar2 from "./navbar2";
 import image from '../media/image-holder.jpg'
-import Content from "./content/content";
+import Content from "./content";
 import Boxes from "./boxes";
 import home from '../media/rooftight-2.png'
 
@@ -14,7 +14,6 @@ import Docs from "./documentation/documentation";
 import Infographic from "./infographic/infographic";
 import HydroList from "./hydrolist/hydrolist";
 import ServiceOverview from "./overview/overview";
-import Testimonials from "./testimonials/testimonials";
 const Homepage = () => {
 
     
@@ -31,10 +30,10 @@ const Homepage = () => {
         <Herobanner1/>
         <Content
         image={home}
-        // hasTilt={true}
+        hasTilt={true}
         id='content1'
         customText={<TextFormat/>}
-        // hasAnimation={true}
+        hasAnimation={true}
         // rev={true}
         />
 
@@ -57,13 +56,12 @@ const Homepage = () => {
         link='docs'
         linkText='learn more'
         customText={<HydroList/>}
-        // bigImage={true}
 
         />
 
         <ServiceOverview/>
 
-        <Testimonials/>
+        <Testimonials
 
  
 
