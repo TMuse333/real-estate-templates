@@ -22,7 +22,7 @@ background-position: 50% 50%;
 }
 
 .text-box2{
-    margin: 5rem auto 0 auto;
+    margin: 0 auto 0 auto;
     width:85vw;
     text-align: center;
     display: flex;
@@ -38,16 +38,17 @@ background-position: 50% 50%;
 }
 
 #hero1-title{
-    font-size: 1rem;
+    fony
 }
 
 .text-box2 h2{
-    font-size: 1.5rem;
+    font-size: 1.1rem;
    
 }
 
-#hero1-title {
+.text-box2 h1{
     font-size: 2rem;
+
 }
 
 .text-box2 p{
@@ -75,7 +76,7 @@ background-position: 50% 50%;
 .image-box2{
     width:100vw;
     display: flex;
-    margin-top: -4rem;
+    margin-top: -1rem;
   
  
 }
@@ -167,8 +168,6 @@ background-position: 50% 50%;
         margin-left: 1rem;
         width:50vw;
         text-align: left;
-        /* position: absolute;
-        left:0% */
     }
 
     .half-body-text-box{

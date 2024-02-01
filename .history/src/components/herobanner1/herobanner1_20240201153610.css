@@ -17,12 +17,10 @@ height:100vh;
 background-size: cover;
 background-position: 50% 50%;
 
-
-
 }
 
 .text-box2{
-    margin: 5rem auto 0 auto;
+    margin: 0 auto 0 auto;
     width:85vw;
     text-align: center;
     display: flex;
@@ -37,17 +35,14 @@ background-position: 50% 50%;
     /* margin-top: -6rem; */
 }
 
-#hero1-title{
-    font-size: 1rem;
-}
-
 .text-box2 h2{
-    font-size: 1.5rem;
+    font-size: 1.1rem;
    
 }
 
-#hero1-title {
+.text-box2 h1{
     font-size: 2rem;
+
 }
 
 .text-box2 p{
@@ -75,7 +70,7 @@ background-position: 50% 50%;
 .image-box2{
     width:100vw;
     display: flex;
-    margin-top: -4rem;
+    margin-top: -1rem;
   
  
 }
@@ -97,24 +92,18 @@ background-position: 50% 50%;
     
     height:50vh;
     position: absolute;
-    left:60%;
-    bottom: 0%;
+    left:50%;
+    bottom: -10;
     transform: translateX(-50%);
 }
 
 .half-body-text-box{
     position: absolute;
-    top:0%;
+    top:5%;
     left:50%;
     transform: translateX(-50%);
     width:85vw;
     /* background-color: red; */
-}
-
-@media screen and (max-width:655px) and (min-height: 775px) {
-    .herobanner1-container{
-        height:70vh;
-    }
 }
 
 @media screen and (min-width:655px){
@@ -167,8 +156,6 @@ background-position: 50% 50%;
         margin-left: 1rem;
         width:50vw;
         text-align: left;
-        /* position: absolute;
-        left:0% */
     }
 
     .half-body-text-box{
@@ -208,7 +195,6 @@ transform: translateX(-20%);
     .hero1-image-half{
 height:65vh;
             object-fit: cover;
-            bottom: 0;
             
     }
 

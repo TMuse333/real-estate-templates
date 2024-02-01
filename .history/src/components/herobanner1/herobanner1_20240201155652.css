@@ -16,7 +16,7 @@ height:100vh;
     background-image: url(src/media/home1.png);
 background-size: cover;
 background-position: 50% 50%;
-
+height: 10vh;
 
 
 }
@@ -167,8 +167,6 @@ background-position: 50% 50%;
         margin-left: 1rem;
         width:50vw;
         text-align: left;
-        /* position: absolute;
-        left:0% */
     }
 
     .half-body-text-box{

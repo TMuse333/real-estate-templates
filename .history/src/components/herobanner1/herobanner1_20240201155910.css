@@ -165,10 +165,8 @@ background-position: 50% 50%;
     }
     .text-box2{
         margin-left: 1rem;
-        width:50vw;
-        text-align: left;
-        /* position: absolute;
-        left:0% */
+        width:100vw;
+        /* text-align: left; */
     }
 
     .half-body-text-box{

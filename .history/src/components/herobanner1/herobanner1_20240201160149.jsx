@@ -50,7 +50,7 @@ const Herobanner1 = ({halfBody}) => {
                    </div>
             </div>
         </div>
-        // </div>
+        </div>
     )
 }
 

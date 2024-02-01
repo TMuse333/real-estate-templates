@@ -6,21 +6,16 @@ import fullBody from '../../media/smiley-tom-half.png'
 const Herobanner1 = ({halfBody}) => {
 
     return (
-        // <div className="hero-wrapper"
-        // style={{
-        //     height:!halfBody ? '120vh' : 'auto'
-        // }}>
-
-
         <div className="herobanner1-container">
             <div className="text-image-box2"
-
+            style={{
+                // marginTop: halfBody ? '-7rem' : null
+            }}
             >
-            {/* text-box */}
-                <div className={halfBody ? 'half-body-text-box' : 'text-box2'}
-                
-              
-                >
+                <div className="text-box2"
+                style={{
+                    // marginTop: halfBody ? '-3rem' : null
+                }}>
                     <h2
                     style={{
                         marginBottom:'-1rem'
@@ -50,7 +45,6 @@ const Herobanner1 = ({halfBody}) => {
                    </div>
             </div>
         </div>
-        // </div>
     )
 }
 

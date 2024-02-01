@@ -167,8 +167,7 @@ background-position: 50% 50%;
         margin-left: 1rem;
         width:50vw;
         text-align: left;
-        /* position: absolute;
-        left:0% */
+        position: absolute;
     }
 
     .half-body-text-box{

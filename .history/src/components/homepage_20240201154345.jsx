@@ -30,9 +30,8 @@ const Homepage = () => {
                  
 
         <Herobanner1
-        // halfBody={true}
-        />
-
+        halfBody={true}/>
+        
         <Content
         image={home}
         // hasTilt={true}

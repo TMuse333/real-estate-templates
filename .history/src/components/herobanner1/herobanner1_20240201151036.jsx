@@ -6,19 +6,12 @@ import fullBody from '../../media/smiley-tom-half.png'
 const Herobanner1 = ({halfBody}) => {
 
     return (
-        // <div className="hero-wrapper"
-        // style={{
-        //     height:!halfBody ? '120vh' : 'auto'
-        // }}>
-
-
         <div className="herobanner1-container">
             <div className="text-image-box2"
 
             >
-            {/* text-box */}
-                <div className={halfBody ? 'half-body-text-box' : 'text-box2'}
-                
+                <div className="text-box2
+                half-body"
               
                 >
                     <h2
@@ -50,7 +43,6 @@ const Herobanner1 = ({halfBody}) => {
                    </div>
             </div>
         </div>
-        // </div>
     )
 }
 

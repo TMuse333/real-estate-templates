@@ -4,25 +4,17 @@
     display: flex;
 justify-content: center;
 align-items: center;
-
+background-image: url(src/media/home1.png);
+background-size: cover;
+background-position: 50% 50%;
 position: relative;
 height:100vh;
 
 
 }
 
-.hero-wrapper{
-    width:100vw;
-    background-image: url(src/media/home1.png);
-background-size: cover;
-background-position: 50% 50%;
-
-
-
-}
-
 .text-box2{
-    margin: 5rem auto 0 auto;
+    margin: 0 auto 0 auto;
     width:85vw;
     text-align: center;
     display: flex;
@@ -37,17 +29,14 @@ background-position: 50% 50%;
     /* margin-top: -6rem; */
 }
 
-#hero1-title{
-    font-size: 1rem;
-}
-
 .text-box2 h2{
-    font-size: 1.5rem;
+    font-size: 1.1rem;
    
 }
 
-#hero1-title {
+.text-box2 h1{
     font-size: 2rem;
+
 }
 
 .text-box2 p{
@@ -56,17 +45,17 @@ background-position: 50% 50%;
     margin-bottom: 2rem;
 }
 
-.half-body-text-box h2{
+.text-box2 h2{
     font-size: 1.1rem;
    
 }
 
-.half-body-text-box h1{
+.half h1{
     font-size: 2rem;
 
 }
 
-.half-body-text-box p{
+.text-box2 p{
     margin-top: -0.5rem;
     font-size: 0.8rem;
     margin-bottom: 2rem;
@@ -75,7 +64,7 @@ background-position: 50% 50%;
 .image-box2{
     width:100vw;
     display: flex;
-    margin-top: -4rem;
+    margin-top: -1rem;
   
  
 }
@@ -97,24 +86,18 @@ background-position: 50% 50%;
     
     height:50vh;
     position: absolute;
-    left:60%;
-    bottom: 0%;
+    left:50%;
+    bottom: 0;
     transform: translateX(-50%);
 }
 
 .half-body-text-box{
     position: absolute;
-    top:0%;
+    top:5%;
     left:50%;
     transform: translateX(-50%);
     width:85vw;
     /* background-color: red; */
-}
-
-@media screen and (max-width:655px) and (min-height: 775px) {
-    .herobanner1-container{
-        height:70vh;
-    }
 }
 
 @media screen and (min-width:655px){
@@ -124,31 +107,18 @@ background-position: 50% 50%;
         margin-right: auto;
         font-size: 1.8rem;
     }
-
-    .half-body-text-box h2{
-        font-size: 1.8rem;
-    }
     
     .text-box2 h1{
 
         margin-right: auto;
         font-size: 2.2rem;
     }
-    .half-body-text-box h1{
-        font-size: 2.2rem;
-    }
 
     .text-box2 p{
         font-size: 1rem;
     }
-
-    .half-body-text-box p{
-        font-size: 1rem;
-    }
 .herobanner1-container{
     height:65vh;
-    max-width: 1000px;
-    margin: 0 auto 0 auto;
     /* margin-top: 3REM; */
 }
 
@@ -157,27 +127,22 @@ background-position: 50% 50%;
         margin: 0 auto 0 auto;
         display: flex;
         justify-content: space-between;
-        max-width: 200px;
-       
-        height: 65vh;
-
+        max-width: 1200px;
+        background-color: red;
 
     }
     .text-box2{
         margin-left: 1rem;
         width:50vw;
         text-align: left;
-        /* position: absolute;
-        left:0% */
     }
 
     .half-body-text-box{
         width:50%;
         transform: translateX(0);
-        /* position: absolute; */
+        position: absolute;
         left:5%;
-        margin-left: 0rem;
-        max-width: 450px;
+        margin-right: auto;
    
     }
     .image-box2{
@@ -198,17 +163,15 @@ background-position: 50% 50%;
 
     .half-body-image-box{
    height:100%;
-position: relative;
-/* bottom: 0; */
+position: absolute;
+bottom: 0;
 left:85%;
 transform: translateX(-20%);
-
     }
 
     .hero1-image-half{
 height:65vh;
             object-fit: cover;
-            bottom: 0;
             
     }
 
@@ -218,17 +181,8 @@ height:65vh;
 }
 
 @media screen and (min-width:785px) {
-
-
-    .half-body-text-box{
-        /* left:10%; */
-    }
-}
-
-@media screen and (min-width:1050px){
-
     .half-body-image-box{
-        /* left:50% */
+        left:75%
     }
 
     .half-body-text-box{

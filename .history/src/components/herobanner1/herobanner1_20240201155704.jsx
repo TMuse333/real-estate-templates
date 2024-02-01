@@ -6,10 +6,8 @@ import fullBody from '../../media/smiley-tom-half.png'
 const Herobanner1 = ({halfBody}) => {
 
     return (
-        // <div className="hero-wrapper"
-        // style={{
-        //     height:!halfBody ? '120vh' : 'auto'
-        // }}>
+        <div className="hero-wrapper"
+        style>
 
 
         <div className="herobanner1-container">
@@ -50,7 +48,7 @@ const Herobanner1 = ({halfBody}) => {
                    </div>
             </div>
         </div>
-        // </div>
+        </div>
     )
 }
 
