@@ -1,0 +1,20 @@
+.big-content-container{
+    width:100vw;
+    
+}
+
+.text-container{
+    text-align: left;
+    margin-left: 1rem;
+}
+
+.text-container ul{
+    text-align: left;
+    padding: 0;
+    margin-left: 1rem;
+    color:black;
+}
+
+.image-container img{
+    width: 100vw;
+}
