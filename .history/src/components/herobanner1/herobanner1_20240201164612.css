@@ -21,10 +21,6 @@ height:130vh;
 
 }
 
-.half{
-    height:100vh
-}
-
 .text-box2{
     margin: 2rem auto 0 auto;
     width:85vw;
@@ -104,13 +100,13 @@ height:130vh;
     height:50vh;
     position: absolute;
     left:60%;
-    bottom: 0%;
+    bottom: -10%;
     transform: translateX(-50%);
 }
 
 .half-body-text-box{
     position: absolute;
-    top:-2%;
+    top:0%;
     left:50%;
     transform: translateX(-50%);
     width:85vw;
@@ -123,29 +119,12 @@ height:130vh;
     }
 
     .hero-wrapper{
-        height:80vh;
+        height:100vh;
         min-height: 600px;
     }
 
     .text-box2{
         margin-top: 5rem;
-    }
-
-    .hero1-image-half{
-    
-        height:50vh;
-        position: absolute;
-        left:68%;
-        bottom: -14%;
-        
-    }
-
-    .half-body-text-box{
-        margin-top: 3rem;
-    }
-
-    .half-body-text-box p{
-        font-size: 1.1rem;
     }
 }
 
@@ -156,8 +135,6 @@ height:130vh;
         margin-right: auto;
         font-size: 1.8rem;
     }
-
-
 
     .half-body-text-box h2{
         font-size: 1.8rem;
@@ -172,22 +149,16 @@ height:130vh;
         font-size: 2.2rem;
     }
 
-
-
     .text-box2 p{
         font-size: 1rem;
     }
 
     .half-body-text-box p{
-        font-size: 1.3rem;
+        font-size: 1rem;
     }
 
     .hero-wrapper{
-        height: 75vh;
-    }
-
-    .half{
-       
+        height: 65vh;
     }
 .herobanner1-container{
     height:65vh;
@@ -243,8 +214,8 @@ max-width: 1000px;
 
     .half-body-image-box{
    height:100%;
-position: absolute;
-bottom: -15%;
+position: relative;
+/* bottom: 0; */
 left:85%;
 transform: translateX(-20%);
 

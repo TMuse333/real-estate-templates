@@ -7,7 +7,8 @@ const Herobanner1 = ({halfBody}) => {
 
     return (
         <div className={`hero-wrapper ${halfBody ? 'half' : ''}`}>
-
+        {/* ... rest of the code ... */}
+      </div>
       
 
 

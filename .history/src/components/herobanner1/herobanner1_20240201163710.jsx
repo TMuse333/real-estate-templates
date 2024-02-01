@@ -6,9 +6,9 @@ import fullBody from '../../media/smiley-tom-half.png'
 const Herobanner1 = ({halfBody}) => {
 
     return (
-        <div className={`hero-wrapper ${halfBody ? 'half' : ''}`}>
-
+        <div className="hero-wrapper"
       
+        >
 
 
         <div className="herobanner1-container">

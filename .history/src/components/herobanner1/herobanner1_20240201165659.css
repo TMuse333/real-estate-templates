@@ -135,7 +135,7 @@ height:130vh;
     
         height:50vh;
         position: absolute;
-        left:68%;
+        left:65%;
         bottom: -14%;
         
     }
@@ -157,7 +157,14 @@ height:130vh;
         font-size: 1.8rem;
     }
 
-
+    .hero1-image-half{
+    
+        height:50vh;
+        position: absolute;
+        left:65%;
+        bottom: -14%;
+        
+    }
 
     .half-body-text-box h2{
         font-size: 1.8rem;
@@ -183,7 +190,7 @@ height:130vh;
     }
 
     .hero-wrapper{
-        height: 75vh;
+        height: 65vh;
     }
 
     .half{
@@ -244,7 +251,7 @@ max-width: 1000px;
     .half-body-image-box{
    height:100%;
 position: absolute;
-bottom: -15%;
+bottom: -18%;
 left:85%;
 transform: translateX(-20%);
 

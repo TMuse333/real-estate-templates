@@ -30,7 +30,7 @@ const Homepage = () => {
                  
 
         <Herobanner1
-        halfBody={true}
+        // halfBody={true}
         />
 
         <Content

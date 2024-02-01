@@ -110,7 +110,7 @@ height:130vh;
 
 .half-body-text-box{
     position: absolute;
-    top:-2%;
+    top:0%;
     left:50%;
     transform: translateX(-50%);
     width:85vw;
@@ -135,17 +135,13 @@ height:130vh;
     
         height:50vh;
         position: absolute;
-        left:68%;
-        bottom: -14%;
-        
+        left:60%;
+        bottom: 0%;
+        transform: translateX(-50%);
     }
 
     .half-body-text-box{
-        margin-top: 3rem;
-    }
-
-    .half-body-text-box p{
-        font-size: 1.1rem;
+        margin-top: 10rem;
     }
 }
 
@@ -156,8 +152,6 @@ height:130vh;
         margin-right: auto;
         font-size: 1.8rem;
     }
-
-
 
     .half-body-text-box h2{
         font-size: 1.8rem;
@@ -172,18 +166,16 @@ height:130vh;
         font-size: 2.2rem;
     }
 
-
-
     .text-box2 p{
         font-size: 1rem;
     }
 
     .half-body-text-box p{
-        font-size: 1.3rem;
+        font-size: 1rem;
     }
 
     .hero-wrapper{
-        height: 75vh;
+        height: 65vh;
     }
 
     .half{
@@ -244,7 +236,7 @@ max-width: 1000px;
     .half-body-image-box{
    height:100%;
 position: absolute;
-bottom: -15%;
+bottom: -18%;
 left:85%;
 transform: translateX(-20%);
 

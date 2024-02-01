@@ -16,13 +16,9 @@ height:100vh;
     background-image: url(src/media/home1.png);
 background-size: cover;
 background-position: 50% 50%;
-height:130vh;
 
 
-}
 
-.half{
-    height:100vh
 }
 
 .text-box2{
@@ -91,8 +87,6 @@ height:130vh;
     object-fit: cover;
     background-color: #333;
     border-radius: 80vw;
-    max-width: 368px;
-    max-height: 368px;
 }
 
 .nav-list li {
@@ -110,42 +104,20 @@ height:130vh;
 
 .half-body-text-box{
     position: absolute;
-    top:-2%;
+    top:0%;
     left:50%;
     transform: translateX(-50%);
     width:85vw;
     /* background-color: red; */
 }
 
-@media screen and (min-width:450px) and (min-height: 775px) {
+@media screen and (min-width:5px) and (min-height: 775px) {
     .herobanner1-container{
         height:70vh;
     }
 
-    .hero-wrapper{
-        height:80vh;
-        min-height: 600px;
-    }
-
     .text-box2{
-        margin-top: 5rem;
-    }
-
-    .hero1-image-half{
-    
-        height:50vh;
-        position: absolute;
-        left:68%;
-        bottom: -14%;
-        
-    }
-
-    .half-body-text-box{
-        margin-top: 3rem;
-    }
-
-    .half-body-text-box p{
-        font-size: 1.1rem;
+        /* margin-top: 10rem; */
     }
 }
 
@@ -156,8 +128,6 @@ height:130vh;
         margin-right: auto;
         font-size: 1.8rem;
     }
-
-
 
     .half-body-text-box h2{
         font-size: 1.8rem;
@@ -172,28 +142,17 @@ height:130vh;
         font-size: 2.2rem;
     }
 
-
-
     .text-box2 p{
         font-size: 1rem;
     }
 
     .half-body-text-box p{
-        font-size: 1.3rem;
-    }
-
-    .hero-wrapper{
-        height: 75vh;
-    }
-
-    .half{
-       
+        font-size: 1rem;
     }
 .herobanner1-container{
     height:65vh;
     max-width: 1000px;
     margin: 0 auto 0 auto;
-  
     /* margin-top: 3REM; */
 }
 
@@ -203,9 +162,9 @@ height:130vh;
         display: flex;
         justify-content: space-between;
         /* max-width: 200px; */
-       /* background-color: red; */
-        /* height: 65vh; */
-max-width: 1000px;
+       
+        height: 65vh;
+
 
     }
     .text-box2{
@@ -243,8 +202,8 @@ max-width: 1000px;
 
     .half-body-image-box{
    height:100%;
-position: absolute;
-bottom: -15%;
+position: relative;
+/* bottom: 0; */
 left:85%;
 transform: translateX(-20%);
 
