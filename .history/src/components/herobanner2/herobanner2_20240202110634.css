@@ -1,0 +1,17 @@
+.herobanner2-container{
+    width:100vw;
+    height:65vh;
+    background-image: url(src/media/home1.png);
+    background-size: cover;
+    
+}
+
+.hero2-content-box{
+    display: flex;
+    flex-direction: column;
+}
+
+.herobanner2-container img{
+    height:30vh;
+    object-fit: cover;
+}

@@ -1,0 +1,10 @@
+.herobanner2-container{
+    width:100vw;
+    
+}
+
+.hero2-content-box{
+    display: flex;
+    flex-direction: column;
+}
+

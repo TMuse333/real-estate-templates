@@ -1,0 +1,83 @@
+.herobanner2-container{
+    width:100vw;
+
+    background-image: url(src/media/home1.png);
+    background-size: cover;
+    color:white;
+    position: relative;
+    
+}
+
+.hero2-text-box{
+    margin-top: -1rem;
+    padding: 0 1rem 0 1rem;
+}
+
+.hero2-content-box{
+  
+    display: flex;
+    flex-direction: column;
+}
+
+.herobanner2-container img{
+  min-height: 288px;
+    height:50vw;
+    /* position: absolute; */
+    z-index: 3;
+    object-fit: cover;
+    margin-top: -1rem;
+    /* bottom: 0;
+    left:50%;
+    transform: translateX(-45%); */
+
+}
+
+
+
+
+@media screen and (min-width:500px) {
+
+    .herobanner2-container{
+        height:60vh;
+    }
+
+    .hero2-text-box{
+       padding: 0;
+       z-index: 10;
+       margin-left: 2rem;
+       position: absolute;
+       left:0%;
+       width: 50vw;
+       max-width: 484px;
+       /* width: 50vw; */
+       /* background-color: red; */
+        /* width:50vw; */
+    }
+
+    .herobanner2-container img{
+     /* width: min-content; */
+        height:60vh;
+        position: relative;
+ margin-top: auto;
+ /* left: 115%; */
+position: absolute;
+bottom: 0;
+left:calc(90% - 10vh);
+ transform: translateX(-50%);
+ max-height: 348px;
+
+    }
+
+    .hero2-content-box{
+        flex-direction: row;
+        width:100vw;
+        justify-content: flex-end;
+        height: 60vh;
+        max-width: 900px;
+        margin:0 auto 0 auto;
+        position: relative;
+        /* background-color: red; */
+       
+    }
+    
+}
