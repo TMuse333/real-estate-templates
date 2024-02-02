@@ -1,0 +1,31 @@
+.overview2-container{
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+.overview2-header{
+  border-bottom: 1px solid black;
+  padding: 0.5rem;
+  width: 90vw;
+  
+
+}
+
+.overview-intro{
+    margin-left: 0.5rem;
+    padding: 0.5rem;
+}
+
+.overview2-header button{
+    margin-bottom: 1rem;
+}
+
+.overview-points-container{
+    margin-left: 1rem;
+}
+
+.over
+
+.aspect-list li{
+    margin-left: -2rem;
+}

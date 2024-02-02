@@ -1,0 +1,47 @@
+.overview2-container{
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+.overview2-header{
+  border-bottom: 1px solid black;
+  padding: 0.5rem;
+  width: 90vw;
+  
+
+}
+
+.overview-intro{
+    margin-left: 0.5rem;
+    padding: 0.5rem;
+}
+
+.overview2-header button{
+    margin-bottom: 1rem;
+}
+
+.overview-points-container{
+    margin-left: 1rem;
+}
+
+.overview-aspect{
+    text-align: left;
+    margin-bottom: 4rem;
+}
+
+.aspect-list li{
+    margin-left: -2rem;
+    margin-bottom: 0.5rem;
+}
+
+
+@media screen and (min-width:520px){
+    .overview-points-container{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width:655px) {
+    
+}

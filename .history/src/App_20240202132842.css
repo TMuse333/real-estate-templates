@@ -1,0 +1,21 @@
+.homepage{
+  width:100vw;
+  position: relative;
+  top:70px;
+  left:0;
+  background-color: rgb(91, 91, 91) !important;
+  z-index: 2;
+}
+
+.title-text{
+  color:rgb(6,6,6);
+  font-size: 2rem;
+}
+
+.description-text{
+  color:rgb(6, 6, 6);
+}
+
+#root{
+  
+}

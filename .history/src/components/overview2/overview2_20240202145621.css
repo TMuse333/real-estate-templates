@@ -1,0 +1,17 @@
+.overview2-container{
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+.overview2-header{
+  border-bottom: 1px solid black;
+  padding: 0.5rem;
+}
+
+.overview-intro{
+    
+}
+
+.overview2-header button{
+    margin-bottom: 1rem;
+}
