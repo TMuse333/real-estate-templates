@@ -1,0 +1,161 @@
+/* navbar3.css */
+
+.nav3-container {
+    position:fixed;
+    z-index: 25;
+    top:0;
+    left:0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+margin: 0 auto 0 auto;
+    background-color: #333; /* Set your desired background color */
+    color: white;
+    width: 100vw;
+  /* Set your desired text color */
+}
+
+.company-name {
+    margin: 0; /* Remove default margin for <p> element */
+    font-size: 1.2rem; 
+    padding: 1rem;/* Set your desired font size */
+}
+
+.nav3-logo {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer; /* Add cursor style for better UX */
+}
+
+.nav-line {
+    height: 2px; /* Set your desired height for the lines */
+    width: 30px; /* Set your desired width for the lines */
+    background-color: white; /* Set your desired color for the lines */
+    margin: 3px 0; /* Set margin between lines */
+    margin-right: 1rem;
+}
+
+.nav3-menu,.nav3-menu-2{
+    position: absolute;
+   
+}
+
+
+
+.nav3-menu ul{
+    text-align: left;
+    list-style: none;
+    margin: 0;
+    padding:1rem;
+    height:100vh;
+    margin-top: 2rem;
+    margin-left: -1rem;
+    margin-right: 1rem;
+    /* margin-top:1.5rem;
+    margin-right: 1rem; */
+}
+
+.nav3-menu ul li:hover,
+.nav3-menu ul button:hover{
+    color:#008bb9
+}
+
+.back-button:hover{
+    color:#008bb9
+}
+
+.nav3-menu-contents{
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    /* display: none; */
+}
+
+.x-button{
+    /* position:absolute;
+    right:10%; */
+    
+}
+
+.nav3-button{
+    margin:0.5rem -0.5rem 0 0;
+    padding:0.25rem;
+    font-size: 1rem;
+    border-radius: 0;
+}
+
+.nav3-menu-secondary li{
+margin-bottom: 1rem;
+width: max-content;
+}
+
+@media screen and (min-width:1000px){
+.nav3-menu{
+    display: flex;
+    position: fixed;
+    height:60px;
+    top:0%;
+    left:15%;
+    flex-direction: row;
+    width:100vw;
+    background-color: transparent;
+
+}
+
+.nav3-menu-contents ul{
+    display: flex;
+    flex-direction: row;
+    height:auto;
+   background-color: transparent;
+    width:80vw;
+    justify-content: space-around;
+    margin-top: 0.5rem;
+  
+}
+
+.nav3-menu-contents ul:nth-child(2) {
+    /* Styles for the second ul */
+    /* Add your specific styles for the second ul here */
+    /* margin-top: 1.5rem; */
+}
+
+.nav3-logo{
+    display: none;
+}
+
+.x-button{
+    display: none;
+}
+
+.nav3-button{
+    height:30px;
+    margin:0;
+}
+
+.nav3-menu,.nav3-menu-2{
+    /* position: relative; */
+    background-color: transparent;
+}
+
+.back-button{
+    display: none;
+}
+
+.nav3-menu-2 ul {
+    margin-top: -0.5rem;
+    background-color: #008bb9;
+    display: flex;
+
+}
+
+.nav3-menu-2 ul li:hover{
+   /* color:black; */
+}
+
+.nav3-menu-secondary{
+    display: flex;
+    flex-direction: column;
+}
+}
+
+
