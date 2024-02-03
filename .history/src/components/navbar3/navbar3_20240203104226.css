@@ -1,0 +1,17 @@
+.nav3-container{
+    width: 100vw;
+    position: fixed;
+    z-index: 5;
+    background-color: black;
+    top:0;
+    left: 0;
+    height: 60px;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.line{
+    width: ;
+}

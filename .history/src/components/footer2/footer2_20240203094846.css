@@ -1,0 +1,30 @@
+.footer2-link, .footer2-title, .footer2-list li{
+    color:white;
+}
+
+
+.footer2-title{
+    margin-left: 2rem;
+}
+
+.footer2-link:hover{
+    color:#00bfff;
+}
+
+.footer2-container p{
+    text-align: center;
+    color:white;
+}
+
+@media screen and (min-width:600px) {
+    .footer2-container{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .directories{
+        display: flex;
+        
+    }
+}
+

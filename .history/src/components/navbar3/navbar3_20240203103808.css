@@ -1,0 +1,6 @@
+.nav3-container{
+    width: 100vw;
+    position: fixed;
+    z-index: 5;
+    background-color: red;
+}
