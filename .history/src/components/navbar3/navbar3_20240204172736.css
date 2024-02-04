@@ -1,0 +1,176 @@
+/* navbar3.css */
+
+.nav3-container {
+    position:fixed;
+    z-index: 25;
+    top:0;
+    left:0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+margin: 0 auto 0 auto;
+    background-color: #333; /* Set your desired background color */
+    color: white;
+    width: 100vw;
+    height: 60px;
+  /* Set your desired text color */
+}
+
+.company-name {
+    margin: 0; /* Remove default margin for <p> element */
+    font-size: 1.2rem; 
+    padding: 1rem;/* Set your desired font size */
+}
+
+.nav3-logo {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer; /* Add cursor style for better UX */
+}
+
+.nav-line {
+    height: 2px; /* Set your desired height for the lines */
+    width: 30px; /* Set your desired width for the lines */
+    background-color: white; /* Set your desired color for the lines */
+    margin: 3px 0; /* Set margin between lines */
+    margin-right: 1rem;
+}
+
+.nav3-contents, .secondary-nav {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    background-color: rgb(0, 0, 129);
+    top:0%;
+    padding:1.75rem;
+    height: 100vh;
+    width:40vw;
+}
+
+.back-button{
+    position: absolute;
+    top:1%;
+    left:0%;
+}
+
+
+
+.nav3-contents > ul{
+margin-top: 3rem;
+}
+
+.nav3-contents > li {
+   font-size: 0.75rem;
+    margin-bottom: 10px; 
+    
+    
+    /* Adjust the spacing between top-level items */
+}
+
+.nav3-contents > li:hover{
+    color:rgb(185, 185, 185);
+}
+
+.sub-li{
+    margin-left: -3rem;
+    transform: translateX(-3rem);
+    
+    
+}
+
+.nav3-contents > li > ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    ;
+}
+
+.nav3-contents > li > ul > li {
+    margin-left: 20px; /* Adjust the spacing between nested items */
+}
+
+.x-button{
+    position: absolute;
+    top:-3%;
+    right:5%;
+    font-size: 2rem;
+}
+
+@media screen and (min-width:1000px){
+    .nav3-contents{
+        height:auto;
+        background-color: transparent;
+        display: flex;
+        width:50vw;
+        position: relative;
+        justify-content: space-between;
+        margin:0;
+        padding:0;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 15rem;
+        margin-bottom: 0;
+
+     
+        
+    }
+
+  .secondary{
+    display: none;
+  }
+
+    .nav3-logo,.x-button{
+        display: none;
+    }
+
+    .nav3-contents li{
+        font-size: 1.25rem;
+        
+    }
+
+    .desktop-wrapper{
+        margin-top: -5rem;
+    }
+
+   .nav3-contents .desktop-submenu{
+     position: relative;
+     padding: 0;
+     margin-top: 1rem;
+     margin-left: -2rem;
+     /* display: none; */
+     background-color: rgb(5, 5, 147);
+     /* width:80px;
+     height:min-content; */
+     text-align: center;
+     padding-bottom: 0.0125rem;
+     /* padding-top: 1rem; */
+     
+    }
+
+    .desktop-submenu .sub-li{
+
+    /* padding-left:3rem; */
+    margin: 0;
+    font-size: 0.75rem;
+    position: relative;
+    padding: 0;
+    margin-left: 4rem;
+    margin-bottom: 2rem;
+   
+    
+   }
+
+   .back-button{
+    display: none;
+   }
+
+    .desktop-submenu:hover{
+
+    }
+}
+
+
+
+
+
