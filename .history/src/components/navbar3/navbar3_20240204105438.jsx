@@ -159,7 +159,7 @@ const Navbar3 = () => {
   
            
               <li>Contact</li>
-
+            </div>
           </>
         )}
       </ul>

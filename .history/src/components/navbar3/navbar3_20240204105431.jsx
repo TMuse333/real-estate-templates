@@ -155,11 +155,11 @@ const Navbar3 = () => {
                   <li className="sub-li">Our Team</li>
                 </ul>
               </li>
-
+            </div>
   
-           
+            <div className="desktop-wrapper">
               <li>Contact</li>
-
+            </div>
           </>
         )}
       </ul>

@@ -157,9 +157,9 @@ const Navbar3 = () => {
               </li>
 
   
-           
+            <div className="desktop-wrapper">
               <li>Contact</li>
-
+            </div>
           </>
         )}
       </ul>

@@ -142,7 +142,7 @@ const Navbar3 = () => {
               </li>
 
   
-            
+            <div className="desktop-wrapper">
               <li onClick={() => handleMenuItemClick(1)}>
                 About 
                 {/* <FaArrowRight/> */}
@@ -155,11 +155,11 @@ const Navbar3 = () => {
                   <li className="sub-li">Our Team</li>
                 </ul>
               </li>
-
+            </div>
   
-           
+            <div className="desktop-wrapper">
               <li>Contact</li>
-
+            </div>
           </>
         )}
       </ul>

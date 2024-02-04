@@ -12,7 +12,6 @@ margin: 0 auto 0 auto;
     background-color: #333; /* Set your desired background color */
     color: white;
     width: 100vw;
-    height: 60px;
   /* Set your desired text color */
 }
 
@@ -102,10 +101,7 @@ margin-top: 3rem;
         padding:0;
         margin-right: auto;
         margin-left: auto;
-        margin-top: 15rem;
-        margin-bottom: 0;
-
-     
+        margin-top: 0.5rem;
         
     }
 
@@ -121,34 +117,17 @@ margin-top: 3rem;
         font-size: 1.25rem;
     }
 
-    .desktop-wrapper{
-        margin-top: -5rem;
-    }
-
-   .nav3-contents .desktop-submenu{
+    .desktop-submenu{
      position: relative;
-     padding: 0;
-     margin-top: 1rem;
-     margin-left: -2rem;
-     /* display: none; */
-     background-color: red;
-     /* width:80px;
-     height:min-content; */
-     text-align: center;
-     
+     margin-top: 3rem !important;
     }
 
     .desktop-submenu .sub-li{
 
-    /* padding-left:3rem; */
+    padding-left:3rem;
     margin: 0;
     font-size: 0.75rem;
     position: relative;
-    padding: 0;
-    margin-left: 4rem;
-    margin-bottom: 2rem;
-   
-    
    }
 
    .back-button{
