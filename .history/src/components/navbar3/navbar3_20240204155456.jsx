@@ -16,7 +16,7 @@ const Navbar3 = () => {
   };
 
   const handleMouseEnter = (index) => {
-   isDesktop ? setIsHovered(index) : null
+   !isDesktop ? setIsHovered(index) : null
     console.log('mouse entered')
   }
 
@@ -29,7 +29,6 @@ const Navbar3 = () => {
         setIsDesktop(window.innerWidth >= 1000)
         if(isDesktop){
             setActiveMenuItem(null)
-            setNavButtonClicked(false)
         }
     }
 

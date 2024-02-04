@@ -16,21 +16,16 @@ const Navbar3 = () => {
   };
 
   const handleMouseEnter = (index) => {
-   isDesktop ? setIsHovered(index) : null
-    console.log('mouse entered')
+    setIsHovered(index)
   }
 
-  const handleMouseLeave = () => {
-    setIsHovered(null)
+  const handleMouseLeave = (index) => {
+    
   }
 
   useEffect(()=> {
     const handleResize = () => {
         setIsDesktop(window.innerWidth >= 1000)
-        if(isDesktop){
-            setActiveMenuItem(null)
-            setNavButtonClicked(false)
-        }
     }
 
     window.addEventListener('resize',handleResize)
@@ -79,18 +74,16 @@ const Navbar3 = () => {
   }
 
 
-//   const desktopStyle = {
-//     opacity:0
-//   }
+  const desktopStyle = {
+    opacity:0
+  }
 
-  const desktopStyle = (index) => {
-
+  const subMenuDesktop = (index) => {
 
     const selected = index === isHovered
 
     return {
-        opacity: selected ? 1 : 0,
-        transition:'opacity 0.3s ease-in'
+
     }
 
   }
@@ -112,13 +105,10 @@ const Navbar3 = () => {
         {isDesktop ? (
           <>
             <div className="desktop-wrapper">
-              <li 
-              onMouseEnter={()=>handleMouseEnter(0)}
-              onMouseLeave={()=>{handleMouseLeave()}}
-              >
+              <li onClick={() => handleMenuItemClick(0)}>
                 Services 
                 {/* <FaArrowRight/> */}
-                <ul className={`${!isDesktop ? 'nav3-contents secondary' : 'desktop-submenu'}`} style={!isDesktop ? secondaryNavStyle(0) : desktopStyle(0)}>
+                <ul className={`${!isDesktop ? 'nav3-contents secondary' : 'desktop-submenu'}`} style={!isDesktop ? secondaryNavStyle(0) : null}>
                   <p className="back-button" onClick={() => handleMenuItemClick(0)}>
                     Back
                   </p>
@@ -130,12 +120,10 @@ const Navbar3 = () => {
             </div>
   
             <div className="desktop-wrapper">
-              <li   onMouseEnter={()=>handleMouseEnter(1)}
-              onMouseLeave={()=>{handleMouseLeave()}}
-              >
+              <li onClick={() => handleMenuItemClick(1)}>
                 About 
                 {/* <FaArrowRight/> */}
-                <ul className={`${!isDesktop ? 'nav3-contents secondary' : 'desktop-submenu'}`} style={!isDesktop ? secondaryNavStyle(1) : desktopStyle(1)}>
+                <ul className={`${!isDesktop ? 'nav3-contents secondary' : 'desktop-submenu'}`} style={!isDesktop ? secondaryNavStyle(1) : desktopStyle}>
                   <p className="back-button" onClick={() => handleMenuItemClick(1)}>
                     Back
                   </p>

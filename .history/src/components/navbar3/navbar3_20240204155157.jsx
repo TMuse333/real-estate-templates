@@ -16,7 +16,7 @@ const Navbar3 = () => {
   };
 
   const handleMouseEnter = (index) => {
-   isDesktop ? setIsHovered(index) : null
+    setIsHovered(index)
     console.log('mouse entered')
   }
 
@@ -27,10 +27,6 @@ const Navbar3 = () => {
   useEffect(()=> {
     const handleResize = () => {
         setIsDesktop(window.innerWidth >= 1000)
-        if(isDesktop){
-            setActiveMenuItem(null)
-            setNavButtonClicked(false)
-        }
     }
 
     window.addEventListener('resize',handleResize)
@@ -130,9 +126,7 @@ const Navbar3 = () => {
             </div>
   
             <div className="desktop-wrapper">
-              <li   onMouseEnter={()=>handleMouseEnter(1)}
-              onMouseLeave={()=>{handleMouseLeave()}}
-              >
+              <li onClick={() => handleMenuItemClick(1)}>
                 About 
                 {/* <FaArrowRight/> */}
                 <ul className={`${!isDesktop ? 'nav3-contents secondary' : 'desktop-submenu'}`} style={!isDesktop ? secondaryNavStyle(1) : desktopStyle(1)}>
