@@ -182,7 +182,7 @@ const serviceMenu =
 
             <li id='services'
                 onMouseEnter={() => handleMouseEnter(0)}
-                onMouseLeave={() => handleMouseLeave()}
+                // onMouseLeave={() => handleMouseLeave()}
             >
                 Services
             </li>

@@ -146,7 +146,6 @@ width: max-content;
     background-color: #008bb9;
     display: flex;
     flex-direction: column;
-    font-size: 1rem;
 
 }
 
@@ -162,7 +161,6 @@ width: max-content;
     
     display: flex;
     flex-direction: column;
-    font-size: 0.75rem;
 }
 }
 

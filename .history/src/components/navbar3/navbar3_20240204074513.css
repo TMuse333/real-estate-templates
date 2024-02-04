@@ -142,16 +142,11 @@ width: max-content;
 }
 
 .nav3-menu-2 ul {
-  margin-top: -0.25rem;
+  
     background-color: #008bb9;
     display: flex;
     flex-direction: column;
-    font-size: 1rem;
 
-}
-
-.nav3-menu-2 ul li{
-    font-size: 1rem;
 }
 
 .nav3-menu-2 ul li:hover{
@@ -162,7 +157,6 @@ width: max-content;
     
     display: flex;
     flex-direction: column;
-    font-size: 0.75rem;
 }
 }
 

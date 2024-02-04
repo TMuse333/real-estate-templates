@@ -75,11 +75,11 @@ const Navbar3 = () => {
 
     const secondaryDesktopStyle = {
         opacity: secondaryMenu != null ? 1 : 0,
-        width:'fit-content',
+        width:'100vw',
         height:'max-content',
-        position:'absolute',
-        left:'5.5%',
-        top:'20%'
+        // position:'absolute',
+        // left:'5.5%',
+        // top:'7%'
         // height:'30px'
     }
 
@@ -118,7 +118,7 @@ const serviceMenu =
 
         <ul className="nav3-menu-secondary"
         style={secondaryDesktopStyle}
-        onMouseLeave={() => handleMouseLeave()}
+        
         >
              <p className="back-button"
              onClick={()=>handleSecondaryClick()}
@@ -182,7 +182,7 @@ const serviceMenu =
 
             <li id='services'
                 onMouseEnter={() => handleMouseEnter(0)}
-                onMouseLeave={() => handleMouseLeave()}
+                // onMouseLeave={() => handleMouseLeave()}
             >
                 Services
             </li>

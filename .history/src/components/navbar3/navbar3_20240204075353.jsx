@@ -209,7 +209,7 @@ const serviceMenu =
 </ul>
 
 <ul className="nav3-menu-2"
-style={!isDesktop ? secondaryStyle : desktopStyle}
+style={!isDesktop ? secondaryStyle : second}
 
 >
     {secondaries[secondaryMenu]}

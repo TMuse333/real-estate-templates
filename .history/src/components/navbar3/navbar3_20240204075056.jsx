@@ -79,7 +79,7 @@ const Navbar3 = () => {
         height:'max-content',
         position:'absolute',
         left:'5.5%',
-        top:'20%'
+        top:'10%'
         // height:'30px'
     }
 
@@ -182,7 +182,7 @@ const serviceMenu =
 
             <li id='services'
                 onMouseEnter={() => handleMouseEnter(0)}
-                onMouseLeave={() => handleMouseLeave()}
+                // onMouseLeave={() => handleMouseLeave()}
             >
                 Services
             </li>
