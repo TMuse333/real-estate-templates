@@ -1,0 +1,62 @@
+/* navbar3.css */
+
+.nav3-container {
+    position:fixed;
+    z-index: 25;
+    top:0;
+    left:0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+margin: 0 auto 0 auto;
+    background-color: #333; /* Set your desired background color */
+    color: white;
+    width: 100vw;
+  /* Set your desired text color */
+}
+
+.company-name {
+    margin: 0; /* Remove default margin for <p> element */
+    font-size: 1.2rem; 
+    padding: 1rem;/* Set your desired font size */
+}
+
+.nav3-logo {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer; /* Add cursor style for better UX */
+}
+
+.nav-line {
+    height: 2px; /* Set your desired height for the lines */
+    width: 30px; /* Set your desired width for the lines */
+    background-color: white; /* Set your desired color for the lines */
+    margin: 3px 0; /* Set margin between lines */
+    margin-right: 1rem;
+}
+
+.nav3-contents {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    pos
+}
+
+.nav3-contents > li {
+    margin-bottom: 10px; /* Adjust the spacing between top-level items */
+}
+
+.nav3-contents > li > ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav3-contents > li > ul > li {
+    margin-left: 20px; /* Adjust the spacing between nested items */
+}
+
+
+
+
+
