@@ -184,7 +184,7 @@ margin-top: 3rem;
         top:100%;
         left:50%;
         transform: translateX(-50%);
-        max-width: 1200px;
+        /* max-width: 1800px; */
  
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(250px, 315px));

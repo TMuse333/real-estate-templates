@@ -26,7 +26,7 @@ const SubMenu = () => {
         },
         {
             name:'Quantum endeavours',
-            description:'We will go to the quantum realm and get it done.'
+            
         }
     ]
 

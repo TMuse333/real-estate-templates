@@ -23,10 +23,6 @@ const SubMenu = () => {
             name:'Graphic Design',
             description:`If you need some visual sauce we got you
             too, we have a visual prowess like the Uchiha clan`
-        },
-        {
-            name:'Quantum endeavours',
-            description:'We will go to the quantum realm and get it done.'
         }
     ]
 
@@ -230,9 +226,9 @@ useEffect(() => {
         <p className="company-name">Company name</p>
       </Link>
 
-
-
-
+      <div className="desktop-menu-submenu">
+        
+      </div>
  
           <ul className="nav3-desktop-menu">
 
@@ -266,10 +262,8 @@ useEffect(() => {
 
                 </ul>
 
-
-                </div>
                 <SubMenu/>
-           
+                </div>
            
   
            

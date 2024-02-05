@@ -181,30 +181,18 @@ margin-top: 3rem;
     .submenu-container{
        position: absolute;
         width:100vw;
-        top:100%;
-        left:50%;
-        transform: translateX(-50%);
-        max-width: 1200px;
- 
+        top:50%;
+        max-width: 1800px;
+        margin:0 auto 0 auto;
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 315px));
-        /* grid-template-columns: 250px 250px 250px 250px; */
-grid-auto-flow: column;
-        background-color: black;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 
     .submenu-box{
         display: flex;
         flex-direction: column;
         background-color: black;
-
-       min-width: 210px;
-        padding: 1rem;
         
-    }
-
-    .submenu-box h2{
-        font-size: 1rem;
     }
 
     .desktop-wrapper{

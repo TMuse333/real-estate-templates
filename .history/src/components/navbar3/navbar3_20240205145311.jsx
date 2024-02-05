@@ -25,8 +25,7 @@ const SubMenu = () => {
             too, we have a visual prowess like the Uchiha clan`
         },
         {
-            name:'Quantum endeavours',
-            description:'We will go to the quantum realm and get it done.'
+            name:'Quantum'
         }
     ]
 

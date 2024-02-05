@@ -169,42 +169,22 @@ margin-top: 3rem;
         display: none;
     }
 
-    /* .desktop-menu-submenu{
+    .desktop-menu-submenu{
         display: flex;
         flex-direction: column;
-        margin-top: 11rem;
-        margin-left: auto;
-        margin-right: auto;
-      
-    } */
+    }
 
     .submenu-container{
-       position: absolute;
+        margin-top: 5rem;
         width:100vw;
-        top:100%;
-        left:50%;
-        transform: translateX(-50%);
         max-width: 1200px;
- 
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 315px));
-        /* grid-template-columns: 250px 250px 250px 250px; */
-grid-auto-flow: column;
-        background-color: black;
+        margin: 0 auto 0 auto;
     }
 
     .submenu-box{
         display: flex;
         flex-direction: column;
         background-color: black;
-
-       min-width: 210px;
-        padding: 1rem;
-        
-    }
-
-    .submenu-box h2{
-        font-size: 1rem;
     }
 
     .desktop-wrapper{

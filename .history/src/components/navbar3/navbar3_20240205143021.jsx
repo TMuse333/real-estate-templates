@@ -14,27 +14,18 @@ const SubMenu = () => {
             be the main focus`
         },
         {
-            name:'Copywriting',
-            description:`The way of the samurai is the true way
-            We use the art of persuasion from an extensive
-            background in english to get you more sales`
+            name:'',
+            description:`We make banging websites 
+            with the most fire animations
+            you'll see while still having your content
+            be the main focus`
         },
-        {
-            name:'Graphic Design',
-            description:`If you need some visual sauce we got you
-            too, we have a visual prowess like the Uchiha clan`
-        },
-        {
-            name:'Quantum endeavours',
-            description:'We will go to the quantum realm and get it done.'
-        }
     ]
 
     return (
         <section className="submenu-container">
            {subMenuData.map((item,index) => (
-            <div className="submenu-box"
-            key={index}>
+            <div className="submenu-box">
                 <h2>
                     {item.name}
                 </h2>
@@ -229,10 +220,6 @@ useEffect(() => {
           <Link to='/'>
         <p className="company-name">Company name</p>
       </Link>
-
-
-
-
  
           <ul className="nav3-desktop-menu">
 
@@ -265,11 +252,7 @@ useEffect(() => {
                 </li>
 
                 </ul>
-
-
                 </div>
-                <SubMenu/>
-           
            
   
            

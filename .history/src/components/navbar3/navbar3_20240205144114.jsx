@@ -23,15 +23,11 @@ const SubMenu = () => {
             name:'Graphic Design',
             description:`If you need some visual sauce we got you
             too, we have a visual prowess like the Uchiha clan`
-        },
-        {
-            name:'Quantum endeavours',
-            description:'We will go to the quantum realm and get it done.'
         }
     ]
 
     return (
-        <section className="submenu-container">
+        <div className="submenu-container">
            {subMenuData.map((item,index) => (
             <div className="submenu-box"
             key={index}>
@@ -230,7 +226,7 @@ useEffect(() => {
         <p className="company-name">Company name</p>
       </Link>
 
-
+      <div className="desktop-menu-submenu">
 
 
  
@@ -266,10 +262,9 @@ useEffect(() => {
 
                 </ul>
 
-
-                </div>
                 <SubMenu/>
-           
+                </div>
+                </div>
            
   
            

@@ -180,16 +180,15 @@ margin-top: 3rem;
 
     .submenu-container{
        position: absolute;
-        width:100vw;
+        /* width:100vw; */
         top:100%;
         left:50%;
         transform: translateX(-50%);
-        max-width: 1200px;
+        /* max-width: 1800px; */
  
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(250px, 315px));
-        /* grid-template-columns: 250px 250px 250px 250px; */
-grid-auto-flow: column;
+gird
         background-color: black;
     }
 
@@ -197,8 +196,8 @@ grid-auto-flow: column;
         display: flex;
         flex-direction: column;
         background-color: black;
-
-       min-width: 210px;
+        max-width: 200px;
+        height:200px;
         padding: 1rem;
         
     }
