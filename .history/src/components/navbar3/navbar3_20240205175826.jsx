@@ -158,7 +158,6 @@ const Navbar3 = () => {
   };
 
   const handleMouseEnter = (index) => {
-    setResourceIndex(index)
    isDesktop ? setIsHovered(index) : null
     console.log('mouse entered')
   }
@@ -209,19 +208,13 @@ useEffect(() => {
 
   const handleListEntry = (index) => {
 
-    
+    setResourceIndex(index)
     console.log('list entered!',index)
-    console.log('the current index of resource is',resourceIndex)
     setListEntered(true)
     setSubHovered(true)
   }
 
-  useEffect(()=> {
-    if (resourceIndex !== null){
-        console.log('1current resource index',resourceIndex)
-    }
-  },[resourceIndex])
-  
+  use
 
   const handleSubEnter = (index) => {
    if(listEntered){

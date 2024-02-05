@@ -3,8 +3,7 @@ import './navbar3.css';
 import { Link } from "react-router-dom";
 import { FaArrowRight } from 'react-icons/fa';
 
-const SubMenu = ({isHovered,mouseEnter,mouseLeave,
-    resourceIndex}) => {
+const SubMenu = ({isHovered,mouseEnter,mouseLeave}) => {
 
     const serviceMenuData = [
         {
@@ -36,8 +35,8 @@ const SubMenu = ({isHovered,mouseEnter,mouseLeave,
             name:'Focus Tactics',
             description:`We live in a world where the ability the focus is becoming 
             more valuable at the same time where it is becoming more rare.
-            Learn how to hone your focus to surpass the competition and
-            become a winner.`
+            Learn how to hone your focus to surpass the competition
+            be a winner.`
         },
         {
             name:'The Quantum Realm',
@@ -52,22 +51,15 @@ const SubMenu = ({isHovered,mouseEnter,mouseLeave,
             description:`With so many distractions and impurity in todays
             it is essential that you don't fall off the path
             mastering your craft. Learn the ways of the Samurai to become your strongest
-            self and obtain self-mastery.`
+            self and obtain self-mastery`
         },
         {
-            name:'Health Tactics',
+            name:'Healthy Habits',
             description:`The journey of mastery is long and challenging,
             It is essential you have high energy and maintain strong 
             physical health to sustain years and years of hard work everyday.
-            Learn these health tactics to improve every area of your life.
-            `
+            Learn to become `
         }
-    ]
-
-    const resourcesList = [
-        serviceMenuData,
-        resourcesMenuData
-
     ]
 
     const style ={
@@ -82,11 +74,7 @@ const SubMenu = ({isHovered,mouseEnter,mouseLeave,
         onMouseLeave={mouseLeave}
         style={style}
          className="submenu-container">
-
-            {/* {resourceIndex !== null && (
-
- <> */}
-           {resourcesList[resourceIndex ?? 1].map((item,index) => (
+           {serviceMenuData.map((item,index) => (
             <div className="submenu-box"
             key={index}>
                 <h2>
@@ -98,10 +86,6 @@ const SubMenu = ({isHovered,mouseEnter,mouseLeave,
                 <p>{item.description}</p>
             </div>
            ))}
-
-{/* </>
-
-           )} */}
         </section>
     )
 }
@@ -158,7 +142,6 @@ const Navbar3 = () => {
   };
 
   const handleMouseEnter = (index) => {
-    setResourceIndex(index)
    isDesktop ? setIsHovered(index) : null
     console.log('mouse entered')
   }
@@ -205,29 +188,15 @@ useEffect(() => {
 
   const [listEntered, setListEntered] = useState(false)
 
-  const [resourceIndex, setResourceIndex] = useState(null)
-
-  const handleListEntry = (index) => {
-
-    
-    console.log('list entered!',index)
-    console.log('the current index of resource is',resourceIndex)
+  const handleListEntry = () => {
     setListEntered(true)
     setSubHovered(true)
   }
 
-  useEffect(()=> {
-    if (resourceIndex !== null){
-        console.log('1current resource index',resourceIndex)
-    }
-  },[resourceIndex])
-  
-
-  const handleSubEnter = (index) => {
+  const handleSubEnter = () => {
    if(listEntered){
-console.log('resource display is',resourceIndex)
- setResourceIndex(index)
- console.log(resourceIndex)
+
+ 
     setSubHovered(true)
 }
 
@@ -239,17 +208,9 @@ console.log(activeMenuItem)
 
 const handleSubLeave = () => {
     console.log('sub exiting')
-    // setResourceIndex(null)
     setListEntered(false)
     setSubHovered(false)
   }
-
-
-  useEffect(()=> {
-    if(!listEntered || !subHovered){
-        setResourceIndex(null)
-    }
-  },[listEntered,subHovered])
 
 
   const listStyle = (index) =>{
@@ -349,7 +310,7 @@ const handleSubLeave = () => {
        
           
               <li 
-            onMouseEnter={()=>handleListEntry(0)}
+            onMouseEnter={()=>handleListEntry()}
             onMouseLeave={()=>handleSubLeave()}
 
             // onMouseLeave={()=>handleSubLeave()}
@@ -366,8 +327,8 @@ const handleSubLeave = () => {
               </li>
 
                 <li
-                onMouseEnter={()=>handleListEntry(1)}
-                onMouseLeave={()=>handleSubLeave()}
+                 onMouseEnter={()=>handleMouseEnter(0)}
+                 onMouseLeave={()=>{handleMouseLeave()}}
                 >
                     Resources
                 </li>
@@ -381,10 +342,9 @@ const handleSubLeave = () => {
 
                 </div>
                 <SubMenu
-                mouseEnter={()=>handleSubEnter(resourceIndex)}
+                mouseEnter={()=>handleSubEnter()}
                 isHovered={subHovered}
                 mouseLeave={()=>handleSubLeave()}
-                resourceIndex={resourceIndex}
                 />
            
            

@@ -181,8 +181,8 @@ margin-top: 3rem;
     .submenu-container{
        position: absolute;
         width:100vw;
-        top:100%;
-        left:50%;
+        top:60%;
+        left:100%;
         transform: translateX(-50%);
         max-width: 1200px;
           
@@ -207,11 +207,6 @@ grid-auto-flow: column;
         font-size: 1rem;
     }
 
-    .submenu-box p{
-        font-size: 0.75rem;
-        color:rgb(160, 160, 160);
-    }
-
     .desktop-wrapper{
         margin: 0 auto 0 auto;
         max-width: 1250px;
@@ -234,9 +229,9 @@ justify-content: space-between;
 
     .nav3-desktop-menu li{
         list-style: none;
-        padding-bottom: 8rem;
-    
-        margin-top: 8rem;
+        padding-bottom: 3rem;
+        background-color: red;
+        margin-top: 3rem;
     }
 
 

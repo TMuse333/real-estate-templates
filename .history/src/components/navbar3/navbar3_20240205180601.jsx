@@ -158,7 +158,7 @@ const Navbar3 = () => {
   };
 
   const handleMouseEnter = (index) => {
-    setResourceIndex(index)
+    
    isDesktop ? setIsHovered(index) : null
     console.log('mouse entered')
   }

@@ -207,11 +207,6 @@ grid-auto-flow: column;
         font-size: 1rem;
     }
 
-    .submenu-box p{
-        font-size: 0.75rem;
-        color:rgb(160, 160, 160);
-    }
-
     .desktop-wrapper{
         margin: 0 auto 0 auto;
         max-width: 1250px;
@@ -236,7 +231,7 @@ justify-content: space-between;
         list-style: none;
         padding-bottom: 8rem;
     
-        margin-top: 8rem;
+        margin-top: 3rem;
     }
 
 

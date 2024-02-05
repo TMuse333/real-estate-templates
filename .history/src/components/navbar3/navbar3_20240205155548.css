@@ -181,11 +181,11 @@ margin-top: 3rem;
     .submenu-container{
        position: absolute;
         width:100vw;
-        top:100%;
+        top:30%;
         left:50%;
         transform: translateX(-50%);
         max-width: 1200px;
-          
+            padding-top:9rem;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(250px, 315px));
         /* grid-template-columns: 250px 250px 250px 250px; */
@@ -205,11 +205,6 @@ grid-auto-flow: column;
 
     .submenu-box h2{
         font-size: 1rem;
-    }
-
-    .submenu-box p{
-        font-size: 0.75rem;
-        color:rgb(160, 160, 160);
     }
 
     .desktop-wrapper{
@@ -234,12 +229,7 @@ justify-content: space-between;
 
     .nav3-desktop-menu li{
         list-style: none;
-        padding-bottom: 8rem;
-    
-        margin-top: 8rem;
     }
-
-
 
     .nav3-desktop-menu li:hover{
     color:rgb(164, 163, 163);

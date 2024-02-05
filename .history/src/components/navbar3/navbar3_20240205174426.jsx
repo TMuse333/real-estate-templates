@@ -83,10 +83,10 @@ const SubMenu = ({isHovered,mouseEnter,mouseLeave,
         style={style}
          className="submenu-container">
 
-            {/* {resourceIndex !== null && (
-
- <> */}
-           {resourcesList[resourceIndex ?? 1].map((item,index) => (
+            {resourceIndex !== null && (
+                
+            )}
+           {resourcesList[resourceIndex ?? 0].map((item,index) => (
             <div className="submenu-box"
             key={index}>
                 <h2>
@@ -98,10 +98,6 @@ const SubMenu = ({isHovered,mouseEnter,mouseLeave,
                 <p>{item.description}</p>
             </div>
            ))}
-
-{/* </>
-
-           )} */}
         </section>
     )
 }
@@ -158,7 +154,6 @@ const Navbar3 = () => {
   };
 
   const handleMouseEnter = (index) => {
-    setResourceIndex(index)
    isDesktop ? setIsHovered(index) : null
     console.log('mouse entered')
   }
@@ -208,26 +203,15 @@ useEffect(() => {
   const [resourceIndex, setResourceIndex] = useState(null)
 
   const handleListEntry = (index) => {
-
-    
-    console.log('list entered!',index)
-    console.log('the current index of resource is',resourceIndex)
+    setResourceIndex(index)
     setListEntered(true)
     setSubHovered(true)
   }
 
-  useEffect(()=> {
-    if (resourceIndex !== null){
-        console.log('1current resource index',resourceIndex)
-    }
-  },[resourceIndex])
-  
-
-  const handleSubEnter = (index) => {
+  const handleSubEnter = () => {
    if(listEntered){
-console.log('resource display is',resourceIndex)
- setResourceIndex(index)
- console.log(resourceIndex)
+
+ 
     setSubHovered(true)
 }
 
@@ -381,7 +365,7 @@ const handleSubLeave = () => {
 
                 </div>
                 <SubMenu
-                mouseEnter={()=>handleSubEnter(resourceIndex)}
+                mouseEnter={()=>handleSubEnter()}
                 isHovered={subHovered}
                 mouseLeave={()=>handleSubLeave()}
                 resourceIndex={resourceIndex}
