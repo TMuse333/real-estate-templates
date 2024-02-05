@@ -222,7 +222,7 @@ useEffect(() => {
    
     <div className="main-nav"
     style={mainNavStyle}>
-      
+        <>
             <ul>
                 <li 
                     onMouseEnter={() => handleListEnter(0)}
@@ -249,15 +249,15 @@ useEffect(() => {
                     Contact
                 </li>
             </ul>
-        
+        </>
     </div>
 
             {subList}
-            </ul>
+
 
           </>
     
-     
+      </ul>
       )}
     </nav>
   );

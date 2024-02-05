@@ -249,15 +249,15 @@ useEffect(() => {
                     Contact
                 </li>
             </ul>
-        
+        </>
     </div>
 
             {subList}
-            </ul>
+
 
           </>
     
-     
+      </ul>
       )}
     </nav>
   );

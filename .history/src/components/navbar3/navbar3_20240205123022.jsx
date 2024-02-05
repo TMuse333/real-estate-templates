@@ -6,7 +6,7 @@ import { FaArrowRight } from 'react-icons/fa';
 const Navbar3 = () => {
   const [navButtonClicked, setNavButtonClicked] = useState(false);
   const [activeMenuItem, setActiveMenuItem] = useState(null);
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1000);
+  const [isDesktop, setIsDesktop] = useState(true);
   const [isHovered, setIsHovered] = useState(null);
 
   const [returnClicked, setReturnCLicked] = useState(false)
@@ -193,36 +193,60 @@ useEffect(() => {
         <div className="nav-line"/>
       </div>
   
-      
+      <ul className="nav3-contents" style={!isDesktop ? navStyle : null}>
+        <p className="x-button" onClick={() => handleNavClick()}>X</p>
   
         {isDesktop ? (
           <>
-          
+            <div className="desktop-wrapper">
               <li 
               onMouseEnter={()=>handleMouseEnter(0)}
               onMouseLeave={()=>{handleMouseLeave()}}
               >
                 Services 
-       
-
-
-            
-                         
+                {/* <FaArrowRight/> */}
+                <ul className={`${!isDesktop ? 'nav3-contents secondary' : 'desktop-submenu'}`} style={!isDesktop ? secondaryNavStyle(0) : desktopStyle(0)}>
+                  <button className="back-button" onClick={() => handleMenuItemClick(0)}>
+                    Back
+                  </button>
+                  <button style={listStyle(0)}
+                  onMouseEnter={()=>handleListEnter(0)}
+                  className="sub-li">Web dev</button>
+                  <li style={listStyle(1)}
+                  className="sub-li">Copywriting</li>
+                  <li style={listStyle(2)}
+                  className="sub-li">Quantum Realm</li>
+                </ul>
               </li>
-           
+            </div>
   
-           
+            <div className="desktop-wrapper">
+              <li   onMouseEnter={()=>handleMouseEnter(1)}
+              onMouseLeave={()=>{handleMouseLeave()}}
+              >
+                About 
+                {/* <FaArrowRight/> */}
+                <ul className={`${!isDesktop ? 'nav3-contents secondary' : 'desktop-submenu'}`} style={!isDesktop ? secondaryNavStyle(1) : desktopStyle(1)}>
+                  <button className="back-button" onClick={() => handleMenuItemClick(1)}>
+                    Back
+                  </button>
+                  <li className="sub-li">Our story</li>
+                  <li className="sub-li">Process</li>
+                  <li className="sub-li">Our Team</li>
+                </ul>
+              </li>
+            </div>
+  
+            <div className="desktop-wrapper">
+              <li>Contact</li>
+            </div>
           </>
         ) : (
           <>
-
-<ul className="nav3-contents" style={!isDesktop ? navStyle : null}>
-        <p className="x-button" onClick={() => handleNavClick()}>X</p>
-
-   
+    {/* {activeMenuItem === null && (       */}
     <div className="main-nav"
     style={mainNavStyle}>
-      
+        <>
             <ul>
                 <li 
                     onMouseEnter={() => handleListEnter(0)}
@@ -238,7 +262,7 @@ useEffect(() => {
                     style={listStyle(1)}
                     onClick={() => handleMenuItemClick(1)}
                 >
-                    About 
+                    About
                 </li>
                 <li 
                     onMouseEnter={() => handleListEnter(2)}
@@ -249,16 +273,16 @@ useEffect(() => {
                     Contact
                 </li>
             </ul>
-        
+        </>
     </div>
+{/* )} */}
 
-            {subList}
-            </ul>
+{subList}
+
 
           </>
-    
-     
-      )}
+        )}
+      </ul>
     </nav>
   );
   

@@ -249,7 +249,7 @@ useEffect(() => {
                     Contact
                 </li>
             </ul>
-        
+        </>
     </div>
 
             {subList}

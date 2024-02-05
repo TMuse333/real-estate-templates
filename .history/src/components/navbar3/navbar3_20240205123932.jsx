@@ -193,11 +193,12 @@ useEffect(() => {
         <div className="nav-line"/>
       </div>
   
-      
+      <ul className="nav3-contents" style={!isDesktop ? navStyle : null}>
+        <p className="x-button" onClick={() => handleNavClick()}>X</p>
   
         {isDesktop ? (
           <>
-          
+            <div className="desktop-wrapper">
               <li 
               onMouseEnter={()=>handleMouseEnter(0)}
               onMouseLeave={()=>{handleMouseLeave()}}
@@ -206,23 +207,52 @@ useEffect(() => {
        
 
 
-            
+                <ul className={`${!isDesktop ? 'nav3-contents secondary' : 'desktop-submenu'}`} style={ desktopStyle(0)}>
+
+                    {isHovered === 0 }
+                  <button className="back-button" onClick={() => handleMenuItemClick(0)}>
+                    Back
+                  </button>
+                  <button style={listStyle(0)}
+                  onMouseEnter={()=>handleListEnter(0)}
+                  className="sub-li">Web dev</button>
+                  <li style={listStyle(1)}
+                  className="sub-li">Copywriting</li>
+                  <li style={listStyle(2)}
+                  className="sub-li">Quantum Realm</li>
+  
+                </ul>
                          
               </li>
-           
+            </div>
   
+            <div className="desktop-wrapper">
+              <li   onMouseEnter={()=>handleMouseEnter(1)}
+              onMouseLeave={()=>{handleMouseLeave()}}
+              >
+                About 
            
+                <ul className={`${!isDesktop ? 'nav3-contents secondary' : 'desktop-submenu'}`} style={!isDesktop ? secondaryNavStyle(1) : desktopStyle(1)}>
+                  <button className="back-button" onClick={() => handleMenuItemClick(1)}>
+                    Back
+                  </button>
+                  <li className="sub-li">Our story</li>
+                  <li className="sub-li">Process</li>
+                  <li className="sub-li">Our Team</li>
+                </ul>
+              </li>
+            </div>
+  
+            <div className="desktop-wrapper">
+              <li>Contact</li>
+            </div>
           </>
         ) : (
           <>
-
-<ul className="nav3-contents" style={!isDesktop ? navStyle : null}>
-        <p className="x-button" onClick={() => handleNavClick()}>X</p>
-
    
     <div className="main-nav"
     style={mainNavStyle}>
-      
+        <>
             <ul>
                 <li 
                     onMouseEnter={() => handleListEnter(0)}
@@ -249,16 +279,15 @@ useEffect(() => {
                     Contact
                 </li>
             </ul>
-        
+        </>
     </div>
 
             {subList}
-            </ul>
+
 
           </>
-    
-     
-      )}
+        )}
+      </ul>
     </nav>
   );
   

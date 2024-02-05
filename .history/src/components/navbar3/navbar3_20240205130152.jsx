@@ -193,7 +193,7 @@ useEffect(() => {
         <div className="nav-line"/>
       </div>
   
-      
+
   
         {isDesktop ? (
           <>
@@ -216,13 +216,12 @@ useEffect(() => {
         ) : (
           <>
 
-<ul className="nav3-contents" style={!isDesktop ? navStyle : null}>
+                <ul className="nav3-contents" style={!isDesktop ? navStyle : null}>
         <p className="x-button" onClick={() => handleNavClick()}>X</p>
-
    
     <div className="main-nav"
     style={mainNavStyle}>
-      
+        <>
             <ul>
                 <li 
                     onMouseEnter={() => handleListEnter(0)}
@@ -249,16 +248,15 @@ useEffect(() => {
                     Contact
                 </li>
             </ul>
-        
+        </>
     </div>
 
             {subList}
-            </ul>
+
 
           </>
-    
-     
-      )}
+        )}
+      </ul>
     </nav>
   );
   
