@@ -115,15 +115,12 @@ useEffect(() => {
   
         right: returnClicked && activeMenuItem === null? '-200%' :  selected ? '0%' : '-200%',
         transition: 'right 0.3s ease-in',
-        // paddingTop: '4rem',
-        // paddingLeft: '2rem',
+        paddingTop: '4rem',
+        paddingLeft: '2rem',
         // marginRight:'3.8rem',
         // backgroundColor:'red',
         // width:'40vw',
         zIndex:'10',
-        padding:0,
-        width:'15px',
-        transform:'translateX(-2530%)'
  
         // width:'10px',
         // marginRight:'21.5rem'

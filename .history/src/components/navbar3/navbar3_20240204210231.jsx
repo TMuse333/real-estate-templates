@@ -122,8 +122,7 @@ useEffect(() => {
         // width:'40vw',
         zIndex:'10',
         padding:0,
-        width:'15px',
-        transform:'translateX(-2530%)'
+        width:'5px'
  
         // width:'10px',
         // marginRight:'21.5rem'

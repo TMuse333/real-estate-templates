@@ -20,7 +20,6 @@ const Navbar3 = () => {
 
   const handleListLeave = () => {
     setLiHovered(null)
-    console.log('mouse exited!?')
   }
 
   const subMenuReturn = () => {
@@ -115,16 +114,13 @@ useEffect(() => {
   
         right: returnClicked && activeMenuItem === null? '-200%' :  selected ? '0%' : '-200%',
         transition: 'right 0.3s ease-in',
-        // paddingTop: '4rem',
-        // paddingLeft: '2rem',
+        paddingTop: '4rem',
+        paddingLeft: '2rem',
         // marginRight:'3.8rem',
         // backgroundColor:'red',
         // width:'40vw',
         zIndex:'10',
-        padding:0,
-        width:'15px',
-        transform:'translateX(-2530%)'
- 
+        
         // width:'10px',
         // marginRight:'21.5rem'
         
@@ -173,12 +169,12 @@ useEffect(() => {
                 Services 
                 {/* <FaArrowRight/> */}
                 <ul className={`${!isDesktop ? 'nav3-contents secondary' : 'desktop-submenu'}`} style={!isDesktop ? secondaryNavStyle(0) : desktopStyle(0)}>
-                  <button className="back-button" onClick={() => handleMenuItemClick(0)}>
+                  <p className="back-button" onClick={() => handleMenuItemClick(0)}>
                     Back
-                  </button>
-                  <button style={listStyle(0)}
+                  </p>
+                  <li style={listStyle(0)}
                   onMouseEnter={()=>handleListEnter(0)}
-                  className="sub-li">Web dev</button>
+                  className="sub-li">Web dev</li>
                   <li style={listStyle(1)}
                   className="sub-li">Copywriting</li>
                   <li style={listStyle(2)}
@@ -235,35 +231,23 @@ useEffect(() => {
                   <li 
                  
                   className="sub-li">
-                    <button className="sub-button"
+                    <p 
                      onMouseEnter={()=>handleListEnter(1)}
                      style={listStyle(1)}
                      onMouseLeave={()=>handleMouseLeave()}
-                    >Web dev</button>
+                    >Web dev</p>
                   
                     </li>
-                  <li  
+                  <li  onMouseEnter={()=>handleListEnter(2)}
+                  style={listStyle(2)}
+                  onMouseLeave={()=>handleMouseLeave()}
                   className="sub-li"
-                  >
-                    <button className="sub-button"
-                    onMouseEnter={()=>handleListEnter(2)}
-                    style={listStyle(2)}
-                    onMouseLeave={()=>handleMouseLeave()}>
-                        Copywriting
-                        </button>
-                        </li>
-                        <li  
-                  className="sub-li"
-                  >
-                    {/* <button 
-                    className="sub-button"
-                    onMouseEnter={()=>handleListEnter(3)}
-                    style={listStyle(3)}
-                    onMouseLeave={()=>handleMouseLeave()}
-                    > */}
-                        Quantum Realm
-                        {/* </button> */}
-                        </li>
+                  >Copywriting</li>
+                  <li 
+                   onMouseEnter={()=>handleListEnter(3)}
+                   style={listStyle(3)}
+                   onMouseLeave={()=>handleMouseLeave()}
+                  className="sub-li">Quantum Realm</li>
                 </ul>
               </li>
 

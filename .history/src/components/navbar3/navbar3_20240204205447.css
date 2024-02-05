@@ -63,10 +63,8 @@ margin: 0 auto 0 auto;
     background-color: transparent;
     box-shadow: none;
     border: none;
-    /* margin-left: -1em;
-    margin-bottom: -0.5rem; */
-
-    padding: 0;
+    margin-left: -1em;
+    margin-bottom: -0.5rem;
 }
 
 .sub-button:hover{
@@ -92,9 +90,8 @@ margin-top: 3rem;
 
 
 .sub-li{
-    padding: 0;
-    /* margin-left: -3rem;
-    transform: translateX(-3rem); */
+    margin-left: -3rem;
+    transform: translateX(-3rem);
     
     
 }

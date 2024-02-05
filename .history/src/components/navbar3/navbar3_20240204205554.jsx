@@ -20,7 +20,6 @@ const Navbar3 = () => {
 
   const handleListLeave = () => {
     setLiHovered(null)
-    console.log('mouse exited!?')
   }
 
   const subMenuReturn = () => {
@@ -115,15 +114,12 @@ useEffect(() => {
   
         right: returnClicked && activeMenuItem === null? '-200%' :  selected ? '0%' : '-200%',
         transition: 'right 0.3s ease-in',
-        // paddingTop: '4rem',
-        // paddingLeft: '2rem',
+        paddingTop: '4rem',
+        paddingLeft: '2rem',
         // marginRight:'3.8rem',
         // backgroundColor:'red',
         // width:'40vw',
         zIndex:'10',
-        padding:0,
-        width:'15px',
-        transform:'translateX(-2530%)'
  
         // width:'10px',
         // marginRight:'21.5rem'
@@ -242,27 +238,25 @@ useEffect(() => {
                     >Web dev</button>
                   
                     </li>
-                  <li  
+                  {/* <li  
                   className="sub-li"
-                  >
+                  > */}
                     <button className="sub-button"
                     onMouseEnter={()=>handleListEnter(2)}
                     style={listStyle(2)}
                     onMouseLeave={()=>handleMouseLeave()}>
                         Copywriting
                         </button>
-                        </li>
+                        {/* </li> */}
                         <li  
                   className="sub-li"
                   >
-                    {/* <button 
-                    className="sub-button"
+                    <button className="sub-button"
                     onMouseEnter={()=>handleListEnter(3)}
                     style={listStyle(3)}
-                    onMouseLeave={()=>handleMouseLeave()}
-                    > */}
+                    onMouseLeave={()=>handleMouseLeave()}>
                         Quantum Realm
-                        {/* </button> */}
+                        </button>
                         </li>
                 </ul>
               </li>

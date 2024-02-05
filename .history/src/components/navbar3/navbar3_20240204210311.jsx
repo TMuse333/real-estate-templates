@@ -123,7 +123,7 @@ useEffect(() => {
         zIndex:'10',
         padding:0,
         width:'15px',
-        transform:'translateX(-2530%)'
+        transform:'translateX(-5000%)'
  
         // width:'10px',
         // marginRight:'21.5rem'
