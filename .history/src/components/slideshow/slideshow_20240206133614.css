@@ -1,0 +1,22 @@
+.slideshow-container{
+    position: relative;
+ display: flex;
+ color:white;
+ text-align: left;
+ width:90vw;
+ max-width: 1000px;
+ margin: 0 auto;
+ flex-direction: column;
+
+}
+
+.image-gallery-image{
+    object-fit: cover !important;
+    
+    width:90vw !important;
+    max-height: 50vh !important;
+}
+
+.image-gallery-description{
+    display: none;
+}

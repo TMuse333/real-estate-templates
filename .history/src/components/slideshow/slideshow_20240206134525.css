@@ -1,0 +1,27 @@
+.slideshow-container{
+    position: relative;
+ display: flex;
+ color:white;
+ text-align: center;
+ width:90vw;
+ /* max-width: 1000px; */
+ margin: 0 auto;
+ flex-direction: column;
+
+}
+
+.image-gallery-image{
+    object-fit: cover !important;
+    max-width: 1000px !important;
+    width:90vw !important;
+    max-height: 70vh !important;
+    margin: 0 auto !important;
+}
+
+.image-gallery-description{
+    position: absolute !important;
+    left:50% !important;
+    transform: translateX(-50%) !important;
+    top:80% !important;
+    
+}

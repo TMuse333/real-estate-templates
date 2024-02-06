@@ -1,0 +1,6 @@
+.slideshow-container{
+    position: relative;
+ display: flex;
+ color:white;
+ text-align: center;
+}

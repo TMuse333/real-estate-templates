@@ -1,0 +1,8 @@
+.slideshow-container{
+    position: relative;
+ display: flex;
+ color:white;
+ text-align: left;
+ width:90vw;
+ margin: 0 auto
+}

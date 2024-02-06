@@ -1,0 +1,7 @@
+.draggable-image{
+    width:90vw;
+    max-height: 75vw;
+    object-fit: cover;
+    margin: 0 auto;
+    object-fit: var(--object-fit, cover);
+}

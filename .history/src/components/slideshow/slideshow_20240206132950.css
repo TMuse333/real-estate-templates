@@ -1,0 +1,17 @@
+.slideshow-container{
+    position: relative;
+ display: flex;
+ color:white;
+ text-align: left;
+ width:90vw;
+ max-width: 1000px;
+ margin: 0 auto;
+ flex-direction: column;
+
+}
+
+.slideshow-image{
+    object-fit: cover;
+    width:90vw;
+    max-height: 75vh;
+}
