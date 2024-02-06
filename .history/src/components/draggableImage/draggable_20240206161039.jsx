@@ -15,7 +15,7 @@ const Draggable = () => {
 
   useEffect(() => {
     const handleMouseMove = (e) => {
-        if (isDragging &&objectPosition.y) {
+        if (isDragging) {
           const deltaY = e.clientY - initialMouseY;
           const magnitude = Math.abs(deltaY) * (deltaY < 0 ? 1 : -1); // Negative for dragging down, positive for dragging up
       
@@ -23,9 +23,9 @@ const Draggable = () => {
           const limitedMagnitude = Math.min(Math.max(magnitude * sensitivityFactor, -10), 10);
       
           setTotalScroll((prevTotalScroll) => {
+            const newTotalScroll = prevTotalScroll + limitedMagnitude;
             // Ensure totalScroll stays between 0 and 100
-            const newTotalScroll = Math.min(Math.max(prevTotalScroll + limitedMagnitude, 0), 100);
-            return newTotalScroll;
+            return Math.min(Math.max(newTotalScroll, 0), 100);
           });
       
           setObjectPosition((prevObjectPosition) => {
@@ -36,11 +36,6 @@ const Draggable = () => {
             const cappedX = Math.min(Math.max(newX, 0), 100);
             const cappedY = Math.min(Math.max(newY, 0), 100);
       
-            // Check if the new position is equal to one of the limits
-            if (cappedX === 0 || cappedX === 100 || cappedY === 0 || cappedY === 100) {
-              return prevObjectPosition; // If at limit, don't update
-            }
-      
             return { x: cappedX, y: cappedY };
           });
       
@@ -50,8 +45,6 @@ const Draggable = () => {
           console.log('Magnitude after:', limitedMagnitude);
         }
       };
-      
-      
       
       
 

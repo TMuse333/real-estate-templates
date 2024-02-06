@@ -15,7 +15,7 @@ const Draggable = () => {
 
   useEffect(() => {
     const handleMouseMove = (e) => {
-        if (isDragging &&objectPosition.y) {
+        if (isDragging &&) {
           const deltaY = e.clientY - initialMouseY;
           const magnitude = Math.abs(deltaY) * (deltaY < 0 ? 1 : -1); // Negative for dragging down, positive for dragging up
       

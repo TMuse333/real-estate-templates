@@ -3,7 +3,7 @@ import './draggable.css';
 import vegeta from '../../media/vegeta-battle.png';
 
 const Draggable = () => {
-  const initialObjectPosition = 0; // Adjust this value as needed
+  const initialObjectPosition = 0;
   const [isDragging, setIsDragging] = useState(false);
   const [initialMouseY, setInitialMouseY] = useState(0);
   const [objectPosition, setObjectPosition] = useState({
@@ -11,52 +11,48 @@ const Draggable = () => {
     y: initialObjectPosition,
   });
   const [totalScroll, setTotalScroll] = useState(0);
-  const sensitivityFactor = 0.01; // Adjust this factor to control sensitivity
+  const sensitivityFactor = 0.01;
 
   useEffect(() => {
+    let requestId;
+
     const handleMouseMove = (e) => {
-        if (isDragging &&objectPosition.y) {
-          const deltaY = e.clientY - initialMouseY;
-          const magnitude = Math.abs(deltaY) * (deltaY < 0 ? 1 : -1); // Negative for dragging down, positive for dragging up
-      
-          // Adjust the magnitude to prevent large spikes
-          const limitedMagnitude = Math.min(Math.max(magnitude * sensitivityFactor, -10), 10);
-      
-          setTotalScroll((prevTotalScroll) => {
-            // Ensure totalScroll stays between 0 and 100
-            const newTotalScroll = Math.min(Math.max(prevTotalScroll + limitedMagnitude, 0), 100);
-            return newTotalScroll;
-          });
-      
-          setObjectPosition((prevObjectPosition) => {
-            const newX = prevObjectPosition.x + limitedMagnitude;
-            const newY = prevObjectPosition.y + limitedMagnitude;
-      
-            // Ensure newX and newY stay between 0 and 100
-            const cappedX = Math.min(Math.max(newX, 0), 100);
-            const cappedY = Math.min(Math.max(newY, 0), 100);
-      
-            // Check if the new position is equal to one of the limits
-            if (cappedX === 0 || cappedX === 100 || cappedY === 0 || cappedY === 100) {
-              return prevObjectPosition; // If at limit, don't update
-            }
-      
-            return { x: cappedX, y: cappedY };
-          });
-      
-          const objectFitValue = `${objectPosition.x}% ${objectPosition.y}%`;
-          document.querySelector('.draggable-image').style.objectPosition = objectFitValue;
-      
-          console.log('Magnitude after:', limitedMagnitude);
-        }
-      };
-      
-      
-      
-      
+      if (isDragging) {
+        const deltaY = e.clientY - initialMouseY;
+        const magnitude = Math.abs(deltaY) * (deltaY < 0 ? 1 : -1);
+        const limitedMagnitude = Math.min(Math.max(magnitude * sensitivityFactor, -10), 10);
+
+        setTotalScroll((prevTotalScroll) => {
+          const newTotalScroll = Math.min(Math.max(prevTotalScroll + limitedMagnitude, 0), 100);
+          return newTotalScroll;
+        });
+
+        setObjectPosition((prevObjectPosition) => {
+          const newX = prevObjectPosition.x + limitedMagnitude;
+          const newY = prevObjectPosition.y + limitedMagnitude;
+
+          const cappedX = Math.min(Math.max(newX, 0), 100);
+          const cappedY = Math.min(Math.max(newY, 0), 100);
+
+          if (cappedX === 0 || cappedX === 100 || cappedY === 0 || cappedY === 100) {
+            return prevObjectPosition;
+          }
+
+          return { x: cappedX, y: cappedY };
+        });
+
+        const objectFitValue = `${objectPosition.x}% ${objectPosition.y}%`;
+        document.querySelector('.draggable-image').style.objectPosition = objectFitValue;
+
+        console.log('Magnitude after:', limitedMagnitude);
+
+        requestId = requestAnimationFrame(handleMouseMove);
+      }
+    };
 
     const handleMouseUp = () => {
       setIsDragging(false);
+      cancelAnimationFrame(requestId);
     };
 
     const handleMouseDown = (e) => {
@@ -64,6 +60,7 @@ const Draggable = () => {
       setIsDragging(true);
       setInitialMouseY(e.clientY);
       console.log('drag is happening');
+      requestId = requestAnimationFrame(handleMouseMove);
     };
 
     const handleScroll = () => {
