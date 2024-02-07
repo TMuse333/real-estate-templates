@@ -1,0 +1,33 @@
+.parallax-page-container{
+    width:100vw;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.parallax-page-herobanner{
+   
+    height:100vh;
+    width:100vw;
+    /* background-image: url(src/media/goku-vs-jiren.jpg); */
+    margin: 0 auto;
+
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    display: flex;
+    flex-direction: column;
+  align-items: center;
+    
+}
+
+.parallax-page-herobanner img{
+    width:100vw;
+    object-fit
+    height:90vh;
+    object-fit: 50% 50%;
+}
+
+
+
+

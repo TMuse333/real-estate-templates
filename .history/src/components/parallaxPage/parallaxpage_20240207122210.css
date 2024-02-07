@@ -1,0 +1,18 @@
+.parallax-page-container{
+    width:100vw;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.parallax-page-herobanner{
+    background-image: url(src/media/aboubacar-5-fire.png);
+    height:90vh;
+    width:100vw;
+    margin: 0 auto;
+    background-position: 30% 0%;
+    bac
+}
+
+

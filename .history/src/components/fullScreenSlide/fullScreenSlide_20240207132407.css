@@ -1,0 +1,19 @@
+.full-slide-video{
+    margin:0 auto;
+    width: 100vw;
+}
+
+.full-slide-container{
+    position: relative;
+}
+
+.full-slide-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the alpha value for darkness */
+    z-index: 1;
+  }
