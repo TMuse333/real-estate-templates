@@ -5,12 +5,11 @@ const FullScreenSlide = ({ video, image, id }) => {
   const videoRef = useRef();
   const textRef = useRef();
   const [isPlaying, setIsPlaying] = useState(true);
+
   const [topReached, setTopReached] = useState(false);
-  const [bottomReached, setBottomReached] = useState(false);
   const [textPosition, setTextPosition] = useState(50);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [overflowHidden, setOverflowHidden] = useState(false);
-  const [disableOverflow, setDisableOverflow] = useState(false);
+  const [bottomReached, setBottomReached] = useState(false)
 
   useEffect(() => {
     let prevScrollY = window.scrollY;
@@ -21,6 +20,7 @@ const FullScreenSlide = ({ video, image, id }) => {
 
       const windowHeight = window.innerHeight;
       const elementTop = elementRect.top;
+
       const elementBottom = elementRect.bottom;
 
       const currentScrollY = window.scrollY;
@@ -29,36 +29,27 @@ const FullScreenSlide = ({ video, image, id }) => {
       const scrollDirection = deltaY > 0 ? 'down' : 'up';
       const scrollMagnitude = Math.abs(deltaY) / 10;
 
-      if (scrollDirection === 'down' && document.body.style.overflow === 'hidden') {
-        console.log('Scrolling down while overflow is hidden');
-      }
-
       if (elementTop <= 0) {
         console.log('Top of the element touched the top of the viewport!');
         setTopReached(true);
-        if (disableOverflow) {
-          document.body.style.overflow = 'auto'; // Set overflow to hidden
-        }
       }
 
       if (elementBottom <= windowHeight) {
         console.log('Bottom of the element touched the bottom of the viewport!');
         setBottomReached(true);
-        setOverflowHidden(true);
-        document.body.style.overflow = 'hidden'; // Set overflow to hidden
+        
       }
 
       if (topReached) {
         setTextPosition((prevTextPosition) => {
+          // If scrolling up (negative deltaY), subtract scrollMagnitude
+          // If scrolling down (positive deltaY), add scrollMagnitude
           return prevTextPosition + (scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude);
         });
 
-        // Disable overflow when text position is 90 or more
-        if (textPosition >= 90) {
-          document.body.style.overflow = 'auto'; // Set overflow to hidden
-        } else {
-          document.body.style.overflow = 'hidden'; // Set overflow to hidden
-        }
+        // Do something with the direction and magnitude, for example, log them
+        console.log('Scroll Direction:', scrollDirection);
+        console.log('Scroll Magnitude:', scrollMagnitude);
       }
 
       setScrollPosition(scrollMagnitude);
@@ -72,39 +63,50 @@ const FullScreenSlide = ({ video, image, id }) => {
     return () => {
       window.removeEventListener('wheel', handleScroll);
     };
-  }, [id, topReached, setScrollPosition, textPosition, disableOverflow]);
+  }, [id, topReached, setScrollPosition]);
 
-  const containerStyle = {
-    // overflow: overflowHidden ? 'hidden' : 'visible',
-     // Apply overflow: hidden when overflowHidden is true
+  const textStyle = {
+    transition: 'all 0.02s ease-in',
+  };
+
+  const overlayStyle = {
+    backgroundColor: !isPlaying ? 'rgba(0, 0, 0, 0.5)' : 'rgba(0, 0, 0, 0.5)',
+    transition: 'opacity 0.3s ease-in', // Adjust the duration here
   };
 
   return (
-    <div className="full-slide-container" style={containerStyle}>
-      <div className='full-slide-video-container'>
-        <video
-          ref={videoRef}
-          id={id}
-          className="full-slide-video"
-          controls
-          autoPlay={isPlaying}
-          muted
-          loop
-        >
-          <source src={video} type="video/mp4" />
-        </video>
-      </div>
-      <div className="overlay">
-        <div
-          style={{
-            bottom: `${textPosition}%`,
-          }}
-          className="full-slide-text"
-        >
-          <h3>Jonathan Nigward</h3>
-          <h1>The Best Stretch 4 ever.</h1>
-        </div>
-      </div>
+    <div className="full-slide-container">
+      {video && (
+        <>
+        <div className='full-slide-video-container'>
+
+          <video
+            ref={videoRef}
+            id={id}
+            className="full-slide-video"
+            controls
+            autoPlay={isPlaying}
+            muted
+            loop
+           
+          >
+            <source src={video} type="video/mp4" />
+          </video>
+          </div>
+          <div className="overlay" style={overlayStyle}>
+            <div
+              style={{
+                bottom: `${textPosition}%`,
+              }}
+              className="full-slide-text"
+            >
+              <h3>Jonathan Nigward</h3>
+              <h1>The Best Stretch 4 ever.</h1>
+            </div>
+          </div>
+        </>
+      )}
+      {image && <img src={image} className="full-slide-image" alt="fullscreen-slide" />}
     </div>
   );
 };

@@ -4,19 +4,16 @@
  
     transition: opacity 0.5s ease; 
     object-fit: cover;
-    object-position: 50% 50%;
-    /* width: 100%; */
-    height: 100vh;;
-    width: 100vw;
+    object-position: 10% 30%;
+    width: 100%;
     
 
 
 }
 
 .full-slide-video-container{
-
-height:100vh;
 width: 100vw;
+height:50vh;
 }
 
 .full-slide-video video{
@@ -51,7 +48,7 @@ width: 100vw;
     position: absolute;
 
     width: 100vw;
-
+    
     z-index: 10;
     top: 0;
     left: 0;

@@ -29,15 +29,11 @@ const FullScreenSlide = ({ video, image, id }) => {
       const scrollDirection = deltaY > 0 ? 'down' : 'up';
       const scrollMagnitude = Math.abs(deltaY) / 10;
 
-      if (scrollDirection === 'down' && document.body.style.overflow === 'hidden') {
-        console.log('Scrolling down while overflow is hidden');
-      }
-
       if (elementTop <= 0) {
         console.log('Top of the element touched the top of the viewport!');
         setTopReached(true);
         if (disableOverflow) {
-          document.body.style.overflow = 'auto'; // Set overflow to hidden
+          document.body.style.overflow = 'hidden'; // Set overflow to hidden
         }
       }
 
@@ -55,9 +51,9 @@ const FullScreenSlide = ({ video, image, id }) => {
 
         // Disable overflow when text position is 90 or more
         if (textPosition >= 90) {
-          document.body.style.overflow = 'auto'; // Set overflow to hidden
+          setDisableOverflow(true);
         } else {
-          document.body.style.overflow = 'hidden'; // Set overflow to hidden
+          setDisableOverflow(false);
         }
       }
 

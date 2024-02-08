@@ -30,7 +30,7 @@ const FullScreenSlide = ({ video, image, id }) => {
       const scrollMagnitude = Math.abs(deltaY) / 10;
 
       if (scrollDirection === 'down' && document.body.style.overflow === 'hidden') {
-        console.log('Scrolling down while overflow is hidden');
+        console.log('Scrolling up while overflow is hidden');
       }
 
       if (elementTop <= 0) {

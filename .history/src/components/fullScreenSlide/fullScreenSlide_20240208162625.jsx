@@ -29,10 +29,6 @@ const FullScreenSlide = ({ video, image, id }) => {
       const scrollDirection = deltaY > 0 ? 'down' : 'up';
       const scrollMagnitude = Math.abs(deltaY) / 10;
 
-      if (scrollDirection === 'down' && document.body.style.overflow === 'hidden') {
-        console.log('Scrolling down while overflow is hidden');
-      }
-
       if (elementTop <= 0) {
         console.log('Top of the element touched the top of the viewport!');
         setTopReached(true);

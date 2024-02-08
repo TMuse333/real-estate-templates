@@ -1,26 +1,14 @@
 .full-slide-video{
     margin:0 auto;
     /* width: 100vw; */
- 
+    height: 100vh;
     transition: opacity 0.5s ease; 
-    object-fit: cover;
-    object-position: 50% 50%;
-    /* width: 100%; */
-    height: 100vh;;
-    width: 100vw;
-    
 
 
-}
-
-.full-slide-video-container{
-
-height:100vh;
-width: 100vw;
 }
 
 .full-slide-video video{
- 
+    object-fit: cover;
 }
 
 .full-slide-container{
@@ -51,7 +39,6 @@ width: 100vw;
     position: absolute;
 
     width: 100vw;
-
     z-index: 10;
     top: 0;
     left: 0;
