@@ -19,7 +19,7 @@ const FullScreenSlide = ({ video, image, id }) => {
       const elementTop = contentElement.getBoundingClientRect().top;
       const elementBottom = elementRect.bottom;
       const offset = 500;
-      const scrollThreshold = 0.55; // Adjust as needed, represents 40% scrolled through
+      const scrollThreshold = 0.4; // Adjust as needed, represents 40% scrolled through
   
       const scrollPosition = window.scrollY;
       const scrollIncrement = 1; // You can adjust this value based on your preference
@@ -51,23 +51,7 @@ const FullScreenSlide = ({ video, image, id }) => {
   
       // Apply the calculated bottom value to the text element
       textRef.current.style.bottom = `${bottomValue}%`;
-
-      if (elementBottom <= windowHeight) {
-        console.log('Bottom of the element touched the bottom of the viewport!');
-        setBottomReached(true);
-    
-        // Check scroll direction
-        if (event.deltaY > 0) {
-          // Scrolling down, disable scrolling
-          document.body.style.overflow = 'hidden';
-        } else {
-          // Scrolling up, enable scrolling
-          document.body.style.overflow = 'auto';
-        }
-      }
     };
-
-  
   
     window.addEventListener('wheel', handleScroll);
   

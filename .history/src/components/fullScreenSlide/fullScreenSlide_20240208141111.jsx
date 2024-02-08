@@ -7,54 +7,50 @@ const FullScreenSlide = ({ video, image, id }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [bottomReached, setBottomReached] = useState(false);
 
-  let bottomValue = -50; // Initial bottom value
-  const bottomIncrement = 1; // Decreased the increment for slower increase
-
   useEffect(() => {
     const handleScroll = (event) => {
       const contentElement = videoRef.current;
       const elementRect = contentElement.getBoundingClientRect();
-  
+    
       const windowHeight = window.innerHeight;
-      const elementTop = contentElement.getBoundingClientRect().top;
       const elementBottom = elementRect.bottom;
-      const offset = 500;
-      const scrollThreshold = 0.55; // Adjust as needed, represents 40% scrolled through
-  
+      const elementTop = contentElement.getBoundingClientRect().top;
+      const offset = 200;
+    
       const scrollPosition = window.scrollY;
       const scrollIncrement = 1; // You can adjust this value based on your preference
-  
-      // Check if the element is 40% scrolled through
-      const isScrolledThrough = elementTop < windowHeight - offset * scrollThreshold;
-  
+      const bottomIncrement = 5; // Increase bottom by 5% for every 1 unit of scrolling down
+    
+      let bottomValue = 0;
+    
       // Check scroll direction
       if (event.deltaY > 0) {
         // Scrolling down
-        if (isScrolledThrough) {
-          if (elementTop < windowHeight - offset) {
-            setIsPlaying(true);
-            console.log('Video started!');
-          } else {
-            setIsPlaying(false);
-          }
-  
-          // Calculate bottom value based on scrolling down
-          bottomValue = Math.min(100, Math.max(-5, bottomValue + bottomIncrement * scrollIncrement));
-  
-          // Log the magnitude of the scroll
-          console.log('Mouse scrolled down with magnitude:', event.deltaY);
+        if (elementTop < windowHeight - offset) {
+          setIsPlaying(true);
+          console.log('Video started!');
+        } else {
+          setIsPlaying(false);
         }
+    
+        // Calculate bottom value based on scrolling down
+        bottomValue = Math.min(100, Math.max(-5, bottomValue + bottomIncrement * scrollIncrement));
+    
+        // Log the magnitude of the scroll
+        console.log('Mouse scrolled down with magnitude:', event.deltaY);
       } else {
         // Scrolling up
         bottomValue = Math.max(-5, bottomValue - bottomIncrement * scrollIncrement);
       }
-  
+    
       // Apply the calculated bottom value to the text element
       textRef.current.style.bottom = `${bottomValue}%`;
-
+    
+      // Log when the bottom of the element touches the bottom of the viewport
       if (elementBottom <= windowHeight) {
         console.log('Bottom of the element touched the bottom of the viewport!');
         setBottomReached(true);
+        bottomValue=
     
         // Check scroll direction
         if (event.deltaY > 0) {
@@ -66,15 +62,14 @@ const FullScreenSlide = ({ video, image, id }) => {
         }
       }
     };
-
-  
+    
   
     window.addEventListener('wheel', handleScroll);
   
     return () => {
       window.removeEventListener('wheel', handleScroll);
     };
-  }, [id]);
+  }, [id, setBottomReached]);
   
 
   useEffect(() => {
@@ -87,7 +82,7 @@ const FullScreenSlide = ({ video, image, id }) => {
 
   const overlayStyle = {
     backgroundColor: !isPlaying ? 'rgba(0, 0, 0, 0.5)' : 'rgba(0, 0, 0, 0.0)',
-    transition: 'all 0.3s ease-in', // Adjust the duration here
+    transition: 'all 0.3s ease-in',
   };
 
   return (

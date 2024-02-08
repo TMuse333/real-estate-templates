@@ -17,57 +17,39 @@ const FullScreenSlide = ({ video, image, id }) => {
   
       const windowHeight = window.innerHeight;
       const elementTop = contentElement.getBoundingClientRect().top;
-      const elementBottom = elementRect.bottom;
       const offset = 500;
-      const scrollThreshold = 0.55; // Adjust as needed, represents 40% scrolled through
   
       const scrollPosition = window.scrollY;
       const scrollIncrement = 1; // You can adjust this value based on your preference
   
-      // Check if the element is 40% scrolled through
-      const isScrolledThrough = elementTop < windowHeight - offset * scrollThreshold;
-  
       // Check scroll direction
       if (event.deltaY > 0) {
         // Scrolling down
-        if (isScrolledThrough) {
-          if (elementTop < windowHeight - offset) {
-            setIsPlaying(true);
-            console.log('Video started!');
-          } else {
-            setIsPlaying(false);
-          }
-  
-          // Calculate bottom value based on scrolling down
-          bottomValue = Math.min(100, Math.max(-5, bottomValue + bottomIncrement * scrollIncrement));
-  
-          // Log the magnitude of the scroll
-          console.log('Mouse scrolled down with magnitude:', event.deltaY);
+        if (elementTop < windowHeight - offset) {
+          setIsPlaying(true);
+          console.log('Video started!');
+        } else {
+          setIsPlaying(false);
         }
+  
+        // Calculate bottom value based on scrolling down
+        const bottomIncrement = 0.05; // Increase bottom by 0.05 for every 1 unit of scrolling down
+        bottomValue = Math.min(100, Math.max(-5, bottomValue + bottomIncrement * scrollIncrement));
+  
+        // Log the magnitude of the scroll
+        console.log('Mouse scrolled down with magnitude:', event.deltaY);
       } else {
         // Scrolling up
+        const bottomIncrement = 0.05; // Decrease bottom by 0.05 for every 1 unit of scrolling up
         bottomValue = Math.max(-5, bottomValue - bottomIncrement * scrollIncrement);
       }
   
       // Apply the calculated bottom value to the text element
       textRef.current.style.bottom = `${bottomValue}%`;
-
-      if (elementBottom <= windowHeight) {
-        console.log('Bottom of the element touched the bottom of the viewport!');
-        setBottomReached(true);
-    
-        // Check scroll direction
-        if (event.deltaY > 0) {
-          // Scrolling down, disable scrolling
-          document.body.style.overflow = 'hidden';
-        } else {
-          // Scrolling up, enable scrolling
-          document.body.style.overflow = 'auto';
-        }
-      }
-    };
-
   
+      // Log the bottom position for debugging
+      console.log('Bottom Position:', bottomValue);
+    };
   
     window.addEventListener('wheel', handleScroll);
   
