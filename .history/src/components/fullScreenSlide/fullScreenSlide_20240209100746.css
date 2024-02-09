@@ -70,8 +70,7 @@ width: 100vw;
 .full-slide-description{
     display: flex;
     width:50vw;
-    margin: 0 auto;
-    background-color: white;
+    margi
 }
 
 /* .full-slide-container::before {

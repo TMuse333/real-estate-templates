@@ -12,7 +12,6 @@ const FullScreenSlide = ({ video, image, id }) => {
 
   const [bottomReached, setBottomReached] = useState(false)
   const [scrollPower, setScrollPower ] = useState(0)
-  const [videoOpacity, setVideoOpacity] = useState(0.5)
 
   useEffect(() => {
     const handleWheel = (event) => {
@@ -28,11 +27,10 @@ const FullScreenSlide = ({ video, image, id }) => {
   
       // Get the direction of the wheel movement
       const scrollDirection = event.deltaY > 0 ? 'down' : 'up';
-
-  
   
       // Get the magnitude of the wheel movement
       const scrollMagnitude = Math.abs(event.deltaY);
+
   
       if (elementBottom <= windowHeight) {
         setBottomReached(true);
@@ -42,40 +40,27 @@ const FullScreenSlide = ({ video, image, id }) => {
       if ((elementTop - windowHeight / 2) + 200 <= 0) {
         // Set scrollPower based on the latest state
         setScrollPower((prevScrollPower) => (scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude));
-        // console.log('power of the scroll:', scrollPower);
+        console.log('power of the scroll:', scrollPower);
   
         // Update text position based on scrollPower
         setTextPosition((prevTextPosition) => {
           let newTextPosition = prevTextPosition + scrollPower / 20;
   
           // Prevent the text position from going higher than 90
-          newTextPosition = Math.min(Math.max(newTextPosition, 40), 90);
+          newTextPosition = Math.min(newTextPosition, 90);
   
-          // Gradually change video opacity when text position is above 70
-          if (newTextPosition >= 40) {
-            const opacityChange = 0.00015 * (newTextPosition - 40); // Adjust the rate of opacity change
-            setVideoOpacity((prevOpacity) => {
-              const newOpacity = Math.max(0, prevOpacity - opacityChange);
-              console.log('video opacity', newOpacity);
-              return newOpacity;
-            });
-          } else {
-            // Gradually increase video opacity when text position is below 50
-            const opacityChange = 0.005 * (80 - newTextPosition); // Adjust the rate of opacity change
-            setVideoOpacity((prevOpacity) => {
-              const newOpacity = Math.min(0.5, prevOpacity + opacityChange);
-              console.log('video opacity', newOpacity);
-              return newOpacity;
-            });
-          }
-
-          console.log('video opacity',videoOpacity)
+          // console.log('Adjustment to Text Position:', newTextPosition);
   
           // Check if the text position has reached 90 percent
           if (newTextPosition >= 90) {
             // Set body overflow back to auto
             document.body.style.overflow = 'auto';
           }
+
+
+      // if (scrollDirection === 'up') {
+      //   document.body.style.overflow = 'auto';
+      // }
   
           return newTextPosition;
         });
@@ -92,25 +77,113 @@ const FullScreenSlide = ({ video, image, id }) => {
   }, [setScrollPower, scrollPower, setTextPosition, setBottomReached]);
   
   
+
+  
+  // Rest of your component code
+  
+  // Include setScrollPower in the dependency array to avoid lint warnings
+  
+
+  
+
+ 
+
+
+  useEffect(() => {
+    let prevScrollY = window.scrollY;
+  
+    const handleScroll = (event) => {
+      const contentElement = videoRef.current;
+      const elementRect = contentElement.getBoundingClientRect();
+  
+      const textElement = textRef.current;
+      const textRect = textElement.getBoundingClientRect();
+  
+      const windowHeight = window.innerHeight;
+      const elementTop = elementRect.top;
+      const elementBottom = elementRect.bottom;
   
 
 
 
+  
+    
+  
+      // Check if at least 50 percent of the top of the element is in view
+      if ((elementTop - windowHeight / 2) + 200 <= 0) {
+        // setTextPosition((prevTextPosition) => {
+
+            
+        //   const newTextPosition = prevTextPosition + scrollPower;
+
+        //   console.log('Adjustment to Text Position:', scrollPower);
+      
+      
+        //   // Check if the text position has reached 90 percent
+        //   // if (newTextPosition >= 90) {
+           
+        //   //   document.body.style.overflow = 'auto';
+        //   // }
+      
+        //   return newTextPosition;
+        // });
+      }
+      
+  
+      // Check if the bottom of the element reaches the bottom of the viewport
+      if (elementBottom <= windowHeight) {
+        setBottomReached(true)
+        // document.body.style.overflow = 'hidden'
+        
+      } else {
+        
+      }
+  
+      // prevScrollY = currentScrollY;
+    };
+  
+    window.addEventListener('wheel', handleScroll);
+  
+    return () => {
+      window.removeEventListener('wheel', handleScroll);
+    };
+  }, [id, setScrollPosition,setBottomReached]);
+  
+  
+  
+  
+  
+  
+
+
+
+
+  
+
+  const textStyle = {
+    transition: 'all 0.02s ease-in',
+  };
+
+  const style = {
+    overflow: bottomReached ? 'hidden' : 'hidden',
+
+  }
+
+
+
   const overlayStyle = {
-    backgroundColor: `rgba(0, 0, 0, ${videoOpacity})`,
+    backgroundColor: !isPlaying ? 'rgba(0, 0, 0, 0.5)' : 'rgba(0, 0, 0, 0.5)',
     transition: 'all 0.3s ease-in', // Adjust the duration here
   };
 
   return (
-    <>
-
     <div className="full-slide-container"
-    
+    style={style}
    >
       {video && (
         <>
           <video
- 
+          style={style}
             ref={videoRef}
             id={id}
             className="full-slide-video"
@@ -133,24 +206,11 @@ const FullScreenSlide = ({ video, image, id }) => {
             </div>
           </div>
 
-         
+          <div className='full-slide-d'
         </>
       )}
       {image && <img src={image} className="full-slide-image" alt="fullscreen-slide" />}
-  
     </div>
-
-    <div className='full-slide-description'>
-      <h2>
-        straight from the guadeloupe islands
-      </h2>
-      <div >
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit magnam molestias facilis. Obcaecati itaque quisquam incidunt, alias dignissimos fugiat. Impedit!
-        <button>button</button>
-      </div>
-    </div>
-
-    </>
   );
 };
 

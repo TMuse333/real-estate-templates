@@ -28,8 +28,6 @@ const FullScreenSlide = ({ video, image, id }) => {
   
       // Get the direction of the wheel movement
       const scrollDirection = event.deltaY > 0 ? 'down' : 'up';
-
-  
   
       // Get the magnitude of the wheel movement
       const scrollMagnitude = Math.abs(event.deltaY);
@@ -49,24 +47,19 @@ const FullScreenSlide = ({ video, image, id }) => {
           let newTextPosition = prevTextPosition + scrollPower / 20;
   
           // Prevent the text position from going higher than 90
-          newTextPosition = Math.min(Math.max(newTextPosition, 40), 90);
+          newTextPosition = Math.min(newTextPosition, 90);
   
           // Gradually change video opacity when text position is above 70
-          if (newTextPosition >= 40) {
-            const opacityChange = 0.00015 * (newTextPosition - 40); // Adjust the rate of opacity change
-            setVideoOpacity((prevOpacity) => {
-              const newOpacity = Math.max(0, prevOpacity - opacityChange);
-              console.log('video opacity', newOpacity);
-              return newOpacity;
-            });
-          } else {
+          if (newTextPosition >= 50) {
+            const opacityChange = 0.0005 * (newTextPosition - 50); // Adjust the rate of opacity change
+            setVideoOpacity((prevOpacity) => Math.max(0, prevOpacity - opacityChange));
+           
+          }
+
+          else {
             // Gradually increase video opacity when text position is below 50
-            const opacityChange = 0.005 * (80 - newTextPosition); // Adjust the rate of opacity change
-            setVideoOpacity((prevOpacity) => {
-              const newOpacity = Math.min(0.5, prevOpacity + opacityChange);
-              console.log('video opacity', newOpacity);
-              return newOpacity;
-            });
+            const opacityChange = 0.0005 * (50 - newTextPosition); // Adjust the rate of opacity change
+            setVideoOpacity((prevOpacity) => Math.min(0.5, prevOpacity + opacityChange));
           }
 
           console.log('video opacity',videoOpacity)
@@ -89,7 +82,7 @@ const FullScreenSlide = ({ video, image, id }) => {
     return () => {
       document.removeEventListener('wheel', handleWheel);
     };
-  }, [setScrollPower, scrollPower, setTextPosition, setBottomReached]);
+  }, [setScrollPower, scrollPower, setTextPosition, setBottomReached,set]);
   
   
   

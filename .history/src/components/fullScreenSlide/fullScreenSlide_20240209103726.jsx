@@ -49,7 +49,7 @@ const FullScreenSlide = ({ video, image, id }) => {
           let newTextPosition = prevTextPosition + scrollPower / 20;
   
           // Prevent the text position from going higher than 90
-          newTextPosition = Math.min(Math.max(newTextPosition, 40), 90);
+          newTextPosition = Math.min(newTextPosition, 90);
   
           // Gradually change video opacity when text position is above 70
           if (newTextPosition >= 40) {
