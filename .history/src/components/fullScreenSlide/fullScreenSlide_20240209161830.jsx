@@ -36,8 +36,8 @@ const FullScreenSlide = ({ video, image, id }) => {
         return multiplier * (scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude);
       });
 
-      if (elementTop <= 0) {
-        setTopReached(true);
+      if (elementTop <= windowHeight) {
+        setBottomReached(true);
         if (textPosition < 95) {
           document.body.style.overflow = 'hidden';
         }

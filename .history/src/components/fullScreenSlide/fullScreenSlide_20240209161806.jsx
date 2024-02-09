@@ -36,8 +36,8 @@ const FullScreenSlide = ({ video, image, id }) => {
         return multiplier * (scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude);
       });
 
-      if (elementTop <= 0) {
-        setTopReached(true);
+      if (elementBottom <= windowHeight) {
+        setBottomReached(true);
         if (textPosition < 95) {
           document.body.style.overflow = 'hidden';
         }
@@ -52,9 +52,9 @@ const FullScreenSlide = ({ video, image, id }) => {
 
         
 
-        // if (newTextPosition >= 90) {
-        //   document.body.style.overflow = 'auto';
-        // }
+        if (newTextPosition >= 90) {
+          document.body.style.overflow = 'auto';
+        }
 
         return newTextPosition;
       });

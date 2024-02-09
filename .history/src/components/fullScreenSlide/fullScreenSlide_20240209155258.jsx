@@ -7,13 +7,14 @@ const FullScreenSlide = ({ video, image, id }) => {
   const [isPlaying, setIsPlaying] = useState(true);
 
   const [topReached, setTopReached] = useState(false);
-  const [textPosition, setTextPosition] = useState(0);
+  const [textPosition, setTextPosition] = useState(30);
 
 
   const [bottomReached, setBottomReached] = useState(false)
   const [scrollPower, setScrollPower ] = useState(0)
   const [videoOpacity, setVideoOpacity] = useState(0.5)
 
+  const [scrolled, setScrolled] = useState(false)
   const [relativePosition, setRelativePosition] = useState('below'); // 'above', 'below', 'atTop', 'atBottom'
 
   useEffect(() => {
@@ -31,30 +32,59 @@ const FullScreenSlide = ({ video, image, id }) => {
       const scrollDirection = event.deltaY > 0 ? 'down' : 'up';
       const scrollMagnitude = Math.abs(event.deltaY);
 
+      const elementInView = elementTop < windowHeight && elementBottom > 0;
+
+      if (!elementInView) {
+        return; // If the element is not in the viewport, exit the function
+      }
+
       setScrollPower((prevScrollPower) => {
-        const multiplier = scrollDirection === 'down' && textPosition >= 50 && textPosition <= 95 ? 1.8 : 1;
+        const multiplier = scrollDirection === 'up' && textPosition >= 50 && textPosition <= 95 ? 2.8 : 1;
         return multiplier * (scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude);
       });
 
-      if (elementTop <= 0) {
+      if (elementTop <= 0 && !scrolled) {
         setTopReached(true);
-        if (textPosition < 95) {
-          document.body.style.overflow = 'hidden';
-        }
+        console.log('top reached playa!');
+        document.body.style.overflow = 'hidden';
+        console.log('hiding overflow');
       }
 
       setTextPosition((prevTextPosition) => {
         let newTextPosition = prevTextPosition + scrollPower / 20;
-        newTextPosition = Math.min(Math.max(newTextPosition, 0), 95);
+        newTextPosition = Math.min(Math.max(newTextPosition, 40), 95);
 
         // Determine relative position
-        
+        if (newTextPosition >= 40 && newTextPosition < 90 ) {
+          setRelativePosition('above');
+          console.log('text is above half!')
+        } else if (newTextPosition >= 0 && newTextPosition < 50) {
+          setRelativePosition('atBottom');
+          console.log('text is at bottom half!')
+          setScrolled(false)
+        } else if (newTextPosition >= 90) {
+          setRelativePosition('atTop');
+          console.log('text is at top!')
+        } else {
+          setRelativePosition('below');
+        }
 
-        
+        console.log('text position',textPosition)
 
-        // if (newTextPosition >= 90) {
-        //   document.body.style.overflow = 'auto';
-        // }
+        // Gradually change video opacity when text position is above 40
+        if (newTextPosition >= 40) {
+          const opacityChange = 0.00015 * (newTextPosition - 40);
+          setVideoOpacity((prevOpacity) => Math.max(0, prevOpacity - opacityChange));
+        } else {
+          // Gradually increase video opacity when text position is below 50
+          const opacityChange = 0.005 * (80 - newTextPosition);
+          setVideoOpacity((prevOpacity) => Math.min(0.5, prevOpacity + opacityChange));
+        }
+
+        if (newTextPosition >= 90) {
+          setScrolled(true)
+          document.body.style.overflow = 'auto';
+        }
 
         return newTextPosition;
       });

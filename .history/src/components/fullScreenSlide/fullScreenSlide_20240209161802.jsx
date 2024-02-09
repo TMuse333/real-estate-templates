@@ -36,8 +36,8 @@ const FullScreenSlide = ({ video, image, id }) => {
         return multiplier * (scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude);
       });
 
-      if (elementTop <= 0) {
-        setTopReached(true);
+      if (elementBottom <= windowHeight) {
+        setBottomReached(true);
         if (textPosition < 95) {
           document.body.style.overflow = 'hidden';
         }
@@ -50,11 +50,21 @@ const FullScreenSlide = ({ video, image, id }) => {
         // Determine relative position
         
 
-        
+        console.log('text position',textPosition)
 
-        // if (newTextPosition >= 90) {
-        //   document.body.style.overflow = 'auto';
-        // }
+        // Gradually change video opacity when text position is above 40
+        if (newTextPosition >= 40) {
+          const opacityChange = 0.00015 * (newTextPosition - 40);
+          setVideoOpacity((prevOpacity) => Math.max(0, prevOpacity - opacityChange));
+        } else {
+          // Gradually increase video opacity when text position is below 50
+          const opacityChange = 0.005 * (80 - newTextPosition);
+          setVideoOpacity((prevOpacity) => Math.min(0.5, prevOpacity + opacityChange));
+        }
+
+        if (newTextPosition >= 90) {
+          document.body.style.overflow = 'auto';
+        }
 
         return newTextPosition;
       });

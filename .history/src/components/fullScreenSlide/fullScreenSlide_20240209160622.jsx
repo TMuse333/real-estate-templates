@@ -7,13 +7,14 @@ const FullScreenSlide = ({ video, image, id }) => {
   const [isPlaying, setIsPlaying] = useState(true);
 
   const [topReached, setTopReached] = useState(false);
-  const [textPosition, setTextPosition] = useState(0);
+  const [textPosition, setTextPosition] = useState(30);
 
 
-  const [bottomReached, setBottomReached] = useState(false)
+const [textAtTop, setTextAtTop] = useState(false)
   const [scrollPower, setScrollPower ] = useState(0)
   const [videoOpacity, setVideoOpacity] = useState(0.5)
 
+  const [scrolled, setScrolled] = useState(false)
   const [relativePosition, setRelativePosition] = useState('below'); // 'above', 'below', 'atTop', 'atBottom'
 
   useEffect(() => {
@@ -31,33 +32,17 @@ const FullScreenSlide = ({ video, image, id }) => {
       const scrollDirection = event.deltaY > 0 ? 'down' : 'up';
       const scrollMagnitude = Math.abs(event.deltaY);
 
+      const elementInView = elementTop < windowHeight && elementBottom > 0;
+
       setScrollPower((prevScrollPower) => {
-        const multiplier = scrollDirection === 'down' && textPosition >= 50 && textPosition <= 95 ? 1.8 : 1;
-        return multiplier * (scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude);
+       
+        return  (scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude);
       });
 
-      if (elementTop <= 0) {
-        setTopReached(true);
-        if (textPosition < 95) {
-          document.body.style.overflow = 'hidden';
-        }
-      }
+      console.log('scroll power',scrollPower)
 
-      setTextPosition((prevTextPosition) => {
-        let newTextPosition = prevTextPosition + scrollPower / 20;
-        newTextPosition = Math.min(Math.max(newTextPosition, 0), 95);
 
-        // Determine relative position
-        
-
-        
-
-        // if (newTextPosition >= 90) {
-        //   document.body.style.overflow = 'auto';
-        // }
-
-        return newTextPosition;
-      });
+     
     };
 
     document.addEventListener('wheel', handleWheel);
@@ -65,7 +50,7 @@ const FullScreenSlide = ({ video, image, id }) => {
     return () => {
       document.removeEventListener('wheel', handleWheel);
     };
-  }, [setScrollPower, scrollPower, setTextPosition, setBottomReached, textPosition]);
+  }, [setScrollPower, scrollPower, setTextPosition,, textPosition]);
   
   
   

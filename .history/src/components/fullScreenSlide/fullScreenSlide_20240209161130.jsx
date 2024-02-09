@@ -7,65 +7,62 @@ const FullScreenSlide = ({ video, image, id }) => {
   const [isPlaying, setIsPlaying] = useState(true);
 
   const [topReached, setTopReached] = useState(false);
-  const [textPosition, setTextPosition] = useState(0);
+  const [textPosition, setTextPosition] = useState(30);
 
 
-  const [bottomReached, setBottomReached] = useState(false)
+  const [textAtTop, setTextAtTop] = useState(false)
   const [scrollPower, setScrollPower ] = useState(0)
   const [videoOpacity, setVideoOpacity] = useState(0.5)
+  const [inRange, setInRange] = useState(false)
 
+  const [scrolled, setScrolled] = useState(false)
   const [relativePosition, setRelativePosition] = useState('below'); // 'above', 'below', 'atTop', 'atBottom'
 
   useEffect(() => {
     const handleWheel = (event) => {
       const contentElement = videoRef.current;
       const elementRect = contentElement.getBoundingClientRect();
-
+  
       const textElement = textRef.current;
       const textRect = textElement.getBoundingClientRect();
-
+  
       const windowHeight = window.innerHeight;
       const elementTop = elementRect.top;
       const elementBottom = elementRect.bottom;
-
+  
       const scrollDirection = event.deltaY > 0 ? 'down' : 'up';
       const scrollMagnitude = Math.abs(event.deltaY);
-
+  
+      const elementInView = elementTop < windowHeight && elementBottom > 0;
+  
+      // Calculate the threshold for 35 percent of the element's height
+      const threshold = elementRect.height * 0.35;
+  
       setScrollPower((prevScrollPower) => {
-        const multiplier = scrollDirection === 'down' && textPosition >= 50 && textPosition <= 95 ? 1.8 : 1;
-        return multiplier * (scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude);
+        return (scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude);
       });
-
-      if (elementTop <= 0) {
-        setTopReached(true);
-        if (textPosition < 95) {
-          document.body.style.overflow = 'hidden';
-        }
+  
+      // Log when 35 percent of the element is in the viewport
+      if (elementInView && elementTop < threshold && elementBottom > threshold) {
+        setInRange(true)
+        console.log('35 percent of the element is in the viewport!');
       }
-
-      setTextPosition((prevTextPosition) => {
-        let newTextPosition = prevTextPosition + scrollPower / 20;
-        newTextPosition = Math.min(Math.max(newTextPosition, 0), 95);
-
-        // Determine relative position
-        
-
-        
-
-        // if (newTextPosition >= 90) {
-        //   document.body.style.overflow = 'auto';
-        // }
-
-        return newTextPosition;
-      });
+      else{
+        setInRange(false)
+      }
     };
+  
+    if(inRange){
+      
+    }
 
     document.addEventListener('wheel', handleWheel);
-
+  
     return () => {
       document.removeEventListener('wheel', handleWheel);
     };
-  }, [setScrollPower, scrollPower, setTextPosition, setBottomReached, textPosition]);
+  }, [setScrollPower, setTextPosition, textPosition,inRange,setInRange]);
+  
   
   
   

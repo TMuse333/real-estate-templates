@@ -37,7 +37,7 @@ const FullScreenSlide = ({ video, image, id }) => {
       });
 
       if (elementTop <= 0) {
-        setTopReached(true);
+        set(true);
         if (textPosition < 95) {
           document.body.style.overflow = 'hidden';
         }
