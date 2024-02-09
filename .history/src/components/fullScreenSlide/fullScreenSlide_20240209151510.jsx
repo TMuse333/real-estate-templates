@@ -7,7 +7,7 @@ const FullScreenSlide = ({ video, image, id }) => {
   const [isPlaying, setIsPlaying] = useState(true);
 
   const [topReached, setTopReached] = useState(false);
-  const [textPosition, setTextPosition] = useState(30);
+  const [textPosition, setTextPosition] = useState(40);
 
 
   const [bottomReached, setBottomReached] = useState(false)
@@ -31,12 +31,6 @@ const FullScreenSlide = ({ video, image, id }) => {
 
       const scrollDirection = event.deltaY > 0 ? 'down' : 'up';
       const scrollMagnitude = Math.abs(event.deltaY);
-
-      const elementInView = elementTop < windowHeight && elementBottom > 0;
-
-      if (!elementInView) {
-        return; // If the element is not in the viewport, exit the function
-      }
 
       setScrollPower((prevScrollPower) => {
         const multiplier = scrollDirection === 'up' && textPosition >= 50 && textPosition <= 95 ? 2.8 : 1;

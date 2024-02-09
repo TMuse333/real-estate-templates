@@ -7,14 +7,13 @@ const FullScreenSlide = ({ video, image, id }) => {
   const [isPlaying, setIsPlaying] = useState(true);
 
   const [topReached, setTopReached] = useState(false);
-  const [textPosition, setTextPosition] = useState(30);
+  const [textPosition, setTextPosition] = useState(0);
 
 
   const [bottomReached, setBottomReached] = useState(false)
   const [scrollPower, setScrollPower ] = useState(0)
   const [videoOpacity, setVideoOpacity] = useState(0.5)
 
-  const [scrolled, setScrolled] = useState(false)
   const [relativePosition, setRelativePosition] = useState('below'); // 'above', 'below', 'atTop', 'atBottom'
 
   useEffect(() => {
@@ -32,18 +31,12 @@ const FullScreenSlide = ({ video, image, id }) => {
       const scrollDirection = event.deltaY > 0 ? 'down' : 'up';
       const scrollMagnitude = Math.abs(event.deltaY);
 
-      const elementInView = elementTop < windowHeight && elementBottom > 0;
-
-      if (!elementInView) {
-        return; // If the element is not in the viewport, exit the function
-      }
-
       setScrollPower((prevScrollPower) => {
         const multiplier = scrollDirection === 'up' && textPosition >= 50 && textPosition <= 95 ? 2.8 : 1;
         return multiplier * (scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude);
       });
 
-      if (elementTop <= 0 && !scrolled) {
+      if (elementTop <= 0) {
         setTopReached(true);
         console.log('top reached playa!');
         document.body.style.overflow = 'hidden';
@@ -52,7 +45,7 @@ const FullScreenSlide = ({ video, image, id }) => {
 
       setTextPosition((prevTextPosition) => {
         let newTextPosition = prevTextPosition + scrollPower / 20;
-        newTextPosition = Math.min(Math.max(newTextPosition, 40), 95);
+        newTextPosition = Math.min(Math.max(newTextPosition, 0), 95);
 
         // Determine relative position
         if (newTextPosition >= 40 && newTextPosition < 90 ) {
@@ -61,7 +54,6 @@ const FullScreenSlide = ({ video, image, id }) => {
         } else if (newTextPosition >= 0 && newTextPosition < 50) {
           setRelativePosition('atBottom');
           console.log('text is at bottom half!')
-          setScrolled(false)
         } else if (newTextPosition >= 90) {
           setRelativePosition('atTop');
           console.log('text is at top!')
@@ -82,7 +74,6 @@ const FullScreenSlide = ({ video, image, id }) => {
         }
 
         if (newTextPosition >= 90) {
-          setScrolled(true)
           document.body.style.overflow = 'auto';
         }
 

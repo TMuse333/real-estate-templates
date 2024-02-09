@@ -7,7 +7,7 @@ const FullScreenSlide = ({ video, image, id }) => {
   const [isPlaying, setIsPlaying] = useState(true);
 
   const [topReached, setTopReached] = useState(false);
-  const [textPosition, setTextPosition] = useState(30);
+  const [textPosition, setTextPosition] = useState(0);
 
 
   const [bottomReached, setBottomReached] = useState(false)
@@ -32,12 +32,6 @@ const FullScreenSlide = ({ video, image, id }) => {
       const scrollDirection = event.deltaY > 0 ? 'down' : 'up';
       const scrollMagnitude = Math.abs(event.deltaY);
 
-      const elementInView = elementTop < windowHeight && elementBottom > 0;
-
-      if (!elementInView) {
-        return; // If the element is not in the viewport, exit the function
-      }
-
       setScrollPower((prevScrollPower) => {
         const multiplier = scrollDirection === 'up' && textPosition >= 50 && textPosition <= 95 ? 2.8 : 1;
         return multiplier * (scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude);
@@ -52,7 +46,7 @@ const FullScreenSlide = ({ video, image, id }) => {
 
       setTextPosition((prevTextPosition) => {
         let newTextPosition = prevTextPosition + scrollPower / 20;
-        newTextPosition = Math.min(Math.max(newTextPosition, 40), 95);
+        newTextPosition = Math.min(Math.max(newTextPosition, 0), 95);
 
         // Determine relative position
         if (newTextPosition >= 40 && newTextPosition < 90 ) {
@@ -61,7 +55,6 @@ const FullScreenSlide = ({ video, image, id }) => {
         } else if (newTextPosition >= 0 && newTextPosition < 50) {
           setRelativePosition('atBottom');
           console.log('text is at bottom half!')
-          setScrolled(false)
         } else if (newTextPosition >= 90) {
           setRelativePosition('atTop');
           console.log('text is at top!')
@@ -82,7 +75,7 @@ const FullScreenSlide = ({ video, image, id }) => {
         }
 
         if (newTextPosition >= 90) {
-          setScrolled(true)
+          setScrollPower
           document.body.style.overflow = 'auto';
         }
 

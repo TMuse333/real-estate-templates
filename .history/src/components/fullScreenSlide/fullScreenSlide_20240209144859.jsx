@@ -7,14 +7,13 @@ const FullScreenSlide = ({ video, image, id }) => {
   const [isPlaying, setIsPlaying] = useState(true);
 
   const [topReached, setTopReached] = useState(false);
-  const [textPosition, setTextPosition] = useState(30);
+  const [textPosition, setTextPosition] = useState(0);
 
 
   const [bottomReached, setBottomReached] = useState(false)
   const [scrollPower, setScrollPower ] = useState(0)
   const [videoOpacity, setVideoOpacity] = useState(0.5)
 
-  const [scrolled, setScrolled] = useState(false)
   const [relativePosition, setRelativePosition] = useState('below'); // 'above', 'below', 'atTop', 'atBottom'
 
   useEffect(() => {
@@ -32,36 +31,29 @@ const FullScreenSlide = ({ video, image, id }) => {
       const scrollDirection = event.deltaY > 0 ? 'down' : 'up';
       const scrollMagnitude = Math.abs(event.deltaY);
 
-      const elementInView = elementTop < windowHeight && elementBottom > 0;
-
-      if (!elementInView) {
-        return; // If the element is not in the viewport, exit the function
-      }
-
       setScrollPower((prevScrollPower) => {
-        const multiplier = scrollDirection === 'up' && textPosition >= 50 && textPosition <= 95 ? 2.8 : 1;
+        const multiplier = scrollDirection === 'down' && textPosition >= 50 && textPosition <= 95 ? 1.8 : 1;
         return multiplier * (scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude);
       });
 
-      if (elementTop <= 0 && !scrolled) {
-        setTopReached(true);
-        console.log('top reached playa!');
-        document.body.style.overflow = 'hidden';
-        console.log('hiding overflow');
+      if (elementBottom <= windowHeight) {
+        setBottomReached(true);
+        if (textPosition < 95) {
+          document.body.style.overflow = 'hidden';
+        }
       }
 
       setTextPosition((prevTextPosition) => {
         let newTextPosition = prevTextPosition + scrollPower / 20;
-        newTextPosition = Math.min(Math.max(newTextPosition, 40), 95);
+        newTextPosition = Math.min(Math.max(newTextPosition, 0), 95);
 
         // Determine relative position
-        if (newTextPosition >= 40 && newTextPosition < 90 ) {
+        if (newTextPosition <= 0 ) {
           setRelativePosition('above');
-          console.log('text is above half!')
+          console.log('text is above!')
         } else if (newTextPosition >= 0 && newTextPosition < 50) {
           setRelativePosition('atBottom');
           console.log('text is at bottom half!')
-          setScrolled(false)
         } else if (newTextPosition >= 90) {
           setRelativePosition('atTop');
           console.log('text is at top!')
@@ -82,7 +74,6 @@ const FullScreenSlide = ({ video, image, id }) => {
         }
 
         if (newTextPosition >= 90) {
-          setScrolled(true)
           document.body.style.overflow = 'auto';
         }
 
@@ -146,7 +137,7 @@ const FullScreenSlide = ({ video, image, id }) => {
   
     </div>
 
-    {/* <div className='full-slide-description'>
+    <div className='full-slide-description'>
       <h2>
         straight from the guadeloupe islands
       </h2>
@@ -154,7 +145,7 @@ const FullScreenSlide = ({ video, image, id }) => {
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit magnam molestias facilis. Obcaecati itaque quisquam incidunt, alias dignissimos fugiat. Impedit!
         <button>button</button>
       </div>
-    </div> */}
+    </div>
 
     </>
   );

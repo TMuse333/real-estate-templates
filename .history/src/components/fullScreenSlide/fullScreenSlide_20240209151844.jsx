@@ -32,12 +32,6 @@ const FullScreenSlide = ({ video, image, id }) => {
       const scrollDirection = event.deltaY > 0 ? 'down' : 'up';
       const scrollMagnitude = Math.abs(event.deltaY);
 
-      const elementInView = elementTop < windowHeight && elementBottom > 0;
-
-      if (!elementInView) {
-        return; // If the element is not in the viewport, exit the function
-      }
-
       setScrollPower((prevScrollPower) => {
         const multiplier = scrollDirection === 'up' && textPosition >= 50 && textPosition <= 95 ? 2.8 : 1;
         return multiplier * (scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude);

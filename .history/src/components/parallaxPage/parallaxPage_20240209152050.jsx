@@ -16,15 +16,13 @@ const ParallaxPage = () => {
             <img src={gokuJiren}/>
 
           </div>
-
-          <FullScreenSlide
-            video={stepBack}
-            id='video2'/>
         
 
             <ServiceOverview/>
 
-          
+            <FullScreenSlide
+            video={stepBack}
+            id='video2'/>
 
         </section>
     )

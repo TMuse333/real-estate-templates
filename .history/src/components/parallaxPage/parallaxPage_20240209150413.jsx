@@ -4,7 +4,6 @@ import aboubacar from '../../media/aboubacar-5-fire.png'
 import './parallaxpage.css'
 import gokuJiren from '../../media/goku-vs-jiren.jpg'
 import stepBack from '../../media/stepback.mp4'
-import ServiceOverview from "../overview/overview";
 
 const ParallaxPage = () => {
 
@@ -16,16 +15,14 @@ const ParallaxPage = () => {
             <img src={gokuJiren}/>
 
           </div>
-
-          <FullScreenSlide
+            <FullScreenSlide
             video={stepBack}
             id='video2'/>
-        
 
-            <ServiceOverview/>
-
-          
-
+<FullScreenSlide
+            video={stepBack}
+            // id='vido3'
+            />
         </section>
     )
 }
