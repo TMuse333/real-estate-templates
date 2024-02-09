@@ -13,7 +13,7 @@ const FullScreenSlide = ({ video, image, id }) => {
   const [bottomReached, setBottomReached] = useState(false)
 
 
-  useEffect((event) => {
+  useEffect(() => {
     let prevScrollY = window.scrollY;
 
     const handleScroll = () => {
@@ -33,22 +33,18 @@ const FullScreenSlide = ({ video, image, id }) => {
       const scrollDirection = deltaY > 0 ? 'down' : 'up';
       const scrollMagnitude = Math.abs(deltaY) / 8;
 
-      if (elementTop -50 <= 0) {
-        // console.log('Top of the element touched the top of the viewport!');
+      if (elementTop <= 0) {
+        console.log('Top of the element touched the top of the viewport!');
         setTopReached(true);
       }
 
-
-
       if (elementBottom <= windowHeight) {
-        // console.log('Bottom of the element touched the bottom of the viewport!');
+        console.log('Bottom of the element touched the bottom of the viewport!');
         setBottomReached(true);
 
       } else {
         setBottomReached(false);
       }
-
- 
 
       if (topReached) {
         setTextPosition((prevTextPosition) => {
@@ -58,18 +54,19 @@ const FullScreenSlide = ({ video, image, id }) => {
         });
 
         // Do something with the direction and magnitude, for example, log them
-       
+        console.log('Scroll Direction:', scrollDirection);
+        console.log('Scroll Magnitude:', scrollMagnitude);
 
         const containerTop = elementRect.top;
         const textTop = textRect.top - containerTop;
         const containerHeight = elementRect.height;
         const textPercentage = (textTop / containerHeight) * 100;
 
-        // console.log('Text Percentage:', textPercentage);
+        console.log('Text Percentage:', textPercentage);
       }
 
       setScrollPosition(scrollMagnitude);
-      // console.log('Scroll Position:', scrollPosition);
+      console.log('Scroll Position:', scrollPosition);
 
       prevScrollY = currentScrollY;
     };
@@ -83,31 +80,8 @@ const FullScreenSlide = ({ video, image, id }) => {
 
 
   useEffect(()=> {
-    if(bottomReached){
-      document.body.style.overflow = 'hidden'
-    }
-  },[bottomReached])
-
-  const handleWheel = (event) => {
-    // Get the magnitude of the wheel movement
-    const scrollMagnitude = Math.abs(event.deltaY);
-
-    // Log the magnitude of the wheel movement
-    console.log('Wheel Magnitude:', scrollMagnitude);
-
-    // Update the state with the wheel magnitude (if needed)
-    // setWheelMagnitude(scrollMagnitude);
-  };
-
-  useEffect(() => {
-    // Add the wheel event listener to the document
-    document.addEventListener('wheel', handleWheel);
-
-    // Clean up the event listener when the component is unmounted
-    return () => {
-      document.removeEventListener('wheel', handleWheel);
-    };
-  }, []);
+    if(bottomReached)
+  })
 
 
   const textStyle = {

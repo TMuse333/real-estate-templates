@@ -10,66 +10,48 @@ const FullScreenSlide = ({ video, image, id }) => {
   const [textPosition, setTextPosition] = useState(50);
   const [scrollPosition, setScrollPosition] = useState(0);
 
-  const [bottomReached, setBottomReached] = useState(false)
 
 
-  useEffect((event) => {
+  useEffect(() => {
     let prevScrollY = window.scrollY;
 
     const handleScroll = () => {
       const contentElement = videoRef.current;
       const elementRect = contentElement.getBoundingClientRect();
 
+
       const textElement = textRef.current;
-      const textRect = textElement.getBoundingClientRect();
+      // const textRect = textElement.getBoundingClientRect();
 
       const windowHeight = window.innerHeight;
       const elementTop = elementRect.top;
-      const elementBottom = elementRect.bottom;
 
       const currentScrollY = window.scrollY;
       const deltaY = currentScrollY - prevScrollY;
 
       const scrollDirection = deltaY > 0 ? 'down' : 'up';
-      const scrollMagnitude = Math.abs(deltaY) / 8;
+      const scrollMagnitude = Math.abs(deltaY) / 10;
 
-      if (elementTop -50 <= 0) {
-        // console.log('Top of the element touched the top of the viewport!');
+      if (elementTop <= 0) {
+        console.log('Top of the element touched the top of the viewport!');
         setTopReached(true);
       }
-
-
-
-      if (elementBottom <= windowHeight) {
-        // console.log('Bottom of the element touched the bottom of the viewport!');
-        setBottomReached(true);
-
-      } else {
-        setBottomReached(false);
-      }
-
- 
 
       if (topReached) {
         setTextPosition((prevTextPosition) => {
           // If scrolling up (negative deltaY), subtract scrollMagnitude
           // If scrolling down (positive deltaY), add scrollMagnitude
+
           return prevTextPosition + (scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude);
         });
 
         // Do something with the direction and magnitude, for example, log them
-       
-
-        const containerTop = elementRect.top;
-        const textTop = textRect.top - containerTop;
-        const containerHeight = elementRect.height;
-        const textPercentage = (textTop / containerHeight) * 100;
-
-        // console.log('Text Percentage:', textPercentage);
+        console.log('Scroll Direction:', scrollDirection);
+        console.log('Scroll Magnitude:', scrollMagnitude);
       }
 
       setScrollPosition(scrollMagnitude);
-      // console.log('Scroll Position:', scrollPosition);
+      console.log(scrollPosition);
 
       prevScrollY = currentScrollY;
     };
@@ -79,36 +61,7 @@ const FullScreenSlide = ({ video, image, id }) => {
     return () => {
       window.removeEventListener('wheel', handleScroll);
     };
-  }, [id, topReached, setScrollPosition, setBottomReached]);
-
-
-  useEffect(()=> {
-    if(bottomReached){
-      document.body.style.overflow = 'hidden'
-    }
-  },[bottomReached])
-
-  const handleWheel = (event) => {
-    // Get the magnitude of the wheel movement
-    const scrollMagnitude = Math.abs(event.deltaY);
-
-    // Log the magnitude of the wheel movement
-    console.log('Wheel Magnitude:', scrollMagnitude);
-
-    // Update the state with the wheel magnitude (if needed)
-    // setWheelMagnitude(scrollMagnitude);
-  };
-
-  useEffect(() => {
-    // Add the wheel event listener to the document
-    document.addEventListener('wheel', handleWheel);
-
-    // Clean up the event listener when the component is unmounted
-    return () => {
-      document.removeEventListener('wheel', handleWheel);
-    };
-  }, []);
-
+  }, [id, topReached, setScrollPosition]);
 
   const textStyle = {
     transition: 'all 0.02s ease-in',
@@ -135,7 +88,7 @@ const FullScreenSlide = ({ video, image, id }) => {
             <source src={video} type="video/mp4" />
           </video>
           <div className="overlay" style={overlayStyle}>
-            <div ref={textRef}
+            <div
               style={{
                 bottom: `${textPosition}%`,
               }}

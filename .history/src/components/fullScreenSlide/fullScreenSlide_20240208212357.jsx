@@ -13,7 +13,7 @@ const FullScreenSlide = ({ video, image, id }) => {
   const [bottomReached, setBottomReached] = useState(false)
 
 
-  useEffect((event) => {
+  useEffect(() => {
     let prevScrollY = window.scrollY;
 
     const handleScroll = () => {
@@ -87,27 +87,6 @@ const FullScreenSlide = ({ video, image, id }) => {
       document.body.style.overflow = 'hidden'
     }
   },[bottomReached])
-
-  const handleWheel = (event) => {
-    // Get the magnitude of the wheel movement
-    const scrollMagnitude = Math.abs(event.deltaY);
-
-    // Log the magnitude of the wheel movement
-    console.log('Wheel Magnitude:', scrollMagnitude);
-
-    // Update the state with the wheel magnitude (if needed)
-    // setWheelMagnitude(scrollMagnitude);
-  };
-
-  useEffect(() => {
-    // Add the wheel event listener to the document
-    document.addEventListener('wheel', handleWheel);
-
-    // Clean up the event listener when the component is unmounted
-    return () => {
-      document.removeEventListener('wheel', handleWheel);
-    };
-  }, []);
 
 
   const textStyle = {

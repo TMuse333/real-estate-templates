@@ -88,27 +88,6 @@ const FullScreenSlide = ({ video, image, id }) => {
     }
   },[bottomReached])
 
-  const handleWheel = (event) => {
-    // Get the magnitude of the wheel movement
-    const scrollMagnitude = Math.abs(event.deltaY);
-
-    // Log the magnitude of the wheel movement
-    console.log('Wheel Magnitude:', scrollMagnitude);
-
-    // Update the state with the wheel magnitude (if needed)
-    // setWheelMagnitude(scrollMagnitude);
-  };
-
-  useEffect(() => {
-    // Add the wheel event listener to the document
-    document.addEventListener('wheel', handleWheel);
-
-    // Clean up the event listener when the component is unmounted
-    return () => {
-      document.removeEventListener('wheel', handleWheel);
-    };
-  }, []);
-
 
   const textStyle = {
     transition: 'all 0.02s ease-in',
