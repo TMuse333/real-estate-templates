@@ -58,7 +58,7 @@ const FullScreenSlide = ({ video, image, id }) => {
           setRelativePosition('below');
         }
 
-        console.log('text position',textPosition)
+        
 
         // Gradually change video opacity when text position is above 40
         if (newTextPosition >= 40) {

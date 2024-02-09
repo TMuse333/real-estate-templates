@@ -8,82 +8,105 @@ const FullScreenSlide = ({ video, image, id }) => {
 
   const [topReached, setTopReached] = useState(false);
   const [textPosition, setTextPosition] = useState(0);
-
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   const [bottomReached, setBottomReached] = useState(false)
   const [scrollPower, setScrollPower ] = useState(0)
   const [videoOpacity, setVideoOpacity] = useState(0.5)
 
-  const [relativePosition, setRelativePosition] = useState('below'); // 'above', 'below', 'atTop', 'atBottom'
-
   useEffect(() => {
     const handleWheel = (event) => {
       const contentElement = videoRef.current;
       const elementRect = contentElement.getBoundingClientRect();
-
+  
       const textElement = textRef.current;
       const textRect = textElement.getBoundingClientRect();
-
+  
       const windowHeight = window.innerHeight;
       const elementTop = elementRect.top;
       const elementBottom = elementRect.bottom;
-
+  
+      // Get the direction of the wheel movement
       const scrollDirection = event.deltaY > 0 ? 'down' : 'up';
+
+      
+  
+      // Get the magnitude of the wheel movement
       const scrollMagnitude = Math.abs(event.deltaY);
 
+      const multiplier = scrollDirection === 'up' && textPosition >= 80 && textPosition <= 90 ? 1.1 : 1;
+
+
       setScrollPower((prevScrollPower) => {
-        const multiplier = scrollDirection === 'down' && textPosition >= 50 && textPosition <= 95 ? 1.8 : 1;
+        // If scrolling down, and text position is in the range of 50-90, add a 1.5 multiplier
+        const multiplier = scrollDirection === 'down' && textPosition >= 50 && textPosition <= 90 ? 1.5 : 1;
+      
+        // Adjust the scroll power based on the multiplier
         return multiplier * (scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude);
       });
-
-      if (elementBottom <= windowHeight) {
+      // console.log('power of the scroll:', scrollPower);
+  
+      if (elementBottom <= windowHeight ) {
         setBottomReached(true);
-        if (textPosition < 95) {
-          document.body.style.overflow = 'hidden';
-        }
+
+        if(textPosition < 80)
+        document.body.style.overflow = 'hidden';
       }
+  
+      // if ((elementTop - windowHeight / 2) + 200 <= 0) {
+        // Set scrollPower based on the latest state
 
-      setTextPosition((prevTextPosition) => {
-        let newTextPosition = prevTextPosition + scrollPower / 20;
-        newTextPosition = Math.min(Math.max(newTextPosition, 0), 95);
+    
 
-        // Determine relative position
-        if (newTextPosition <= 0) {
-          setRelativePosition('above');
-        } else if (newTextPosition >= 95) {
-          setRelativePosition('atBottom');
-        } else if (newTextPosition >= 90) {
-          setRelativePosition('atTop');
-        } else {
-          setRelativePosition('below');
-        }
+        // Update text position based on scrollPower
+        setTextPosition((prevTextPosition) => {
+          let newTextPosition = prevTextPosition + scrollPower / 20;
+  
+          // Prevent the text position from going higher than 90
+          newTextPosition = Math.min(Math.max(newTextPosition, 0), 95);
 
-        console.log('text position',textPosition)
+          console.log('new text position',newTextPosition)
 
-        // Gradually change video opacity when text position is above 40
-        if (newTextPosition >= 40) {
-          const opacityChange = 0.00015 * (newTextPosition - 40);
-          setVideoOpacity((prevOpacity) => Math.max(0, prevOpacity - opacityChange));
-        } else {
-          // Gradually increase video opacity when text position is below 50
-          const opacityChange = 0.005 * (80 - newTextPosition);
-          setVideoOpacity((prevOpacity) => Math.min(0.5, prevOpacity + opacityChange));
-        }
+  
+          // Gradually change video opacity when text position is above 70
+          if (newTextPosition >= 40) {
+            const opacityChange = 0.00015 * (newTextPosition - 40); // Adjust the rate of opacity change
+            setVideoOpacity((prevOpacity) => {
+              const newOpacity = Math.max(0, prevOpacity - opacityChange);
+              // console.log('video opacity', newOpacity);
+              return newOpacity;
+            });
+          } else if (newTextPosition){
+            // Gradually increase video opacity when text position is below 50
+            const opacityChange = 0.005 * (80 - newTextPosition); // Adjust the rate of opacity change
+            setVideoOpacity((prevOpacity) => {
+              const newOpacity = Math.min(0.5, prevOpacity + opacityChange);
+              // console.log('video opacity', newOpacity);
+              return newOpacity;
+            });
+          }
 
-        if (newTextPosition >= 90) {
-          document.body.style.overflow = 'auto';
-        }
-
-        return newTextPosition;
-      });
+          // console.log('video opacity',videoOpacity)
+  
+          // Check if the text position has reached 90 percent
+          if (newTextPosition >= 90) {
+            // Set body overflow back to auto
+            document.body.style.overflow = 'auto';
+          }
+  
+          return  newTextPosition;
+        });
+      // }
     };
-
+  
+    // Add the wheel event listener to the document
     document.addEventListener('wheel', handleWheel);
-
+  
+    // Clean up the event listener when the component is unmounted
     return () => {
       document.removeEventListener('wheel', handleWheel);
     };
-  }, [setScrollPower, scrollPower, setTextPosition, setBottomReached, textPosition]);
+  }, [setScrollPower, scrollPower, setTextPosition, setBottomReached]);
   
   
   
