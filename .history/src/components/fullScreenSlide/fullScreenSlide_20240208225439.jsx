@@ -24,10 +24,7 @@ const FullScreenSlide = ({ video, image, id }) => {
       // Set scrollPower to the negative magnitude if scrolling up and positive if scrolling down
       setScrollPower(scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude);
       console.log(scrollPower);
-
-
-
-  }
+    };
   
     // Add the wheel event listener to the document
     document.addEventListener('wheel', handleWheel);
@@ -60,21 +57,15 @@ const FullScreenSlide = ({ video, image, id }) => {
   
       const currentScrollY = window.scrollY;
       const deltaY = currentScrollY - prevScrollY;
-
-
   
       const scrollDirection = deltaY > 0 ? 'down' : 'up';
-
-      console.log(scrollDirection)
       const scrollMagnitude = Math.abs(event.deltaY) / 9;
   
       // Check if at least 50 percent of the top of the element is in view
-      if ((elementTop - windowHeight / 2) + 200 <= 0) {
+      if ((elementTop - windowHeight / 2) + 225 <= 0) {
         setTextPosition((prevTextPosition) => {
-
-
-
-          const newTextPosition = prevTextPosition + (scrollDirection === 'up'  ? -scrollMagnitude : scrollMagnitude);
+          // Update the text position based on scroll direction and magnitude
+          const newTextPosition = prevTextPosition + scrollPower;
       
           // Log the adjustment to the text position
           console.log('Adjustment to Text Position:', scrollPower);
@@ -93,7 +84,7 @@ const FullScreenSlide = ({ video, image, id }) => {
       // Check if the bottom of the element reaches the bottom of the viewport
       if (elementBottom <= windowHeight) {
         setBottomReached(true)
-        // document.body.style.overflow = 'hidden'
+        document.body.style.overflow = 'hidden'
         
       } else {
         

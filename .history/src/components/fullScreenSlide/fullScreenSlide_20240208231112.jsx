@@ -61,11 +61,9 @@ const FullScreenSlide = ({ video, image, id }) => {
       const currentScrollY = window.scrollY;
       const deltaY = currentScrollY - prevScrollY;
 
-
+      
   
       const scrollDirection = deltaY > 0 ? 'down' : 'up';
-
-      console.log(scrollDirection)
       const scrollMagnitude = Math.abs(event.deltaY) / 9;
   
       // Check if at least 50 percent of the top of the element is in view
@@ -74,7 +72,7 @@ const FullScreenSlide = ({ video, image, id }) => {
 
 
 
-          const newTextPosition = prevTextPosition + (scrollDirection === 'up'  ? -scrollMagnitude : scrollMagnitude);
+          const newTextPosition = prevTextPosition + (scrollDirection === 'up'  ? scrollMagnitude : -scrollMagnitude);
       
           // Log the adjustment to the text position
           console.log('Adjustment to Text Position:', scrollPower);
@@ -93,7 +91,7 @@ const FullScreenSlide = ({ video, image, id }) => {
       // Check if the bottom of the element reaches the bottom of the viewport
       if (elementBottom <= windowHeight) {
         setBottomReached(true)
-        // document.body.style.overflow = 'hidden'
+        document.body.style.overflow = 'hidden'
         
       } else {
         

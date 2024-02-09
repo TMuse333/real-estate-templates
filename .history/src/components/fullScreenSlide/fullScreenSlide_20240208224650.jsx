@@ -14,37 +14,6 @@ const FullScreenSlide = ({ video, image, id }) => {
   const [scrollPower, setScrollPower ] = useState(0)
 
   useEffect(() => {
-    const handleWheel = (event) => {
-      // Get the direction of the wheel movement
-      const scrollDirection = event.deltaY > 0 ? 'down' : 'up';
-  
-      // Get the magnitude of the wheel movement
-      const scrollMagnitude = Math.abs(event.deltaY);
-  
-      // Set scrollPower to the negative magnitude if scrolling up and positive if scrolling down
-      setScrollPower(scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude);
-      console.log(scrollPower);
-
-
-
-  }
-  
-    // Add the wheel event listener to the document
-    document.addEventListener('wheel', handleWheel);
-  
-    // Clean up the event listener when the component is unmounted
-    return () => {
-      document.removeEventListener('wheel', handleWheel);
-    };
-  }, [setScrollPower]); // Include setScrollPower in the dependency array to avoid lint warnings
-  
-
-  
-
- 
-
-
-  useEffect(() => {
     let prevScrollY = window.scrollY;
   
     const handleScroll = (event) => {
@@ -60,24 +29,18 @@ const FullScreenSlide = ({ video, image, id }) => {
   
       const currentScrollY = window.scrollY;
       const deltaY = currentScrollY - prevScrollY;
-
-
   
       const scrollDirection = deltaY > 0 ? 'down' : 'up';
-
-      console.log(scrollDirection)
       const scrollMagnitude = Math.abs(event.deltaY) / 9;
   
       // Check if at least 50 percent of the top of the element is in view
-      if ((elementTop - windowHeight / 2) + 200 <= 0) {
+      if ((elementTop - windowHeight / 2) + 225 <= 0) {
         setTextPosition((prevTextPosition) => {
-
-
-
-          const newTextPosition = prevTextPosition + (scrollDirection === 'up'  ? -scrollMagnitude : scrollMagnitude);
+          // Update the text position based on scroll direction and magnitude
+          const newTextPosition = prevTextPosition + scrollPower;
       
           // Log the adjustment to the text position
-          console.log('Adjustment to Text Position:', scrollPower);
+          // console.log('Adjustment to Text Position:', adjustment);
       
           // Check if the text position has reached 90 percent
           if (newTextPosition >= 90) {
@@ -93,7 +56,7 @@ const FullScreenSlide = ({ video, image, id }) => {
       // Check if the bottom of the element reaches the bottom of the viewport
       if (elementBottom <= windowHeight) {
         setBottomReached(true)
-        // document.body.style.overflow = 'hidden'
+        document.body.style.overflow = 'hidden'
         
       } else {
         
@@ -118,7 +81,31 @@ const FullScreenSlide = ({ video, image, id }) => {
 
 
 
+  const handleWheel = (event) => {
+    // Get the direction of the wheel movement
+    const scrollDirection = event.deltaY > 0 ? 'down' : 'up';
   
+    // Get the magnitude of the wheel movement
+    const scrollMagnitude = Math.abs(event.deltaY);
+  
+    // Set scrollPower to the negative magnitude if scrolling up and positive if scrolling down
+    setScrollPower(scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude);
+  };
+  
+  // Add a wheel event listener
+  window.addEventListener('wheel', handleWheel);
+  
+
+  useEffect(() => {
+    // Add the wheel event listener to the document
+    document.addEventListener('wheel', handleWheel);
+
+    // Clean up the event listener when the component is unmounted
+    return () => {
+      document.removeEventListener('wheel', handleWheel);
+    };
+  }, []);
+
 
   const textStyle = {
     transition: 'all 0.02s ease-in',
