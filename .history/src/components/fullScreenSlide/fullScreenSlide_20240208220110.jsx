@@ -7,11 +7,11 @@ const FullScreenSlide = ({ video, image, id }) => {
   const [isPlaying, setIsPlaying] = useState(true);
 
   const [topReached, setTopReached] = useState(false);
-  const [textPosition, setTextPosition] = useState(40);
+  const [textPosition, setTextPosition] = useState(10);
   const [scrollPosition, setScrollPosition] = useState(0);
 
   const [bottomReached, setBottomReached] = useState(false)
-  const [scrollPower, setScrollPower ] = useState(0)
+
 
   useEffect(() => {
     let prevScrollY = window.scrollY;
@@ -31,36 +31,43 @@ const FullScreenSlide = ({ video, image, id }) => {
       const deltaY = currentScrollY - prevScrollY;
   
       const scrollDirection = deltaY > 0 ? 'down' : 'up';
-      const scrollMagnitude = Math.abs(event.deltaY) / 9;
+      const scrollMagnitude = Math.abs(event.deltaY) / 8;
   
       // Check if at least 50 percent of the top of the element is in view
-      if ((elementTop - windowHeight / 2) + 225 <= 0) {
+      if ((elementTop - windowHeight / 2) + 100 <= 0) {
         setTextPosition((prevTextPosition) => {
           // Update the text position based on scroll direction and magnitude
-          const adjustment = (scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude);
-          const newTextPosition = prevTextPosition + adjustment;
-      
-          // Log the adjustment to the text position
-          // console.log('Adjustment to Text Position:', adjustment);
-      
+          const newTextPosition = prevTextPosition + (scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude);
+  
           // Check if the text position has reached 90 percent
           if (newTextPosition >= 90) {
             // Set body overflow back to auto
             document.body.style.overflow = 'auto';
           }
-      
+  
           return newTextPosition;
         });
+  
+        // Do something with the direction and magnitude, for example, log them
+        console.log('Scroll Direction:', scrollDirection);
+        console.log('Scroll Magnitude:', scrollMagnitude);
+  
+        const containerTop = elementRect.top;
+        const textTop = textRect.top - containerTop;
+        const containerHeight = elementRect.height;
+        const textPercentage = (textTop / containerHeight) * 100;
+  
+        console.log('Text Percentage:', textPercentage);
+  
+        setScrollPosition(scrollMagnitude);
+        console.log('Scroll Position:', scrollPosition);
       }
-      
   
       // Check if the bottom of the element reaches the bottom of the viewport
       if (elementBottom <= windowHeight) {
-        setBottomReached(true)
-        document.body.style.overflow = 'hidden'
-        
+        setBottomReached(true);
       } else {
-        
+        setBottomReached(false);
       }
   
       prevScrollY = currentScrollY;
@@ -71,7 +78,7 @@ const FullScreenSlide = ({ video, image, id }) => {
     return () => {
       window.removeEventListener('wheel', handleScroll);
     };
-  }, [id, setScrollPosition,setBottomReached]);
+  }, [id, setScrollPosition]);
   
   
   
@@ -80,22 +87,22 @@ const FullScreenSlide = ({ video, image, id }) => {
   
 
 
-
+  useEffect(()=> {
+    if(bottomReached){
+      document.body.style.overflow = 'hidden'
+    }
+  },[bottomReached])
 
   const handleWheel = (event) => {
-    // Get the direction of the wheel movement
-    const scrollDirection = event.deltaY > 0 ? 'down' : 'up';
-  
     // Get the magnitude of the wheel movement
     const scrollMagnitude = Math.abs(event.deltaY);
-  
-    // Set scrollPower to the negative magnitude if scrolling up and positive if scrolling down
-    setScrollPower(scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude);
+
+    // Log the magnitude of the wheel movement
+    console.log('Wheel Magnitude:', scrollMagnitude);
+
+    // Update the state with the wheel magnitude (if needed)
+    // setWheelMagnitude(scrollMagnitude);
   };
-  
-  // Add a wheel event listener
-  window.addEventListener('wheel', handleWheel);
-  
 
   useEffect(() => {
     // Add the wheel event listener to the document
@@ -112,26 +119,16 @@ const FullScreenSlide = ({ video, image, id }) => {
     transition: 'all 0.02s ease-in',
   };
 
-  const style = {
-    overflow: bottomReached ? 'hidden' : 'hidden',
-
-  }
-
-
-
   const overlayStyle = {
     backgroundColor: !isPlaying ? 'rgba(0, 0, 0, 0.5)' : 'rgba(0, 0, 0, 0.5)',
     transition: 'all 0.3s ease-in', // Adjust the duration here
   };
 
   return (
-    <div className="full-slide-container"
-    style={style}
-   >
+    <div className="full-slide-container">
       {video && (
         <>
           <video
-          style={style}
             ref={videoRef}
             id={id}
             className="full-slide-video"

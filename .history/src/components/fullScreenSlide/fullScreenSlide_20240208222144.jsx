@@ -11,7 +11,7 @@ const FullScreenSlide = ({ video, image, id }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
 
   const [bottomReached, setBottomReached] = useState(false)
-  const [scrollPower, setScrollPower ] = useState(0)
+
 
   useEffect(() => {
     let prevScrollY = window.scrollY;
@@ -41,7 +41,7 @@ const FullScreenSlide = ({ video, image, id }) => {
           const newTextPosition = prevTextPosition + adjustment;
       
           // Log the adjustment to the text position
-          // console.log('Adjustment to Text Position:', adjustment);
+          console.log('Adjustment to Text Position:', adjustment);
       
           // Check if the text position has reached 90 percent
           if (newTextPosition >= 90) {
@@ -57,7 +57,6 @@ const FullScreenSlide = ({ video, image, id }) => {
       // Check if the bottom of the element reaches the bottom of the viewport
       if (elementBottom <= windowHeight) {
         setBottomReached(true)
-        document.body.style.overflow = 'hidden'
         
       } else {
         
@@ -83,19 +82,15 @@ const FullScreenSlide = ({ video, image, id }) => {
 
 
   const handleWheel = (event) => {
-    // Get the direction of the wheel movement
-    const scrollDirection = event.deltaY > 0 ? 'down' : 'up';
-  
     // Get the magnitude of the wheel movement
     const scrollMagnitude = Math.abs(event.deltaY);
-  
-    // Set scrollPower to the negative magnitude if scrolling up and positive if scrolling down
-    setScrollPower(scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude);
+
+    // Log the magnitude of the wheel movement
+    console.log('Wheel Magnitude:', scrollMagnitude);
+
+    // Update the state with the wheel magnitude (if needed)
+    // setWheelMagnitude(scrollMagnitude);
   };
-  
-  // Add a wheel event listener
-  window.addEventListener('wheel', handleWheel);
-  
 
   useEffect(() => {
     // Add the wheel event listener to the document

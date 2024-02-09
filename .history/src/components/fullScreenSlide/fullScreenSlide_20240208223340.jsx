@@ -89,8 +89,13 @@ const FullScreenSlide = ({ video, image, id }) => {
     // Get the magnitude of the wheel movement
     const scrollMagnitude = Math.abs(event.deltaY);
   
-    // Set scrollPower to the negative magnitude if scrolling up and positive if scrolling down
-    setScrollPower(scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude);
+    // Log the direction and magnitude of the wheel movement
+    console.log('Scroll Direction:', scrollDirection);
+    console.log('Scroll Magnitude:', scrollMagnitude);
+  
+    // Update the state with the direction and magnitude (if needed)
+    // setScrollDirection(scrollDirection);
+    // setScrollMagnitude(scrollMagnitude);
   };
   
   // Add a wheel event listener

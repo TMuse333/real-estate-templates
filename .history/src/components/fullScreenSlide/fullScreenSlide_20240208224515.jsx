@@ -37,8 +37,11 @@ const FullScreenSlide = ({ video, image, id }) => {
       if ((elementTop - windowHeight / 2) + 225 <= 0) {
         setTextPosition((prevTextPosition) => {
           // Update the text position based on scroll direction and magnitude
-          const adjustment = (scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude);
-          const newTextPosition = prevTextPosition + adjustment;
+          const newTextPosition = prevTextPosition + scrollPower;
+
+  // Log the adjustment to the text position
+  console.log('Adjustment to Text Position:', scrollPower);
+
       
           // Log the adjustment to the text position
           // console.log('Adjustment to Text Position:', adjustment);

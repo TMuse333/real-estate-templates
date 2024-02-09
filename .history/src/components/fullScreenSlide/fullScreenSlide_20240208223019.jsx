@@ -11,7 +11,7 @@ const FullScreenSlide = ({ video, image, id }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
 
   const [bottomReached, setBottomReached] = useState(false)
-  const [scrollPower, setScrollPower ] = useState(0)
+  const [scrollPower, setScrollPower ] = use
 
   useEffect(() => {
     let prevScrollY = window.scrollY;
@@ -41,7 +41,7 @@ const FullScreenSlide = ({ video, image, id }) => {
           const newTextPosition = prevTextPosition + adjustment;
       
           // Log the adjustment to the text position
-          // console.log('Adjustment to Text Position:', adjustment);
+          console.log('Adjustment to Text Position:', adjustment);
       
           // Check if the text position has reached 90 percent
           if (newTextPosition >= 90) {
@@ -89,8 +89,13 @@ const FullScreenSlide = ({ video, image, id }) => {
     // Get the magnitude of the wheel movement
     const scrollMagnitude = Math.abs(event.deltaY);
   
-    // Set scrollPower to the negative magnitude if scrolling up and positive if scrolling down
-    setScrollPower(scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude);
+    // Log the direction and magnitude of the wheel movement
+    console.log('Scroll Direction:', scrollDirection);
+    console.log('Scroll Magnitude:', scrollMagnitude);
+  
+    // Update the state with the direction and magnitude (if needed)
+    // setScrollDirection(scrollDirection);
+    // setScrollMagnitude(scrollMagnitude);
   };
   
   // Add a wheel event listener

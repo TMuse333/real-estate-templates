@@ -15,9 +15,9 @@ const ParallaxPage = () => {
             <img src={gokuJiren}/>
 
           </div>
-            <FullScreenSlide
+            {/* <FullScreenSlide
             video={stepBack}
-            id='video2'/>
+            id='video2'/> */}
 
 <FullScreenSlide
             video={stepBack}
