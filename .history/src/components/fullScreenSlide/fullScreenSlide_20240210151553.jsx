@@ -207,58 +207,78 @@ const FullScreenSlide = ({ video, image, id }) => {
 
   return (
     <>
-    <div className="full-slide-container">
-      {!isDesktop && (
-        <div
-          ref={textRef}
-          className="full-slide-text"
-        >
-          <h3>Jonathan Nigward</h3>
-          <h1>The Best Stretch 4 ever.</h1>
-        </div>
-      )}
-  
-      <video
-        ref={videoRef}
-        id={id}
-        className={`full-slide-video ${isDesktop ? 'desktop' : ''}`}
-        controls
-        autoPlay={isPlaying}
-        muted
-        loop
-        style={textAtTop && isDesktop ? { transform: `scale(${videoScale})` } : null}
+
+    <div className="full-slide-container"  
+
+    { ...!isDesktop && (
+      <>
+      <div
+        ref={textRef}
+        
+        className="full-slide-text"
       >
-        <source src={video} type="video/mp4" />
-      </video>
-  
-      {isDesktop && (
-        <div className="overlay" style={overlayStyle}>
-          <div
-            ref={textRef}
-            style={{
-              bottom: `${textPosition}%`,
-              ...textStyle
-            }}
-            className="full-slide-text"
+        <h3>Jonathan Nigward</h3>
+        <h1>The Best Stretch 4 ever.</h1>
+      </div>
+      </>
+    )}
+   >
+        <>
+          <video
+ 
+            ref={videoRef}
+            id={id}
+            className={`full-slide-video ${isDesktop ? 'desktop' : ''}`}
+            controls
+            autoPlay={isPlaying}
+            muted
+            loop
+            style={textAtTop && isDesktop?{ transform: `scale(${videoScale})` } : null}
           >
-            <h3>Jonathan Nigward</h3>
-            <h1>The Best Stretch 4 ever.</h1>
-          </div>
-        </div>
-      )}
-  
-      <div className='full-slide-description'>
-        <h2>
-          straight from the guadeloupe islands
-        </h2>
-        <div>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit magnam molestias facilis. Obcaecati itaque quisquam incidunt, alias dignissimos fugiat. Impedit!
-          <button>button</button>
-        </div>
+            <source src={video} type="video/mp4" />
+          </video>
+
+          
+          
+          {isDesktop && (
+            <>
+    <div className="overlay" style={overlayStyle}>
+      <div
+        ref={textRef}
+        style={{
+          bottom: `${textPosition}%`,
+          ...textStyle
+        }}
+        className="full-slide-text"
+      >
+        <h3>Jonathan Nigward</h3>
+        <h1>The Best Stretch 4 ever.</h1>
       </div>
     </div>
-  </>
+    </>
+  )} 
+    
   
+  
+
+         
+        </>
+      
+    
+  
+    </div>
+
+    <div className='full-slide-description'>
+      <h2>
+        straight from the guadeloupe islands
+      </h2>
+      <div >
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit magnam molestias facilis. Obcaecati itaque quisquam incidunt, alias dignissimos fugiat. Impedit!
+        <button>button</button>
+      </div>
+    </div>
+
+    </>
   );
 };
 

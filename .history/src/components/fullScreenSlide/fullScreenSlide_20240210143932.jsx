@@ -31,13 +31,13 @@ const FullScreenSlide = ({ video, image, id }) => {
       const screenWidth = window.innerWidth;
 
       // Check if the screen width is 700px or wider
-      if (screenWidth < 700) {
+      if (screenWidth >= 700) {
         // Your action or logic when the screen width is 700px or wider
+        setIsDesktop(true)
+      }
+      else{
         setIsDesktop(false)
       }
-
-      console.log(isDesktop)
-     
     };
 
     // Attach the event listener for resize
@@ -52,12 +52,11 @@ const FullScreenSlide = ({ video, image, id }) => {
     };
   }, [setIsDesktop]); 
 
-
+  if(isDesktop){
 
   useEffect(() => {
     const handleWheel = (event) => {
 
-      if(isDesktop){
 
       setIsLocked(document.body.style.overflow === 'hidden');
 
@@ -155,6 +154,10 @@ const FullScreenSlide = ({ video, image, id }) => {
         setIsReturning(false)
       }
 
+    
+
+     
+
       let newVideoScale;
      
         // Adjust video scale based on the distance from the bottom of the viewport
@@ -162,13 +165,12 @@ const FullScreenSlide = ({ video, image, id }) => {
      
       
       setVideoScale(newVideoScale);
- 
-      console.log('video scale',videoScale)
-    }
+      
+      
 
-    else{
-      document.body.style.overflow = 'auto'
-    }
+  console.log('video scale',videoScale)
+
+
  
     };
   
@@ -179,7 +181,7 @@ const FullScreenSlide = ({ video, image, id }) => {
     };
   }, [setScrollPower, scrollPower, setTextPosition, setBottomReached, textPosition, textAtTop, setTextAtTop,setIsReturning,isLocked,setVideoScale]);
 
-
+}
 
 
   useEffect(() => {
@@ -195,70 +197,61 @@ const FullScreenSlide = ({ video, image, id }) => {
 
   const overlayStyle = {
     backgroundColor: `rgba(0, 0, 0, ${videoOpacity})`,
-    transition: 'opacity 0.3s ease-in', // Adjust the duration here
+    transition: 'all 0.3s ease-in', // Adjust the duration here
   };
-
-  const textStyle = {
-    position: 'absolute',
-    left:'50%',
-    transform:'translateX(-50%)',
-
-  }
 
   return (
     <>
-    <div className="full-slide-container">
-      {!isDesktop && (
-        <div
-          ref={textRef}
-          className="full-slide-text"
-        >
-          <h3>Jonathan Nigward</h3>
-          <h1>The Best Stretch 4 ever.</h1>
-        </div>
-      )}
-  
-      <video
-        ref={videoRef}
-        id={id}
-        className={`full-slide-video ${isDesktop ? 'desktop' : ''}`}
-        controls
-        autoPlay={isPlaying}
-        muted
-        loop
-        style={textAtTop && isDesktop ? { transform: `scale(${videoScale})` } : null}
-      >
-        <source src={video} type="video/mp4" />
-      </video>
-  
-      {isDesktop && (
-        <div className="overlay" style={overlayStyle}>
-          <div
-            ref={textRef}
-            style={{
-              bottom: `${textPosition}%`,
-              ...textStyle
-            }}
-            className="full-slide-text"
+
+    <div className="full-slide-container"
+    
+   >
+ 
+        <>
+          <video
+ 
+            ref={videoRef}
+            id={id}
+            className="full-slide-video"
+            controls
+            autoPlay={isPlaying}
+            muted
+            loop
+            style={textAtTop && isDesktop?{ transform: `scale(${videoScale})` } : null}
           >
-            <h3>Jonathan Nigward</h3>
-            <h1>The Best Stretch 4 ever.</h1>
+            <source src={video} type="video/mp4" />
+          </video>
+          {isDesktop }
+          <div className="overlay" style={overlayStyle}>
+            <div ref={textRef}
+              style={{
+                bottom: isDesktop ?`${textPosition}%` : 0,
+              }}
+              className="full-slide-text"
+            >
+              <h3>Jonathan Nigward</h3>
+              <h1>The Best Stretch 4 ever.</h1>
+            </div>
           </div>
-        </div>
-      )}
+
+         
+        </>
+      
+    
   
-      <div className='full-slide-description'>
-        <h2>
-          straight from the guadeloupe islands
-        </h2>
-        <div>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit magnam molestias facilis. Obcaecati itaque quisquam incidunt, alias dignissimos fugiat. Impedit!
-          <button>button</button>
-        </div>
+    </div>
+
+    <div className='full-slide-description'>
+      <h2>
+        straight from the guadeloupe islands
+      </h2>
+      <div >
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit magnam molestias facilis. Obcaecati itaque quisquam incidunt, alias dignissimos fugiat. Impedit!
+        <button>button</button>
       </div>
     </div>
-  </>
-  
+
+    </>
   );
 };
 

@@ -6,18 +6,12 @@
     object-fit: cover;
     object-position: 75% 50%;
     /* width: 100%; */
-    height: 80vh;;
-    width: 90vw;
+    height: 100vh;;
+    width: 100vw;
     position: relative;
-
     
 
 
-}
-
-.desktop{
-    width: 100vw;
-    height: 100vh;
 }
 
 .full-slide-text h1{
@@ -44,13 +38,12 @@ width: 100vw;
 }
 
 .full-slide-text{
-    margin:0 auto 0 auto;
+    margin:0 auto;
     color:white;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
 
     
 }
@@ -75,12 +68,9 @@ width: 100vw;
 
 .full-slide-description{
     display: flex;
-    width:70vw;
-    margin: 2rem auto 0;
+    width:50vw;
+    margin: 0 auto;
     background-color: white;
-    height:30vh;
-    padding:2rem;
-    justify-content: space-around;
 }
 
 
@@ -88,9 +78,9 @@ width: 100vw;
 @media screen and (min-width:700px){
     .full-slide-text{
    
-        /* position: absolute;
-     
+        position: absolute;
+        /* bottom: 50%; */
         left:50%;
-        transform: translateX(-50%); */
+        transform: translateX(-50%);
     }
 }

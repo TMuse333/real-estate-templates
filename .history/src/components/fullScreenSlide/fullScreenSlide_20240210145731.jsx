@@ -7,7 +7,7 @@ const FullScreenSlide = ({ video, image, id }) => {
   const [isPlaying, setIsPlaying] = useState(true);
 
   const [topReached, setTopReached] = useState(false);
-  const [textPosition, setTextPosition] = useState(40);
+  const [textPosition, setTextPosition] = useState(0);
 
 
   const [bottomReached, setBottomReached] = useState(false)
@@ -35,8 +35,6 @@ const FullScreenSlide = ({ video, image, id }) => {
         // Your action or logic when the screen width is 700px or wider
         setIsDesktop(false)
       }
-
-      console.log(isDesktop)
      
     };
 
@@ -155,6 +153,10 @@ const FullScreenSlide = ({ video, image, id }) => {
         setIsReturning(false)
       }
 
+    
+
+     
+
       let newVideoScale;
      
         // Adjust video scale based on the distance from the bottom of the viewport
@@ -162,13 +164,17 @@ const FullScreenSlide = ({ video, image, id }) => {
      
       
       setVideoScale(newVideoScale);
- 
-      console.log('video scale',videoScale)
+      
+      
+
+  console.log('video scale',videoScale)
     }
 
     else{
       document.body.style.overflow = 'auto'
     }
+
+
  
     };
   
@@ -198,67 +204,73 @@ const FullScreenSlide = ({ video, image, id }) => {
     transition: 'opacity 0.3s ease-in', // Adjust the duration here
   };
 
-  const textStyle = {
-    position: 'absolute',
-    left:'50%',
-    transform:'translateX(-50%)',
-
-  }
-
   return (
     <>
-    <div className="full-slide-container">
-      {!isDesktop && (
-        <div
-          ref={textRef}
-          className="full-slide-text"
-        >
-          <h3>Jonathan Nigward</h3>
-          <h1>The Best Stretch 4 ever.</h1>
-        </div>
-      )}
-  
-      <video
-        ref={videoRef}
-        id={id}
-        className={`full-slide-video ${isDesktop ? 'desktop' : ''}`}
-        controls
-        autoPlay={isPlaying}
-        muted
-        loop
-        style={textAtTop && isDesktop ? { transform: `scale(${videoScale})` } : null}
-      >
-        <source src={video} type="video/mp4" />
-      </video>
-  
-      {isDesktop && (
-        <div className="overlay" style={overlayStyle}>
-          <div
-            ref={textRef}
-            style={{
-              bottom: `${textPosition}%`,
-              ...textStyle
-            }}
-            className="full-slide-text"
+
+    <div className="full-slide-container"
+    
+   >
+ 
+        <>
+          <video
+ 
+            ref={videoRef}
+            id={id}
+            className="full-slide-video"
+            controls
+            autoPlay={isPlaying}
+            muted
+            loop
+            style={textAtTop && isDesktop?{ transform: `scale(${videoScale})` } : null}
           >
-            <h3>Jonathan Nigward</h3>
-            <h1>The Best Stretch 4 ever.</h1>
-          </div>
-        </div>
-      )}
-  
-      <div className='full-slide-description'>
-        <h2>
-          straight from the guadeloupe islands
-        </h2>
-        <div>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit magnam molestias facilis. Obcaecati itaque quisquam incidunt, alias dignissimos fugiat. Impedit!
-          <button>button</button>
-        </div>
+            <source src={video} type="video/mp4" />
+          </video>
+
+          
+          
+          {isDesktop ? (
+    <div className="overlay" style={overlayStyle}>
+      <div
+        ref={textRef}
+        style={{
+          bottom: `${textPosition}%`,
+        }}
+        className="full-slide-text"
+      >
+        <h3>Jonathan Nigward</h3>
+        <h1>The Best Stretch 4 ever.</h1>
       </div>
     </div>
-  </>
+  ) : (
+    <div
+        ref={textRef}
+        
+        className="full-slide-text"
+      >
+        <h3>Jonathan Nigward</h3>
+        <h1>The Best Stretch 4 ever.</h1>
+      </div>
+  )
+  }
+
+         
+        </>
+      
+    
   
+    </div>
+
+    <div className='full-slide-description'>
+      <h2>
+        straight from the guadeloupe islands
+      </h2>
+      <div >
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit magnam molestias facilis. Obcaecati itaque quisquam incidunt, alias dignissimos fugiat. Impedit!
+        <button>button</button>
+      </div>
+    </div>
+
+    </>
   );
 };
 

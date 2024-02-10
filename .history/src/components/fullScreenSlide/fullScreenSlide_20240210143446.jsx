@@ -24,40 +24,14 @@ const FullScreenSlide = ({ video, image, id }) => {
 
   const [videoScale, setVideoScale] = useState(1);
 
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 700)
+  const [isDesktop, setIsDesktop] = 
 
-  useEffect(() => {
-    const handleResize = () => {
-      const screenWidth = window.innerWidth;
-
-      // Check if the screen width is 700px or wider
-      if (screenWidth < 700) {
-        // Your action or logic when the screen width is 700px or wider
-        setIsDesktop(false)
-      }
-
-      console.log(isDesktop)
-     
-    };
-
-    // Attach the event listener for resize
-    window.addEventListener('resize', handleResize);
-
-    // Initial check when the component mounts
-    handleResize();
-
-    // Clean up the event listener when the component unmounts
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [setIsDesktop]); 
 
 
 
   useEffect(() => {
     const handleWheel = (event) => {
 
-      if(isDesktop){
 
       setIsLocked(document.body.style.overflow === 'hidden');
 
@@ -155,6 +129,10 @@ const FullScreenSlide = ({ video, image, id }) => {
         setIsReturning(false)
       }
 
+    
+
+     
+
       let newVideoScale;
      
         // Adjust video scale based on the distance from the bottom of the viewport
@@ -162,13 +140,12 @@ const FullScreenSlide = ({ video, image, id }) => {
      
       
       setVideoScale(newVideoScale);
- 
-      console.log('video scale',videoScale)
-    }
+      
+      
 
-    else{
-      document.body.style.overflow = 'auto'
-    }
+  console.log('video scale',videoScale)
+
+
  
     };
   
@@ -178,8 +155,6 @@ const FullScreenSlide = ({ video, image, id }) => {
       document.removeEventListener('wheel', handleWheel);
     };
   }, [setScrollPower, scrollPower, setTextPosition, setBottomReached, textPosition, textAtTop, setTextAtTop,setIsReturning,isLocked,setVideoScale]);
-
-
 
 
   useEffect(() => {
@@ -195,70 +170,60 @@ const FullScreenSlide = ({ video, image, id }) => {
 
   const overlayStyle = {
     backgroundColor: `rgba(0, 0, 0, ${videoOpacity})`,
-    transition: 'opacity 0.3s ease-in', // Adjust the duration here
+    transition: 'all 0.3s ease-in', // Adjust the duration here
   };
-
-  const textStyle = {
-    position: 'absolute',
-    left:'50%',
-    transform:'translateX(-50%)',
-
-  }
 
   return (
     <>
-    <div className="full-slide-container">
-      {!isDesktop && (
-        <div
-          ref={textRef}
-          className="full-slide-text"
-        >
-          <h3>Jonathan Nigward</h3>
-          <h1>The Best Stretch 4 ever.</h1>
-        </div>
-      )}
-  
-      <video
-        ref={videoRef}
-        id={id}
-        className={`full-slide-video ${isDesktop ? 'desktop' : ''}`}
-        controls
-        autoPlay={isPlaying}
-        muted
-        loop
-        style={textAtTop && isDesktop ? { transform: `scale(${videoScale})` } : null}
-      >
-        <source src={video} type="video/mp4" />
-      </video>
-  
-      {isDesktop && (
-        <div className="overlay" style={overlayStyle}>
-          <div
-            ref={textRef}
-            style={{
-              bottom: `${textPosition}%`,
-              ...textStyle
-            }}
-            className="full-slide-text"
+
+    <div className="full-slide-container"
+    
+   >
+ 
+        <>
+          <video
+ 
+            ref={videoRef}
+            id={id}
+            className="full-slide-video"
+            controls
+            autoPlay={isPlaying}
+            muted
+            loop
+            style={textAtTop ?{ transform: `scale(${videoScale})` } : null}
           >
-            <h3>Jonathan Nigward</h3>
-            <h1>The Best Stretch 4 ever.</h1>
+            <source src={video} type="video/mp4" />
+          </video>
+          <div className="overlay" style={overlayStyle}>
+            <div ref={textRef}
+              style={{
+                bottom: `${textPosition}%`,
+              }}
+              className="full-slide-text"
+            >
+              <h3>Jonathan Nigward</h3>
+              <h1>The Best Stretch 4 ever.</h1>
+            </div>
           </div>
-        </div>
-      )}
+
+         
+        </>
+      
+    
   
-      <div className='full-slide-description'>
-        <h2>
-          straight from the guadeloupe islands
-        </h2>
-        <div>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit magnam molestias facilis. Obcaecati itaque quisquam incidunt, alias dignissimos fugiat. Impedit!
-          <button>button</button>
-        </div>
+    </div>
+
+    <div className='full-slide-description'>
+      <h2>
+        straight from the guadeloupe islands
+      </h2>
+      <div >
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit magnam molestias facilis. Obcaecati itaque quisquam incidunt, alias dignissimos fugiat. Impedit!
+        <button>button</button>
       </div>
     </div>
-  </>
-  
+
+    </>
   );
 };
 
