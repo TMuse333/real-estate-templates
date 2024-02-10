@@ -253,7 +253,7 @@ const FullScreenSlide = ({ video, image, id }) => {
         </h2>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit magnam molestias facilis. Obcaecati itaque quisquam incidunt, alias dignissimos fugiat. Impedit!
-          <br/><button>button</button>
+          <button>button</button>
         </p>
       </div>
     </div>
