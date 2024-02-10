@@ -20,19 +20,10 @@ const FullScreenSlide = ({ video, image, id }) => {
 
   const [isReturning, setIsReturning] = useState(false)
 
-  const [isLocked,setIsLocked] = useState(false)
-
-  const [videoScale, setVideoScale] = useState(1);
-
-
 
 
   useEffect(() => {
     const handleWheel = (event) => {
-
-
-      setIsLocked(document.body.style.overflow === 'hidden');
-
       const contentElement = videoRef.current;
       const elementRect = contentElement.getBoundingClientRect();
   
@@ -42,8 +33,7 @@ const FullScreenSlide = ({ video, image, id }) => {
       const windowHeight = window.innerHeight;
       const elementTop = elementRect.top;
 
-      // const elementAtBottom = Math.abs(elementBottom - windowHeight) < 1;
-
+     
   
       // Check if 40 percent of the top of the element is in view
       const threshold = elementRect.height * 0.4;
@@ -54,7 +44,7 @@ const FullScreenSlide = ({ video, image, id }) => {
 
       const elementBottom = elementRect.bottom;
 
-      // console.log('bottom',elementTop,elementBottom)
+      console.log(' bottom',elementTop,elementBottom)
   
       // Check if at the top and scrolling up, set scroll power to 0
       if (textAtTop && scrollDirection === 'up') {
@@ -70,7 +60,7 @@ const FullScreenSlide = ({ video, image, id }) => {
         let newTextPosition = prevTextPosition + scrollPower / 20;
   
         // Check if the new text position is within the valid range
-        if (newTextPosition >= 40 && newTextPosition <= 95) {
+        if (newTextPosition >= 40 && newTextPosition <= 90) {
 
           if (scrollDirection === 'down') {
           
@@ -89,12 +79,12 @@ const FullScreenSlide = ({ video, image, id }) => {
           return newTextPosition;
         } else {
           // If outside the range, clamp the value
-          return Math.min(Math.max(newTextPosition, 40), 95);
+          return Math.min(Math.max(newTextPosition, 40), 90);
         }
       });
   
       // Check if the top of the element reaches the top of the viewport
-      if (elementTop -3 <= 0) {
+      if (elementTop <= 0) {
         setTopReached(true);
         if (textPosition < 95) {
           document.body.style.overflow = 'hidden';
@@ -102,7 +92,7 @@ const FullScreenSlide = ({ video, image, id }) => {
       }
   
       // Check if the text position hits 90 and reset overflow to auto
-      if (textPosition >= 95) {
+      if (textPosition >= 90) {
         document.body.style.overflow = 'auto';
         setTextAtTop(true)
       }
@@ -122,28 +112,6 @@ const FullScreenSlide = ({ video, image, id }) => {
         setIsReturning(false)
       }
 
-      if( scrollPower > 1 && isReturning){
-        document.body.style.overflow = 'auto'
-        setIsReturning(false)
-      }
-
-    
-
-     
-
-      let newVideoScale;
-     
-        // Adjust video scale based on the distance from the bottom of the viewport
-        newVideoScale = Math.min(1, Math.max(0.5, 1 - ((windowHeight - elementBottom) / 5000)));
-     
-      
-      setVideoScale(newVideoScale);
-      
-      
-
-  console.log('video scale',videoScale)
-
-
  
     };
   
@@ -152,18 +120,7 @@ const FullScreenSlide = ({ video, image, id }) => {
     return () => {
       document.removeEventListener('wheel', handleWheel);
     };
-  }, [setScrollPower, scrollPower, setTextPosition, setBottomReached, textPosition, textAtTop, setTextAtTop,setIsReturning,isLocked,setVideoScale]);
-
-
-  useEffect(() => {
-    // console.log('isLocked changed:', isLocked);
-    // console.log('Is returning changed',isReturning)
-    console.log('TextAtTop changed',textAtTop)
-    // console.log('text position',textPosition)
-
-    
-    // Additional logic, if needed, based on the value of isLocked
-  }, [isLocked,isReturning,textAtTop,textPosition]);
+  }, [setScrollPower, scrollPower, setTextPosition, setBottomReached, textPosition, textAtTop, setTextAtTop,setIsReturning]);
   
 
   const overlayStyle = {
@@ -188,7 +145,6 @@ const FullScreenSlide = ({ video, image, id }) => {
             autoPlay={isPlaying}
             muted
             loop
-            style={textAtTop ?{ transform: `scale(${videoScale})` } : null}
           >
             <source src={video} type="video/mp4" />
           </video>
@@ -211,7 +167,7 @@ const FullScreenSlide = ({ video, image, id }) => {
   
     </div>
 
-    <div className='full-slide-description'>
+    {/* <div className='full-slide-description'>
       <h2>
         straight from the guadeloupe islands
       </h2>
@@ -219,7 +175,7 @@ const FullScreenSlide = ({ video, image, id }) => {
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit magnam molestias facilis. Obcaecati itaque quisquam incidunt, alias dignissimos fugiat. Impedit!
         <button>button</button>
       </div>
-    </div>
+    </div> */}
 
     </>
   );

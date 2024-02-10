@@ -21,9 +21,7 @@ const ParallaxPage = () => {
             video={stepBack}
             id='video2'/>
 
-{/* <FullScreenSlide
-            video={stepBack}
-            id='video3'/> */}
+            
         
 
             <ServiceOverview/>

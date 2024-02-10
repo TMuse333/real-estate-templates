@@ -127,12 +127,12 @@ const FullScreenSlide = ({ video, image, id }) => {
         setIsReturning(false)
       }
 
-    
+      const isElementAboveViewportBottom = elementBottom < windowHeight + 10;
 
      
 
       let newVideoScale;
-     
+      if (5===5) {
         // Adjust video scale based on the distance from the bottom of the viewport
         newVideoScale = Math.min(1, Math.max(0.5, 1 - ((windowHeight - elementBottom) / 5000)));
      

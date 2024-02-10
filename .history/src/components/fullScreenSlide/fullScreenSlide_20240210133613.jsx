@@ -127,20 +127,21 @@ const FullScreenSlide = ({ video, image, id }) => {
         setIsReturning(false)
       }
 
-    
+      const isElementAboveViewportBottom = elementBottom < windowHeight;
 
-     
 
-      let newVideoScale;
-     
-        // Adjust video scale based on the distance from the bottom of the viewport
-        newVideoScale = Math.min(1, Math.max(0.5, 1 - ((windowHeight - elementBottom) / 5000)));
-     
-      
-      setVideoScale(newVideoScale);
-      
       
 
+let newVideoScale;
+  if (scrollDirection === 'up' && isElementAboveViewportBottom && textAtTop) {
+    newVideoScale = Math.max(0.5, 1 - (scrollPower / 100));
+  } else if (scrollDirection === 'down' && isElementAboveViewportBottom && textAtTop) {
+    newVideoScale = Math.min(1, 1 - (scrollPower / 100));
+  } else {
+    newVideoScale = videoScale; // Keep the current scale if conditions are not met
+  }
+
+  setVideoScale(newVideoScale);
   console.log('video scale',videoScale)
 
 
@@ -188,7 +189,7 @@ const FullScreenSlide = ({ video, image, id }) => {
             autoPlay={isPlaying}
             muted
             loop
-            style={textAtTop ?{ transform: `scale(${videoScale})` } : null}
+            style={{ transform: `scale(${videoScale})` }}
           >
             <source src={video} type="video/mp4" />
           </video>

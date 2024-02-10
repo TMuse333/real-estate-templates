@@ -22,9 +22,6 @@ const FullScreenSlide = ({ video, image, id }) => {
 
   const [isLocked,setIsLocked] = useState(false)
 
-  const [videoScale, setVideoScale] = useState(1);
-
-
 
 
   useEffect(() => {
@@ -42,8 +39,7 @@ const FullScreenSlide = ({ video, image, id }) => {
       const windowHeight = window.innerHeight;
       const elementTop = elementRect.top;
 
-      // const elementAtBottom = Math.abs(elementBottom - windowHeight) < 1;
-
+     
   
       // Check if 40 percent of the top of the element is in view
       const threshold = elementRect.height * 0.4;
@@ -122,26 +118,10 @@ const FullScreenSlide = ({ video, image, id }) => {
         setIsReturning(false)
       }
 
-      if( scrollPower > 1 && isReturning){
-        document.body.style.overflow = 'auto'
-        setIsReturning(false)
+      if(textPosition === 9 && scrollDirection === 'up'){
+        console.log('break point')
       }
 
-    
-
-     
-
-      let newVideoScale;
-     
-        // Adjust video scale based on the distance from the bottom of the viewport
-        newVideoScale = Math.min(1, Math.max(0.5, 1 - ((windowHeight - elementBottom) / 5000)));
-     
-      
-      setVideoScale(newVideoScale);
-      
-      
-
-  console.log('video scale',videoScale)
 
 
  
@@ -152,14 +132,14 @@ const FullScreenSlide = ({ video, image, id }) => {
     return () => {
       document.removeEventListener('wheel', handleWheel);
     };
-  }, [setScrollPower, scrollPower, setTextPosition, setBottomReached, textPosition, textAtTop, setTextAtTop,setIsReturning,isLocked,setVideoScale]);
+  }, [setScrollPower, scrollPower, setTextPosition, setBottomReached, textPosition, textAtTop, setTextAtTop,setIsReturning,isLocked]);
 
 
   useEffect(() => {
-    // console.log('isLocked changed:', isLocked);
-    // console.log('Is returning changed',isReturning)
+    console.log('isLocked changed:', isLocked);
+    console.log('Is returning changed',isReturning)
     console.log('TextAtTop changed',textAtTop)
-    // console.log('text position',textPosition)
+    console.log('text position',textPosition)
 
     
     // Additional logic, if needed, based on the value of isLocked
@@ -188,7 +168,6 @@ const FullScreenSlide = ({ video, image, id }) => {
             autoPlay={isPlaying}
             muted
             loop
-            style={textAtTop ?{ transform: `scale(${videoScale})` } : null}
           >
             <source src={video} type="video/mp4" />
           </video>

@@ -127,7 +127,7 @@ const FullScreenSlide = ({ video, image, id }) => {
         setIsReturning(false)
       }
 
-    
+      const isElementAboveViewportBottom = elementBottom < windowHeight + 10;
 
      
 
