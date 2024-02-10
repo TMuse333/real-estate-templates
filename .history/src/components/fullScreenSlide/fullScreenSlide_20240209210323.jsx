@@ -93,9 +93,8 @@ const FullScreenSlide = ({ video, image, id }) => {
         setTextAtTop(false)
       }
 
-      if(textPosition === 40 && scrollDirection === 'up'){
-        document.body.style.overflow = 'auto'
-        setIsReturning(false)
+      if(textPosition === 40){
+        
       }
 
  

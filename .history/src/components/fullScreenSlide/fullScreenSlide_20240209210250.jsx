@@ -90,12 +90,7 @@ const FullScreenSlide = ({ video, image, id }) => {
 
       if(isReturning && elementBottom >= 800){
         document.body.style.overflow = 'hidden'
-        setTextAtTop(false)
-      }
-
-      if(textPosition === 40 && scrollDirection === 'up'){
-        document.body.style.overflow = 'auto'
-        setIsReturning(false)
+        se
       }
 
  

@@ -32,8 +32,6 @@ const FullScreenSlide = ({ video, image, id }) => {
   
       const windowHeight = window.innerHeight;
       const elementTop = elementRect.top;
-
-     
   
       // Check if 40 percent of the top of the element is in view
       const threshold = elementRect.height * 0.4;
@@ -43,8 +41,6 @@ const FullScreenSlide = ({ video, image, id }) => {
       const scrollMagnitude = Math.abs(event.deltaY);
 
       const elementBottom = elementRect.bottom;
-
-      console.log('top and bottom',elementTop,elementBottom)
   
       // Check if at the top and scrolling up, set scroll power to 0
       if (textAtTop && scrollDirection === 'up') {
@@ -83,22 +79,9 @@ const FullScreenSlide = ({ video, image, id }) => {
         setTextAtTop(true)
       }
 
-      if(elementBottom < windowHeight && scrollDirection === 'up'){
-        setIsReturning(true)
-        console.log('return initiated')
-      }
-
-      if(isReturning && elementBottom >= 800){
+     else if(topReached && textAtTop){
         document.body.style.overflow = 'hidden'
-        setTextAtTop(false)
       }
-
-      if(textPosition === 40 && scrollDirection === 'up'){
-        document.body.style.overflow = 'auto'
-        setIsReturning(false)
-      }
-
- 
     };
   
     document.addEventListener('wheel', handleWheel);
@@ -106,7 +89,7 @@ const FullScreenSlide = ({ video, image, id }) => {
     return () => {
       document.removeEventListener('wheel', handleWheel);
     };
-  }, [setScrollPower, scrollPower, setTextPosition, setBottomReached, textPosition, textAtTop, setTextAtTop,setIsReturning]);
+  }, [setScrollPower, scrollPower, setTextPosition, setBottomReached, textPosition, textAtTop, setTextAtTop]);
   
   
   

@@ -18,9 +18,7 @@ const FullScreenSlide = ({ video, image, id }) => {
 
   const [textAtTop, setTextAtTop] = useState(false)
 
-  const [isReturning, setIsReturning] = useState(false)
-
-
+  if(textAtTop )
 
   useEffect(() => {
     const handleWheel = (event) => {
@@ -32,8 +30,6 @@ const FullScreenSlide = ({ video, image, id }) => {
   
       const windowHeight = window.innerHeight;
       const elementTop = elementRect.top;
-
-     
   
       // Check if 40 percent of the top of the element is in view
       const threshold = elementRect.height * 0.4;
@@ -41,15 +37,11 @@ const FullScreenSlide = ({ video, image, id }) => {
   
       const scrollDirection = event.deltaY > 0 ? 'down' : 'up';
       const scrollMagnitude = Math.abs(event.deltaY);
-
-      const elementBottom = elementRect.bottom;
-
-      console.log('top and bottom',elementTop,elementBottom)
   
       // Check if at the top and scrolling up, set scroll power to 0
       if (textAtTop && scrollDirection === 'up') {
         setScrollPower(0);
-        document.body.style.overflow = 'auto'; // Set overflow to auto when at the top and scrolling up
+        console.log('No need to scroll up playa');
       } else {
         // Only apply scroll power if 40 percent is in view
         setScrollPower(is40PercentInView ? (scrollDirection === 'up' ? -scrollMagnitude : scrollMagnitude) : 0);
@@ -68,37 +60,6 @@ const FullScreenSlide = ({ video, image, id }) => {
           return Math.min(Math.max(newTextPosition, 40), 90);
         }
       });
-  
-      // Check if the top of the element reaches the top of the viewport
-      if (elementTop <= 0) {
-        setTopReached(true);
-        if (textPosition < 95) {
-          document.body.style.overflow = 'hidden';
-        }
-      }
-  
-      // Check if the text position hits 90 and reset overflow to auto
-      if (textPosition >= 90) {
-        document.body.style.overflow = 'auto';
-        setTextAtTop(true)
-      }
-
-      if(elementBottom < windowHeight && scrollDirection === 'up'){
-        setIsReturning(true)
-        console.log('return initiated')
-      }
-
-      if(isReturning && elementBottom >= 800){
-        document.body.style.overflow = 'hidden'
-        setTextAtTop(false)
-      }
-
-      if(textPosition === 40 && scrollDirection === 'up'){
-        document.body.style.overflow = 'auto'
-        setIsReturning(false)
-      }
-
- 
     };
   
     document.addEventListener('wheel', handleWheel);
@@ -106,9 +67,7 @@ const FullScreenSlide = ({ video, image, id }) => {
     return () => {
       document.removeEventListener('wheel', handleWheel);
     };
-  }, [setScrollPower, scrollPower, setTextPosition, setBottomReached, textPosition, textAtTop, setTextAtTop,setIsReturning]);
-  
-  
+  }, [setScrollPower, scrollPower, setTextPosition, setBottomReached, textPosition, textAtTop, setTextAtTop]);
   
   
   
